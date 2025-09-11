@@ -1,0 +1,27 @@
+.button_div {
+    text-align: center;
+}
+
+.button{
+    transition: 0.4s;
+    text-decoration: none;
+    color: white;
+    background-color: red;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.button:hover {
+    transition: 0.4s;
+    background-color: rgb(165, 0, 0);
+}
+
+.link {
+    text-decoration: underline;
+    font-weight: bold;
+    color: white;
+}
+
+.link:hover {
+    background-color: rgb(165, 0, 0);
+}

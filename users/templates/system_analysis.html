@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Monitoramento do Sistema {% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/custom.css' %}">
+{% endblock %}
+
+{% block content %}
+<div style="text-align: center;">
+    <h1>Monitoramento do Sistema</h1>
+</div>
+<p><strong>CPU:</strong> {{ stats.cpu_percent }}%</p>
+<p><strong>RAM</strong> {{ stats.ram_used }} GB / {{ stats.ram_total }} GB | <strong>Em uso:</strong> {{ stats.ram_percent }}%</p>
+<p><strong>SSD: </strong> {{ stats.memory_used }} GB / {{ stats.memory_total }} GB</p>
+
+<button>Gerar análise de IA</button>
+
+<div style="background-color: rgb(227, 227, 227); margin: 20px; padding: 10px; border-radius: 10px;">
+    🤖
+    <hr>
+    {{ ai }}
+</div>
+
+<div class="button_div">
+    <a href="{% url 'main' %}" class="button">Voltar</a>
+</div>
+{% endblock %}

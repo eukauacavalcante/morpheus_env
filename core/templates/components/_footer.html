@@ -1,0 +1,10 @@
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/custom.css' %}">
+{% endblock %}
+
+<footer style="text-align: center; background-color: red; padding: 5px;">
+    <p style="margin: 0px; color: white;">&copy; Projeto Acadêmico A3 {{ now|date:"Y"|default:2025 }}, criado por
+        <a href="https://www.github.com/eukauacavalcante" class="link" target="_blank" style="font-style: italic;">Kauã Silva</a></p>
+</footer>
