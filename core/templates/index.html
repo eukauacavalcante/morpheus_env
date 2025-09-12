@@ -5,14 +5,15 @@
 
 {% block content %}
     <h1>Simulador de Sistema Computacional Seguro</h1>
-    <div class="PAI" style="border: 2px solid red; padding: 10px; display: flex;">
-        <div class="FILHO" style="border: 2px solid rgb(17, 0, 255); padding: 10px; width: 50%; margin: 10px; height: 300px;">
+    <div class="PAI" style="border: 2px solid red; padding: 10px; display: flex; height: auto;">
+        <div class="FILHO" style="border: 2px solid rgb(17, 0, 255); padding: 10px; width: 50%; margin: 10px; height: auto;">
             <div style="text-align: center; display: grid;">
-                <a href="{% url 'system_data' %}" style="margin-top: 30px; padding: 20px;">Monitoramento do Sistema</a>
-                <button style="margin-top: 30px; padding: 20px;">botao</button>
-                <button style="margin-top: 30px; padding: 20px;">botao</button>
+                <button style="padding: 20px;"><a href="{% url 'system_data' %}" style="margin-top: 30px; padding: 20px; text-decoration: none;">Monitoramento do Sistema</a></button>
+                <button style="margin-top: 30px; padding: 20px;">Conversão Númerica</button>
+                <button style="margin-top: 30px; padding: 20px;">Integração e Tendências</button>
+                <button style="margin-top: 30px; padding: 20px;">Sobre o sistema</button>
             </div>
         </div>
-        <div class="FILHO" style="border: 2px solid rgb(17, 0, 255); padding: 10px; width: 50%; margin: 10px; height: 300px;"></div>
+        <div class="FILHO" style="border: 2px solid rgb(17, 0, 255); padding: 10px; width: 50%; margin: 10px; height: auto; display: flex; justify-content: center; align-items: center;">Imagem</div>
     </div>
 {% endblock %}
