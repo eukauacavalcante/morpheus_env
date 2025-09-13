@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Conversor Numérico {% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/custom.css' %}">
+{% endblock %}
+
+{% block content %}
+<div style="text-align: center;">
+    <h1>Conversor Númerico</h1>
+
+    <input type="text" id="value" placeholder="Digite um número">
+    <select id="type">
+        <option value="bin2dec">Binário para Decimal</option>
+        <option value="dec2bin">Decimal para Binário</option>
+        <option value="dec2hex">Decimal para Hexadecimal</option>
+        <option value="dec2oct">Decimal para Octodecimal</option>
+        <option value="hex2dec">Hexadecimal para Decimal</option>
+        <option value="oct2dec">Octadecimal para Decimal</option>
+    </select>
+
+    <button onclick="converter()">Converter</button>
+
+    <p id="result"></p>
+
+    <div class="button_div">
+        <a href="{% url 'main' %}" class="button">Voltar</a>
+    </div>
+
+</div>
+
+<script>
+    async function converter() {
+        const value = document.getElementById('value').value;
+        const type = document.getElementById('type').value;
+
+        const request = await fetch(`api/?value=${value}&type=${type}`);
+        const data = await request.json();
+
+        document.getElementById("result").innerText = "Resultado: " + data.result;
+        console.log(data.result)
+    }
+</script>
+{% endblock %}
