@@ -20,7 +20,11 @@
 <div style="background-color: rgb(227, 227, 227); margin: 20px; padding: 10px; border-radius: 10px;">
     🤖
     <hr>
-    {{ ai }}
+    {% if ai %}
+        {{ ai }}
+    {% else %}
+        <p>A Inteligência Artificial está desativada</p>
+    {% endif %}
 </div>
 
 <div class="button_div">
