@@ -5,6 +5,7 @@ from django.conf import settings
 
 client = Groq(api_key=settings.API_KEY)
 
+
 def analysis_status():
     status = get_system_stats()
     response = client.chat.completions.create(

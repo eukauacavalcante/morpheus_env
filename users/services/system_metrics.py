@@ -13,9 +13,9 @@ def get_system_stats():
 
     return {
         'cpu_percent': cpu_percent,
-        'ram_percent' : ram_percent,
+        'ram_percent': ram_percent,
         'ram_total': round(ram_total, 2),
-        'ram_used' : round(ram_used, 2),
+        'ram_used': round(ram_used, 2),
         'memory_used': round(memory_used, 2),
         'memory_total': round(memory_total, 2)
     }

@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from http import HTTPStatus
 
 
-def tela_inicial(request):
+def main_view(request):
     if request.method == 'GET':
         return render(request, 'index.html')
     else:
