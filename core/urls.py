@@ -1,11 +1,11 @@
 from django.contrib import admin
 from django.urls import path, include
 
-from .views import tela_inicial
+from .views import main_view
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', tela_inicial, name='main'),
+    path('', main_view, name='main'),
     path('sistema/', include('users.urls')),
 ]
