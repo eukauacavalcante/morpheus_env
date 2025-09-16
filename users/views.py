@@ -38,5 +38,17 @@ def number_converter_api(request):
             result = hex_to_dec(value)
         case 'oct2dec':
             result = oct_to_dec(value)
+        case 'and':
+            value1 = int(request.GET.get('value1'))
+            value2 = int(request.GET.get('value2'))
+            result = value1 & value2
+        case 'or':
+            value1 = int(request.GET.get('value1'))
+            value2 = int(request.GET.get('value2'))
+            result = value1 | value2
+        case 'xor':
+            value1 = int(request.GET.get('value1'))
+            value2 = int(request.GET.get('value2'))
+            result = value1 ^ value2
 
     return JsonResponse({'result': result})
