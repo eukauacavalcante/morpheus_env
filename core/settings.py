@@ -91,3 +91,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AI_MODE = False
 API_KEY = config('API_KEY')
 AI_MODEL = config('AI_MODEL')
+
+LOGIN_REDIRECT_URL = 'main'
