@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Faça o seu login {% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/custom.css' %}">
+<style>
+    .login-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .login-card {
+        display: flex;
+        flex-direction: column;
+        background-color: rgb(219, 219, 219);
+        padding: 30px;
+        border-radius: 10px;
+    }
+    
+    .login-input {
+        padding: 6px;
+        border-radius: 10px;
+        border: 0px;
+        margin-top: 3px;
+    }
+    
+    .label-container {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .forgot-password {
+        text-decoration: none;
+        font-size:smaller;
+    }
+    
+    .submit-container {
+        margin-top: 10px;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .submit-button {
+        border: 0px;
+        width: 200px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="login-container">
+    <div class="login-card">
+        <div>
+            <h1>Entre na sua conta</h1>
+            <hr>
+        </div>
+        <form method="post" class="login-form">
+            {% csrf_token %}
+
+            <div class="label-container">
+                {{ form.username.label }}
+                <input type="text" placeholder="Username" id="username" name="username" 
+                    aria-label="Username" aria-describedby="basic-addon1"
+                    class="login-input" required>
+            </div>
+
+            <div class="label-container">
+                {{ form.password.label }}
+                <input type="password" placeholder="Sua senha" id="password" name="password" 
+                       class="login-input" required>
+            </div>
+
+            <a href="" class="forgot-password">Esqueci minha senha</a>
+
+            <div class="submit-container">
+                <button type="submit" class="button submit-button">Entrar</button>
+                <a href="" class="forgot-password">ou crie a sua conta</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
