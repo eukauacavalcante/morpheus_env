@@ -15,19 +15,25 @@
 <p><strong>RAM</strong> {{ stats.ram_used }} GB / {{ stats.ram_total }} GB | <strong>Em uso:</strong> {{ stats.ram_percent }}%</p>
 <p><strong>SSD: </strong> {{ stats.memory_used }} GB / {{ stats.memory_total }} GB</p>
 
-<button>Gerar análise de IA</button>
+<button onclick="ai_analysis()" class="button">Gerar análise de IA</button>
 
-<div style="background-color: rgb(227, 227, 227); margin: 20px; padding: 10px; border-radius: 10px;">
-    🤖
-    <hr>
-    {% if ai %}
-        {{ ai }}
-    {% else %}
-        <p>A Inteligência Artificial está desativada</p>
-    {% endif %}
-</div>
+<p id="ai_analysis"></p>
 
 <div class="button_div">
     <a href="{% url 'main' %}" class="button">Voltar</a>
 </div>
+
+{% if ai %}
+    <script>
+        async function ai_analysis() {
+            document.getElementById("ai_analysis").innerText = "Morpheus IA\n{{ ai }}";
+        }
+    </script>
+{% else %}
+    <script>
+        async function ai_analysis() {
+            document.getElementById("ai_analysis").innerText = "Análise de IA indisponível :( \n Possível atualização ocorrendo ou instabilidade no sistema. Por favor, tente novamente mais tarde.";
+        }
+    </script>
+{% endif %}
 {% endblock %}

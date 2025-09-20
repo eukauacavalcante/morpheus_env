@@ -7,5 +7,6 @@ from .views import main_view
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', main_view, name='main'),
-    path('sistema/', include('users.urls')),
+    path('users/', include('users.urls')),
+    path('sistema/', include('tools.urls')),
 ]
