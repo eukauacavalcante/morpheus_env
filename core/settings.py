@@ -94,3 +94,4 @@ API_KEY = config('API_KEY')
 AI_MODEL = config('AI_MODEL')
 
 LOGIN_REDIRECT_URL = 'main'
+LOGOUT_REDIRECT_URL = 'login'
