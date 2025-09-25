@@ -4,16 +4,25 @@
 <h3>{% block title %}Página Inicial{% endblock %}</h3>
 
 {% block content %}
-    <h1>Simulador de Sistema Computacional Seguro</h1>
-    <div class="PAI" style=" padding: 10px; display: flex; height: auto;">
-        <div class="FILHO" style=" padding: 10px; width: 50%; margin: 10px; height: auto;">
-            <div style="text-align: center; display: grid;">
-                <button style="padding: 20px;"><a href="{% url 'system_data' %}" style="margin-top: 30px; padding: 20px; text-decoration: none;">Monitoramento do Sistema</a></button>
-                <button style="margin-top: 30px; padding: 20px;"> <a href="{% url 'num_converter' %}" style="margin-top: 30px; padding: 20px; text-decoration: none;">Conversor Numérico</a></button>
-                <button style="margin-top: 30px; padding: 20px;">Integração e Tendências</button>
-                <button style="margin-top: 30px; padding: 20px;">Sobre o sistema</button>
-            </div>
+<div class="text-white">
+    <h1 class="text-3xl mb-10 text-center">Simulador de Sistema Computacional Seguro</h1>
+
+    <div class="flex gap-x-10">
+        <div class="w-1/2 flex flex-col">
+            <a href="{% url 'system_data' %}" class="mb-10">
+                <div class="bg-white/20 hover:bg-white/10 hover:font-bold text-2xl p-5 rounded-2xl transition">Monitoramento do Sistema</div>
+            </a>
+            <a href="{% url 'num_converter' %}" class="mb-10">
+                <div class="bg-white/20 hover:bg-white/10 hover:font-bold text-2xl p-5 rounded-2xl transition">Conversor Numérico</div>
+            </a>
+            <a href="#" class="mb-10">
+                <div class="bg-white/20 hover:bg-white/10 hover:font-bold text-2xl p-5 rounded-2xl transition">Informações do Software</div>
+            </a>
         </div>
-        <div class="FILHO" style="border: 2px solid rgb(17, 0, 255); padding: 10px; width: 50%; margin: 10px; height: auto; display: flex; justify-content: center; align-items: center;">Imagem</div>
+
+        <div class="w-1/2 flex justify-center items-center">
+            <p>* Imagem será adicionada</p>
+        </div>
     </div>
+</div>
 {% endblock %}

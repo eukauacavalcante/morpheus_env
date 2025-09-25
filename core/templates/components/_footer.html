@@ -1,12 +1,3 @@
-{% load static %}
-
-{% block styles %}
-<link rel="stylesheet" href="{% static 'css/custom.css' %}">
-<link rel="stylesheet" href="{% static 'css/components_styles/footer.css' %}">
-{% endblock %}
-
-<footer>
-    <p style="margin: 0px; color: white;">&copy; Projeto Acadêmico. Criado por
-        <a href="https://www.github.com/eukauacavalcante" class="link" target="_blank" style="font-style: italic;">Kauã Silva</a>. {{ now|date:"Y"|default:2025 }}
-    </p>
+<footer class="text-white text-center bg-black/20 p-5 mt-auto">
+    <h2 class="text-base font-light">Desenvolvido por <a href="https://www.linkedin.com/in/kauã-cavalcante-406055367" target="_blank" class="font-bold">Kauã Cavalcante</a>, 2025.</h2>
 </footer>

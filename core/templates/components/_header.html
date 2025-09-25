@@ -1,14 +1,18 @@
-<header style="text-align: center; background-color: rgb(0, 0, 111);">
-    <div style="padding: 15px;">
-        <h2 style="margin: 0px; color: white;">Morpheus Env</h2>
+<header class="text-white text-center bg-black/20 p-5 shadow-lg">
+    <h2 class="text-2xl font-bold tracking-wider">Morpheus Env</h2>
+    {% if user.is_authenticated %}
+    <div class="flex justify-between">
+        <p class="text-xl">Olá, <strong>{{ user.first_name|default:'usuário' }}</strong>!</p>
+        <div class="flex gap-x-4">
+            {% if user.is_staff %}
+            <a href="admin" class="hover:text-purple-500 transition text-xl">Admin Page</a>
+            |
+            {% endif %}
+            <form method="post" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <button class="hover:text-purple-500 transition text-xl">Sair</button>
+            </form>
+        </div>
     </div>
-    <div style="display: flex; justify-content: space-between;">
-        <div style="background-color: rgb(0, 0, 65); padding: 3px; color: white; text-align: left; font-style: italic; font-size: smaller;">Em desenvolvimento</div>
-        {% if user.is_authenticated %}
-        <form method="post" action="{% url 'logout' %}">
-            {% csrf_token %}
-            <button type="submit">Sair</button>
-        </form>
-        {% endif %}
-    </div>
+    {% endif %}
 </header>

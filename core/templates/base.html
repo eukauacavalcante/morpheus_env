@@ -1,20 +1,18 @@
-{% load static %}
-
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>{% block title %} {% endblock %}</title>
-        <link rel="stylesheet" href="{% static 'css/core_styles/base.css' %}">
+        <script src="https://cdn.tailwindcss.com"></script>
 
         {% block styles %} {% endblock %}
     </head>
-    <body>
+    <body class="bg-gradient-to-bl from-violet-950 to-fuchsia-950 min-h-screen flex flex-col">
 
         {% include 'components/_header.html' %}
 
-        <main>
+        <main class="p-10">
             {% block content %}
             {% endblock %}
         </main>
