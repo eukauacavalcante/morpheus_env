@@ -2,7 +2,7 @@
     <h2 class="text-2xl font-bold tracking-wider">Morpheus Env</h2>
     {% if user.is_authenticated %}
     <div class="flex justify-between">
-        <p class="text-xl">Olá, <strong>{{ user.first_name|default:'usuário' }}</strong>!</p>
+        <p class="text-xl">Olá, <strong>{{ user.first_name|default:'usuário' }}</strong>. Bem-vindo!</p>
         <div class="flex gap-x-4">
             {% if user.is_staff %}
             <a href="admin" class="hover:text-purple-500 transition text-xl">Admin Page</a>
