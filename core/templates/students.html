@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Estudantes {% endblock %}
+
+{% block content %}
+<div class="text-white">
+    <p>> Informações do Software</p>
+    
+    <div class="text-center mb-10">
+        <h1 class="text-4xl font-bold">Estudantes que participaram do desenvolvimento</h1>
+    </div>
+
+    <div class="flex flex-wrap gap-5">
+        
+        <div class="w-full lg:w-[calc(50%-20px)] flex items-center bg-white/20 backdrop-blur-lg border border-white/20 p-4 rounded-2xl shadow-2xl">
+            <div class="flex-shrink-0">
+                <img src="{% static 'img/kaua.jpeg' %}" alt="Kauã Cavalcante" class="rounded-full w-40 h-40 object-cover"/>
+            </div>
+            <div class="ml-10">
+                <h2 class="text-2xl mb-5 font-bold">Kauã Cavalcante</h2>
+                <p class="text-xl">Acadêmico de Análise e Desenvolvimento de Sistemas, iniciou seus conhecimentos em tecnologia ainda no Ensino Médio, programando arduínos em C++ e participando de competições de robótica. Atualmente, é desenvolvedor de software back-end e com bases também no front-end.</p>
+                <p class="text-xl text-purple-500 font-bold mt-5">Django Developer | Back-end | Front-end</p>
+                <div class="flex gap-x-5">
+                    <a href="https://www.linkedin.com/in/kau%C3%A3-cavalcante-406055367/" target="_blank" class="text-xl text-blue-500 font-bold"><i class="bi bi-linkedin"></i> LinkedIn</a>
+                    <a href="https://github.com/eukauacavalcante" target="_blank" class="text-xl text-blue-500 font-bold"><i class="bi bi-github"></i> Github</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="w-full lg:w-[calc(50%-20px)] flex items-center bg-white/20 backdrop-blur-lg border border-white/20 p-4 rounded-2xl shadow-2xl">
+            <div class="flex-shrink-0">
+                <img src="{% static 'img/nicholas.jpg' %}" alt="Nicholas Andrews" class="rounded-full w-40 h-40 object-cover"/>
+            </div>
+            <div class="ml-10">
+                <h2 class="text-2xl mb-5 font-bold">Nicholas Andrews</h2>
+                <p class="text-xl">Atualmente cursando Ciência da Computação, Nicholas deu início a sua vida acadêmica em 2025. Com conhecimento em programação avançado em Java — devido à influência de seu pai, que já é profissional na área — Andrews também vem desenvolvendo aplicações em Python.</p>
+                <p class="text-xl text-purple-500 font-bold mt-5">Conversor Numérico (funções)</p>
+                <div class="flex gap-x-5">
+                    <a href="https://www.linkedin.com/in/nicholas-andrews-1523ab330/" target="_blank" class="text-xl text-blue-500 font-bold"><i class="bi bi-linkedin"></i> LinkedIn</a>
+                    <a class="text-xl text-blue-500 font-bold"><i class="bi bi-github"></i> Github</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="w-full lg:w-[calc(50%-20px)] flex items-center bg-white/20 backdrop-blur-lg border border-white/20 p-4 rounded-2xl shadow-2xl">
+            <div class="flex-shrink-0">
+                <img src="{% static 'img/sophia.jpg' %}" alt="Sophia Silva" class="rounded-full w-40 h-40 object-cover"/>
+            </div>
+            <div class="ml-10">
+                <h2 class="text-2xl mb-5 font-bold">Sophia Silva</h2>
+                <p class="text-xl">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequuntur adipisci at reiciendis cum? Consequuntur voluptatum quod earum ullam pariatur ut vel delectus eos ducimus nobis. Quos blanditiis delectus commodi illo.</p>
+                <p class="text-xl text-purple-500 font-bold mt-5">Front-end</p>
+                <div class="flex gap-x-5">
+                    <a class="text-xl text-blue-500 font-bold"> <i class="bi bi-linkedin"></i> LinkedIn</a>
+                    <a class="text-xl text-blue-500 font-bold"><i class="bi bi-github"></i> Github</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-12 pt-6 text-center border-t border-white/20">
+        <a href="{% url 'main' %}" class="bg-purple-700 py-3 px-8 rounded-full text-lg hover:bg-purple-800 transition font-semibold">Voltar</a>
+    </div>
+</div>
+{% endblock %}
