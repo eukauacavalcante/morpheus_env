@@ -1,11 +1,11 @@
-<header class="text-white text-center bg-black/20 p-5 shadow-lg">
-    <h2 class="text-2xl font-bold tracking-wider">Morpheus Env</h2>
+<header class="sticky top-0 z-50 backdrop-blur-md border-b border-white/10 text-white text-center bg-black/20 p-5 shadow-xl">
+    <h2 class="text-2xl font-bold tracking-wider drop-shadow-[0_0_8px_rgba(244,114,182,0.6)]">Morpheus Env</h2>
     {% if user.is_authenticated %}
     <div class="flex justify-between">
         <p class="text-xl">Olá, <strong>{{ user.first_name|default:'usuário' }}</strong>. Bem-vindo!</p>
         <div class="flex gap-x-4">
             {% if user.is_staff %}
-            <a href="admin" class="hover:text-purple-500 transition text-xl">Admin Page</a>
+            <a href="{% url 'admin:index' %}" class="hover:text-purple-500 transition text-xl">Admin Page</a>
             |
             {% endif %}
             <form method="post" action="{% url 'logout' %}">
