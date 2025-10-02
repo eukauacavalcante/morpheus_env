@@ -1,14 +1,14 @@
-from django.shortcuts import render
-from .services.system_metrics import get_system_stats
-from .services.ai_analysis import get_analysis
-from .services import num_converter
-from django.conf import settings
-from django.http import JsonResponse
-from django.http import HttpResponse
 from http import HTTPStatus
-from django.views import generic
-from django.contrib.auth.mixins import LoginRequiredMixin
+
+from django.conf import settings
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import HttpResponse, JsonResponse
+from django.views import generic
+
+from .services import num_converter
+from .services.ai_analysis import get_analysis
+from .services.system_metrics import get_system_stats
 
 
 class SystemAnalysisView(LoginRequiredMixin, generic.TemplateView):

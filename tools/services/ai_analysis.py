@@ -1,7 +1,7 @@
-from groq import Groq
-from .system_metrics import get_system_stats
 from django.conf import settings
+from groq import Groq
 
+from .system_metrics import get_system_stats
 
 client = Groq(api_key=settings.API_KEY)
 
