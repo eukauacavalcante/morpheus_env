@@ -139,3 +139,6 @@ GitHub.sublime-settings
 
 #flake8
 .flake8
+
+# Tailwind generated CSS
+static/css/styles.css
