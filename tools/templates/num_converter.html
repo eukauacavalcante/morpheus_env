@@ -8,149 +8,82 @@
 {% endblock %}
 
 {% block content %}
-<div class="text-white">
-    <p><a href="{% url 'main' %}">Home</a> > Conversor Numérico e Lógico</p>
-    <div class="text-center mb-10">
-        <h1 class="text-4xl font-bold">Conversor Numérico e Lógico</h1>
-    </div>
+    <div class="text-white">
+        <p><a href="{% url 'main' %}">Home</a> > Conversor Numérico e Lógico</p>
+        <div class="text-center mb-10">
+            <h1 class="text-4xl font-bold">Conversor Numérico e Lógico</h1>
+        </div>
 
-    <div class="flex gap-10">
-        <div class="w-1/2 bg-white/5 border border-white/20 rounded-2xl p-6 shadow-xl flex flex-col gap-6">
-            <h2 class="text-2xl font-semibold border-b border-white/20 pb-3">Conversor de Bases</h2>
-            
-            <div class="flex flex-col sm:flex-row gap-4 items-center">
-                <div class="w-full sm:flex-grow">
-                    <label for="value" class="block text-sm font-medium text-gray-300 mb-2">Valor</label>
-                    <input type="text" id="value" placeholder="Digite um número" class="w-full bg-white/10 border border-white/20 p-3 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition">
-                </div>
+        <div class="flex gap-10">
+            <div class="w-1/2 bg-white/5 border border-white/20 rounded-2xl p-6 shadow-xl flex flex-col gap-6">
+                <h2 class="text-2xl font-semibold border-b border-white/20 pb-3">Conversor de Bases</h2>
                 
-                <div class="w-full sm:w-auto">
+                <div class="flex flex-col sm:flex-row gap-4 items-center">
+                    <div class="w-full sm:flex-grow">
+                        <label for="value" class="block text-sm font-medium text-gray-300 mb-2">Valor</label>
+                        <input type="text" id="value" placeholder="Digite um número" class="w-full bg-white/10 border border-white/20 p-3 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition">
+                    </div>
+                    
+                    <div class="w-full sm:w-auto">
                         <label for="type_converter" class="block text-sm font-medium text-gray-300 mb-2">Conversão</label>
-                    <select id="type_converter" class="w-full bg-white/10 border border-white/20 p-3 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition">
-                        <option value="bin2dec" class="bg-purple-900 text-white">Binário para Decimal</option>
-                        <option value="dec2bin" class="bg-purple-900 text-white">Decimal para Binário</option>
-                        <option value="dec2hex" class="bg-purple-900 text-white">Decimal para Hexadecimal</option>
-                        <option value="dec2oct" class="bg-purple-900 text-white">Decimal para Octal</option>
-                        <option value="hex2dec" class="bg-purple-900 text-white">Hexadecimal para Decimal</option>
-                        <option value="oct2dec" class="bg-purple-900 text-white">Octal para Decimal</option>
-                    </select>
-                </div>
-            </div>
-            
-            <div class="flex justify-end">
-                <button id="converterBtn" onclick="converter()" class="text-lg py-2 px-6 bg-purple-700 hover:bg-purple-800 rounded-lg transition font-semibold">Calcular</button>
-            </div>
-            
-            <div id="result_converter" class="mt-2 p-4 bg-black/20 rounded-lg min-h-[60px] text-lg flex items-center justify-center font-mono">
-                <span class="text-gray-400">Seu resultado aparecerá aqui</span>
-            </div>
-        </div>
-
-        <div class="w-1/2 bg-white/5 border border-white/20 rounded-2xl p-6 shadow-xl flex flex-col gap-6">
-            <h2 class="text-2xl font-semibold border-b border-white/20 pb-3">Operação Lógica</h2>
-            
-            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <div class="w-full">
-                    <label for="value1" class="block text-sm font-medium text-gray-300 mb-2">Valor 1</label>
-                    <input type="text" id="value1" placeholder="0 ou 1" maxlength="1" class="w-full text-center bg-white/10 border border-white/20 p-3 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition">
+                        <select id="type_converter" class="w-full bg-white/10 border border-white/20 p-3 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition">
+                            <option value="bin2dec" class="bg-purple-900 text-white">Binário para Decimal</option>
+                            <option value="dec2bin" class="bg-purple-900 text-white">Decimal para Binário</option>
+                            <option value="dec2hex" class="bg-purple-900 text-white">Decimal para Hexadecimal</option>
+                            <option value="dec2oct" class="bg-purple-900 text-white">Decimal para Octal</option>
+                            <option value="hex2dec" class="bg-purple-900 text-white">Hexadecimal para Decimal</option>
+                            <option value="oct2dec" class="bg-purple-900 text-white">Octal para Decimal</option>
+                        </select>
+                    </div>
                 </div>
                 
-                <div class="w-full sm:w-auto">
-                    <label for="type_boolean" class="block text-sm font-medium text-gray-300 mb-2">Operador</label>
-                    <select id="type_boolean" class="w-full bg-white/10 border border-white/20 p-3 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition">
-                        <option value="and" class="bg-purple-900 text-white">AND</option>
-                        <option value="or" class="bg-purple-900 text-white">OR</option>
-                        <option value="xor" class="bg-purple-900 text-white">XOR</option>
-                    </select>
+                <div class="flex justify-end">
+                    <button id="converterBtn" onclick="converter()" class="text-lg py-2 px-6 bg-purple-700 hover:bg-purple-800 rounded-lg transition font-semibold">Calcular</button>
                 </div>
                 
-                <div class="w-full">
-                    <label for="value2" class="block text-sm font-medium text-gray-300 mb-2">Valor 2</label>
-                    <input type="text" id="value2" placeholder="0 ou 1" maxlength="1" class="w-full text-center bg-white/10 border border-white/20 p-3 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition">
-                </div>
-            </div>
-
-            <div class="flex justify-end">
-                <button id="booleanBtn" onclick="boolean()" class="text-lg py-2 px-6 bg-purple-700 hover:bg-purple-800 rounded-lg transition font-semibold">Calcular</button>
-            </div>
-            
-            <div id="result_boolean" class="mt-2 p-4 bg-black/20 rounded-lg min-h-[60px] text-lg flex items-center justify-center font-mono">
+                <div id="result_converter" class="mt-2 p-4 bg-black/20 rounded-lg text-lg flex items-center justify-center font-mono">
                     <span class="text-gray-400">Seu resultado aparecerá aqui</span>
+                </div>
+            </div>
+
+            <div class="w-1/2 bg-white/5 border border-white/20 rounded-2xl p-6 shadow-xl flex flex-col gap-6">
+                <h2 class="text-2xl font-semibold border-b border-white/20 pb-3">Operação Lógica</h2>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <div class="w-full">
+                        <label for="value1" class="block text-sm font-medium text-gray-300 mb-2">Valor 1</label>
+                        <input type="text" id="value1" placeholder="0 ou 1" maxlength="1" class="w-full text-center bg-white/10 border border-white/20 p-3 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition">
+                    </div>
+                    
+                    <div class="w-full">
+                        <label for="type_boolean" class="block text-sm font-medium text-gray-300 mb-2">Operador</label>
+                        <select id="type_boolean" class="w-full bg-white/10 border border-white/20 p-3 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition">
+                            <option value="and" class="bg-purple-900 text-white">AND</option>
+                            <option value="or" class="bg-purple-900 text-white">OR</option>
+                            <option value="xor" class="bg-purple-900 text-white">XOR</option>
+                        </select>
+                    </div>
+                    
+                    <div class="w-full">
+                        <label for="value2" class="block text-sm font-medium text-gray-300 mb-2">Valor 2</label>
+                        <input type="text" id="value2" placeholder="0 ou 1" maxlength="1" class="w-full text-center bg-white/10 border border-white/20 p-3 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition">
+                    </div>
+                </div>
+
+                <div class="flex justify-end">
+                    <button id="booleanBtn" onclick="boolean()" class="text-lg py-2 px-6 bg-purple-700 hover:bg-purple-800 rounded-lg transition font-semibold">Calcular</button>
+                </div>
+                
+                <div id="result_boolean" class="mt-2 p-4 bg-black/20 rounded-lg text-lg flex items-center justify-center font-mono">
+                    <span class="text-gray-400">Seu resultado aparecerá aqui</span>
+                </div>
             </div>
         </div>
+
+        <div class="mt-12 pt-6 text-center border-t border-white/20">
+            <a href="{% url 'main' %}" class="bg-purple-700 py-3 px-8 rounded-full text-lg hover:bg-purple-800 transition font-semibold">Voltar</a>
+        </div>
+
+        <script src="{% static 'javascript/num-converter.js' %}"></script>    
     </div>
-
-    <div class="mt-12 pt-6 text-center border-t border-white/20">
-        <a href="{% url 'main' %}" class="bg-purple-700 py-3 px-8 rounded-full text-lg hover:bg-purple-800 transition font-semibold">Voltar</a>
-    </div>
-
-    <script>
-        async function converter() {
-            const value = document.getElementById('value').value.trim();
-            const type = document.getElementById('type_converter').value;
-            const resultElement = document.getElementById('result_converter');
-            const button = document.getElementById('converterBtn');
-
-            if (!value) {
-                resultElement.innerHTML = `<span class="text-red-400">Por favor, digite um valor para converter.</span>`;
-                return;
-            }
-
-            button.disabled = true;
-            button.innerHTML = 'Calculando...';
-            resultElement.innerHTML = `<span class="text-gray-400">Processando...</span>`;
-            
-            try {
-                const request = await fetch(`api/?value=${value}&type=${type}`);
-                if (!request.ok) {
-                    throw new Error(`Erro na API: ${request.statusText}`);
-                }
-                const data = await request.json();
-                resultElement.innerHTML = `<strong>Resultado:</strong>&nbsp; <span class="text-green-400">${data.result}</span>`;
-            } catch (error) {
-                console.error("Falha na conversão:", error);
-                resultElement.innerHTML = `<span class="text-red-400">Ocorreu um erro. Verifique o valor e tente novamente.</span>`;
-            } finally {
-                button.disabled = false;
-                button.innerHTML = 'Calcular';
-            }
-        }
-
-        async function boolean() {
-            const value1 = document.getElementById('value1').value.trim();
-            const value2 = document.getElementById('value2').value.trim();
-            const type = document.getElementById('type_boolean').value;
-            const resultElement = document.getElementById('result_boolean');
-            const button = document.getElementById('booleanBtn');
-            
-            if (!value1 || !value2) {
-                 resultElement.innerHTML = `<span class="text-red-400">Ambos os valores são obrigatórios.</span>`;
-                 return;
-            }
-            if (!['0', '1'].includes(value1) || !['0', '1'].includes(value2)) {
-                resultElement.innerHTML = `<span class="text-red-400">Por favor, insira apenas 0 ou 1.</span>`;
-                return;
-            }
-
-            button.disabled = true;
-            button.innerHTML = 'Calculando...';
-            resultElement.innerHTML = `<span class="text-gray-400">Processando...</span>`;
-
-            try {
-                const request = await fetch(`api/?type=${type}&value1=${value1}&value2=${value2}`);
-                 if (!request.ok) {
-                    throw new Error(`Erro na API: ${request.statusText}`);
-                }
-                const data = await request.json();
-                resultElement.innerHTML = `<strong>Resultado:</strong>&nbsp; <span class="text-green-400">${data.result}</span>`;
-            } catch (error) {
-                console.error("Falha na operação lógica:", error);
-                resultElement.innerHTML = `<span class="text-red-400">Ocorreu um erro ao calcular.</span>`;
-            } finally {
-                button.disabled = false;
-                button.innerHTML = 'Calcular';
-            }
-        }
-    </script>
-</div>
 {% endblock %}

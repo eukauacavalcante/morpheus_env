@@ -3,37 +3,63 @@
 
 {% block title %} Monitoramento do Sistema {% endblock %}
 
-{% block styles %}
-<link rel="stylesheet" href="{% static 'css/custom.css' %}">
-{% endblock %}
-
 {% block content %}
-<div style="text-align: center;">
-    <h1>Monitoramento do Sistema</h1>
-</div>
-<p><strong>CPU:</strong> {{ stats.cpu_percent }}%</p>
-<p><strong>RAM</strong> {{ stats.ram_used }} GB / {{ stats.ram_total }} GB | <strong>Em uso:</strong> {{ stats.ram_percent }}%</p>
-<p><strong>SSD: </strong> {{ stats.memory_used }} GB / {{ stats.memory_total }} GB</p>
+    <div class="text-white">
+        <div class="text-center mb-10">
+            <h1 class="text-4xl font-bold drop-shadow-lg">Monitoramento do Sistema</h1>
+        </div>
 
-<button onclick="ai_analysis()" class="button">Gerar análise de IA</button>
+        <div class="flex flex-row gap-10 p-6">
+            <div class="w-full w-1/2 p-4 flex flex-col gap-5">
+                
+                <div class="flex flex-row gap-5">
+                    <div class="w-1/2 text-center bg-purple-500/20 backdrop-blur-lg shadow-lg p-4 rounded-2xl hover:scale-105 transition">
+                        <p class="text-xl font-semibold">Uso do Processador / CPU</p> 
+                        <p id="cpu" class="text-xl text-yellow-400">Carregando...</p>
+                    </div>
 
-<p id="ai_analysis"></p>
+                    <div class="w-1/2 bg-purple-500/20 backdrop-blur-lg shadow-lg p-4 rounded-2xl flex hover:scale-105 transition">
+                        <div class="w-1/2">
+                            <p class="text-xl font-semibold">Memória interna usada</p> 
+                            <p id="memory" class="text-xl text-yellow-400">Carregando...</p>
+                        </div>
+                        <div class="w-1/2 flex flex-col justify-center items-center bg-purple-600/70 rounded-2xl p-2">
+                            <p class="text-xl font-semibold">Total</p>
+                            <p id="total-memory" class="text-xl text-yellow-400">Carregando...</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-purple-500/20 backdrop-blur-lg shadow-lg p-4 rounded-2xl flex hover:scale-105 transition">
+                    <div class="w-1/2 text-center">
+                        <p class="text-xl font-semibold">Memória RAM em uso</p> <p id="ram" class="text-xl text-yellow-400">Carregando...</p>
+                    </div>
+                    <div class="w-1/2 flex flex-col justify-center items-center bg-purple-600/70 rounded-2xl p-2">
+                        <p class="text-xl font-semibold">Total</p>
+                        <p id="ram-total" class="text-xl text-yellow-400">Carregando...</p>
+                    </div>
+                </div>
 
-<div class="button_div">
-    <a href="{% url 'main' %}" class="button">Voltar</a>
-</div>
+                <div class="text-center mt-4">
+                    <button onclick="aiAnalysis()" id="btn" class="bg-purple-700 py-3 px-8 rounded-full text-lg hover:bg-purple-800 shadow-lg transition font-semibold">
+                        Gerar análise de IA
+                    </button>
+                </div>
+            </div>
 
-{% if ai %}
-    <script>
-        async function ai_analysis() {
-            document.getElementById("ai_analysis").innerText = "Morpheus IA\n{{ ai }}";
-        }
-    </script>
-{% else %}
-    <script>
-        async function ai_analysis() {
-            document.getElementById("ai_analysis").innerText = "Análise de IA indisponível :( \n Possível atualização ocorrendo ou instabilidade no sistema. Por favor, tente novamente mais tarde.";
-        }
-    </script>
-{% endif %}
+            <div class="w-1/2">
+                <div class="bg-purple-500/20 shadow-lg p-6 rounded-2xl h-full overflow-y-auto">
+                    <div class="text-center">
+                        <h2 class="text-2xl font-semibold mb-3">Análise da IA</h2>
+                    </div>
+                    <p id="ai_analysis" class="text-xl text-gray-200">Nenhuma análise gerada ainda...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="text-white mt-12 pt-6 text-center border-t border-white/20">
+        <a href="{% url 'main' %}" class="bg-purple-700 py-3 px-8 rounded-full text-lg hover:bg-purple-800 transition font-semibold">Voltar</a>
+    </div>
+    
+    <script src="{% static 'javascript/system-analysis.js' %}"></script>
 {% endblock %}
