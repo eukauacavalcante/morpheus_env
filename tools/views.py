@@ -1,48 +1,66 @@
 from django.shortcuts import render
 from .services.system_metrics import get_system_stats
-from .services.ai_analysis import analysis_status
+from .services.ai_analysis import get_analysis
 from .services import num_converter
 from django.conf import settings
 from django.http import JsonResponse
 from django.http import HttpResponse
 from http import HTTPStatus
+from django.views import generic
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
+
+
+@login_required
+def system_analysis_view(request):
+    if request.method == 'GET':
+        return render(request, 'system_analysis.html')
+    else:
+        return HttpResponse(
+            '<h1>Método não permitido</h1>',
+            status=HTTPStatus.METHOD_NOT_ALLOWED
+        )
+
+
+@login_required
+def system_analysis_api_view(request):
+    if request.method == 'GET':
+        data = get_system_stats()
+        return JsonResponse({'data': data})
+    else:
+        return HttpResponse(
+            '<h1>Método não permitido</h1>',
+            status=HTTPStatus.METHOD_NOT_ALLOWED
+        )
 
 
 if settings.AI_MODE:
     @login_required
-    def system_analysis_view(request):
+    def ai_api_view(request):
         if request.method == 'GET':
-            stats = get_system_stats()
-            ai_response = analysis_status()
-            return render(request, 'system_analysis.html', {'stats': stats, 'ai': ai_response})
+            ai_response = get_analysis()
+            print(ai_response)
+            return JsonResponse({'ai': ai_response})
         else:
             return HttpResponse(
-                '<h1>Método não permitido<h2>',
+                '<h1>Método não permitido</h1>',
                 status=HTTPStatus.METHOD_NOT_ALLOWED
             )
 else:
     @login_required
-    def system_analysis_view(request):
+    def ai_api_view(request):
         if request.method == 'GET':
-            stats = get_system_stats()
-            return render(request, 'system_analysis.html', {'stats': stats})
+            ai_response = '<p class="text-xl text-red-500">A análise por IA está indisponível no momento :(<br>Possível manutenção ocorrendo no sistema. Tente mais tarde!</p>'
+            return JsonResponse({'ai': ai_response})
         else:
             return HttpResponse(
-                '<h1>Método não permitido<h1>',
+                '<h1>Método não permitido</h1>',
                 status=HTTPStatus.METHOD_NOT_ALLOWED
             )
 
 
-@login_required
-def number_converter_page(request):
-    if request.method == 'GET':
-        return render(request, 'num_converter.html')
-    else:
-        return HttpResponse(
-            '<h1>Método não permitido<h1>',
-            status=HTTPStatus.METHOD_NOT_ALLOWED
-        )
+class NumberConverterView(LoginRequiredMixin, generic.TemplateView):
+    template_name = 'num_converter.html'
 
 
 @login_required
@@ -80,6 +98,6 @@ def number_converter_api(request):
         return JsonResponse({'result': result})
     else:
         return HttpResponse(
-            '<h1>Método não permitido<h1>',
+            '<h1>Método não permitido</h1>',
             status=HTTPStatus.METHOD_NOT_ALLOWED
         )
