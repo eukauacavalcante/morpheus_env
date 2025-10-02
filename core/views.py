@@ -1,24 +1,10 @@
-from django.shortcuts import render
-from django.http import HttpResponse
-from http import HTTPStatus
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views import generic
 
 
-@login_required
-def main_view(request):
-    if request.method == 'GET':
-        return render(request, 'index.html')
-    else:
-        return HttpResponse(
-            '<h1>Método não permitido<h1>',
-            status=HTTPStatus.METHOD_NOT_ALLOWED
-        )
-    
-def students_view(request):
-    if request.method == 'GET':
-        return render(request, 'students.html')
-    else:
-        return HttpResponse(
-            '<h1> Método não permitido </h1>',
-            status=HTTPStatus.METHOD_NOT_ALLOWED
-        )
+class HomeView(LoginRequiredMixin, generic.TemplateView):
+    template_name = 'index.html'
+
+
+class StudentsView(LoginRequiredMixin, generic.TemplateView):
+    template_name = 'students.html'

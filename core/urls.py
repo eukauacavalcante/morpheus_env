@@ -1,13 +1,13 @@
 from django.contrib import admin
 from django.urls import path, include
 
-from .views import main_view, students_view
+from .views import HomeView, StudentsView
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', main_view, name='main'),
-    path('informacoes-do-software/', students_view, name='students'),
+    path('', HomeView.as_view(), name='main'),
+    path('informacoes-do-software/', StudentsView.as_view(), name='students'),
     path('accounts/', include('users.urls')),
     path('sistema/', include('tools.urls')),
 ]
