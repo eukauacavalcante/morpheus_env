@@ -11,15 +11,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 
 
-@login_required
-def system_analysis_view(request):
-    if request.method == 'GET':
-        return render(request, 'system_analysis.html')
-    else:
-        return HttpResponse(
-            '<h1>Método não permitido</h1>',
-            status=HTTPStatus.METHOD_NOT_ALLOWED
-        )
+class SystemAnalysisView(LoginRequiredMixin, generic.TemplateView):
+    template_name = 'system_analysis.html'
 
 
 @login_required
