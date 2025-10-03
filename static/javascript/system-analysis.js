@@ -28,8 +28,8 @@ async function aiAnalysis() {
         console.error('Erro na API: ', error)
         document.getElementById('ai_analysis').innerHTML = '<p class="text-xl text-red-500">A análise por IA está indisponível no momento :(<br>Possível manutenção ocorrendo no sistema. Tente mais tarde!</p>'
     } finally {
-        button.disabled = false
-        button.innerText = 'Gerar análise de IA'
+        button.innerText = 'Análise gerada'
+        button.disabled = true
     }
 }
 
