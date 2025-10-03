@@ -1,13 +1,13 @@
 from django.conf import settings
 from groq import Groq
 
-from .system_metrics import get_system_stats
+from .system_metrics import get_system_status
 
 client = Groq(api_key=settings.API_KEY)
 
 
-def get_analysis():
-    status = get_system_stats()
+def get_ai_analysis():
+    status = get_system_status()
     response = client.chat.completions.create(
         model=settings.AI_MODEL,
         messages=[
