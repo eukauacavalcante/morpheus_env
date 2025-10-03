@@ -1,96 +1,52 @@
-from http import HTTPStatus
-
 from django.conf import settings
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import HttpResponse, JsonResponse
+from django.http import JsonResponse
 from django.views import generic
 
 from .services import num_converter
-from .services.ai_analysis import get_analysis
-from .services.system_metrics import get_system_stats
+from .services.ai_analysis import get_ai_analysis
+from .services.system_metrics import get_system_status
 
 
 class SystemAnalysisView(LoginRequiredMixin, generic.TemplateView):
     template_name = 'system_analysis.html'
 
 
-@login_required
-def system_analysis_api_view(request):
-    if request.method == 'GET':
-        data = get_system_stats()
+class SystemAnalysisAPIView(LoginRequiredMixin, generic.View):
+    def get(self, request, *args, **kwargs):
+        data = get_system_status()
         return JsonResponse({'data': data})
-    else:
-        return HttpResponse(
-            '<h1>Método não permitido</h1>',
-            status=HTTPStatus.METHOD_NOT_ALLOWED
-        )
 
 
-if settings.AI_MODE:
-    @login_required
-    def ai_api_view(request):
-        if request.method == 'GET':
-            ai_response = get_analysis()
-            print(ai_response)
-            return JsonResponse({'ai': ai_response})
-        else:
-            return HttpResponse(
-                '<h1>Método não permitido</h1>',
-                status=HTTPStatus.METHOD_NOT_ALLOWED
-            )
-else:
-    @login_required
-    def ai_api_view(request):
-        if request.method == 'GET':
-            ai_response = '<p class="text-xl text-red-500">A análise por IA está indisponível no momento :(<br>Possível manutenção ocorrendo no sistema. Tente mais tarde!</p>'
-            return JsonResponse({'ai': ai_response})
-        else:
-            return HttpResponse(
-                '<h1>Método não permitido</h1>',
-                status=HTTPStatus.METHOD_NOT_ALLOWED
-            )
+class AiAPIView(LoginRequiredMixin, generic.View):
+    ERROR_MSG = (
+        '<p class="text-xl text-red-500">A análise por IA está indisponível no momento :(<br>Possível manutenção ocorrendo no sistema. Tente mais tarde!</p>'
+    )
+
+    def get(self, request, *args, **kwargs):
+        ai_response = get_ai_analysis() if settings.AI_MODE else self.ERROR_MSG
+        return JsonResponse({'ai': ai_response})
 
 
 class NumberConverterView(LoginRequiredMixin, generic.TemplateView):
     template_name = 'num_converter.html'
 
 
-@login_required
-def number_converter_api(request):
-    if request.method == 'GET':
-        type = request.GET.get('type')
+class NumberConverterAPIView(LoginRequiredMixin, generic.View):
+    def get(self, request, *args, **kwargs):
+        operation = request.GET.get('type')
         value = request.GET.get('value')
-
-        match(type):
-            case 'bin2dec':
-                result = num_converter.bin_to_dec(value)
-            case 'dec2bin':
-                result = num_converter.dec_to_bin(int(value))
-            case 'dec2hex':
-                result = num_converter.dec_to_hex(int(value))
-            case 'dec2oct':
-                result = num_converter.dec_to_oct(int(value))
-            case 'hex2dec':
-                result = num_converter.hex_to_dec(value)
-            case 'oct2dec':
-                result = num_converter.oct_to_dec(value)
-            case 'and':
-                value1 = int(request.GET.get('value1'))
-                value2 = int(request.GET.get('value2'))
-                result = value1 & value2
-            case 'or':
-                value1 = int(request.GET.get('value1'))
-                value2 = int(request.GET.get('value2'))
-                result = value1 | value2
-            case 'xor':
-                value1 = int(request.GET.get('value1'))
-                value2 = int(request.GET.get('value2'))
-                result = value1 ^ value2
-
+        converters = {
+            'bin2dec': lambda v: num_converter.bin_to_dec(v),
+            'dec2bin': lambda v: num_converter.dec_to_bin(int(v)),
+            'dec2hex': lambda v: num_converter.dec_to_hex(int(v)),
+            'dec2oct': lambda v: num_converter.dec_to_oct(int(v)),
+            'hex2dec': lambda v: num_converter.hex_to_dec(v),
+            'oct2dec': lambda v: num_converter.oct_to_dec(v),
+            'and': lambda v: int(request.GET.get('value1')) & int(request.GET.get('value2')),
+            'or': lambda v: int(request.GET.get('value1')) | int(request.GET.get('value2')),
+            'xor': lambda v: int(request.GET.get('value1')) ^ int(request.GET.get('value2')),
+        }
+        func = converters.get(operation)
+        result = func(value)
         return JsonResponse({'result': result})
-    else:
-        return HttpResponse(
-            '<h1>Método não permitido</h1>',
-            status=HTTPStatus.METHOD_NOT_ALLOWED
-        )
