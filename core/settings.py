@@ -93,5 +93,5 @@ AI_MODE = False
 API_KEY = config('API_KEY')
 AI_MODEL = config('AI_MODEL')
 
-LOGIN_REDIRECT_URL = 'main'
+LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'login'
