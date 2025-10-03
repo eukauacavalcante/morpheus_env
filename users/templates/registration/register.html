@@ -3,7 +3,7 @@
 
 {% block content %}
 <div class="text-white flex-grow flex items-center justify-center">
-    <div class="bg-white/10 p-10 w-full max-w-2xl">
+    <div class="bg-white/10 p-10 w-full max-w-2xl hover:scale-105 transition">
         <div class="text-center m-3">
             <h1 class="text-4xl font-light">Registre-se</h1>
         </div>
@@ -13,25 +13,28 @@
             <div class="flex flex-row gap-4">
                 <div class="w-1/2 flex flex-col">
                     <label class="text-xl mb-3 font-light" for="first_name">Seu nome</label>
-                    <input class="bg-white/10 border border-white/20 p-3 rounded-2xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition" id="first_name" type="text" name="first_name" required>
+                    {{ form.first_name }}
                 </div>
                 <div class="w-1/2 flex flex-col">
-                    <label class="text-xl mb-3 font-light" for="username">Defina um nome usuário</label>
-                    <input class="bg-white/10 border border-white/20 p-3 rounded-2xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition" type="text" id="username" name="username" required>
+                    <label class="text-xl mb-3 font-light" for="username">Crie um nome de usuário</label>
+                    {{ form.username }}
+                    <div class="text-red-500">{{ form.username.errors }}</div>
                 </div>
             </div>
             <div class="flex flex-col ">
-                <label class="text-xl mb-3 font-light" for="email">Seu e-mail</label>
-                <input class="bg-white/10 border border-white/20 p-3 rounded-2xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition" type="email" id="email" name="email" required>
+                <label class="text-xl mb-3 font-light" for="username">Email (opcional)</label>
+                {{ form.email }}
             </div>
             <div class="flex flex-row gap-4">
                 <div class="w-1/2 flex flex-col">
-                    <label class="text-xl mb-3 font-light" for="password">Defina a sua senha</label>
-                    <input class="bg-white/10 border border-white/20 p-3 rounded-2xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition" type="password" id="password" name="password" required>
+                    <label class="text-xl mb-3 font-light" for="username">Defina uma senha</label>
+                    {{ form.password1 }}
+                    <div class="text-red-500">{{ form.password1.errors }}</div>
                 </div>
                 <div class="w-1/2 flex flex-col mb-5">
-                    <label class="text-xl mb-3 font-light" for="password2">Confirme a senha</label>
-                    <input class="bg-white/10 border border-white/20 p-3 rounded-2xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition" type="password" id="password2" name="password2" required>
+                    <label class="text-xl mb-3 font-light" for="username">Confirme a senha</label>
+                    {{ form.password2 }}
+                    <div class="text-red-500">{{ form.password2.errors }}</div>
                 </div>
             </div>
 
