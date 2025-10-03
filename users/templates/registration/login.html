@@ -4,15 +4,13 @@
 
 {% block content %}
 <div class="text-white flex-grow p-4 flex items-center justify-center">
-    <div class="bg-white/10 backdrop-blur-lg border border-white/20 p-10 w-full max-w-2xl shadow-2xl">
+    <div class="bg-white/10 backdrop-blur-lg border border-white/20 p-10 w-full max-w-2xl shadow-2xl hover:scale-105 transition">
         <div class="mb-10 text-center">
             <h1 class="text-4xl font-light">Entre na sua conta</h1>
         </div>
         <hr class="border-white/20 mb-10 mt-10">
         {% if form.non_field_errors %}
-            <div class="text-xl text-red-500">
-                {{ form.non_field_errors }}
-            </div>
+            <div class="text-xl text-red-500">{{ form.non_field_errors }}</div>
         {% endif %}
         <form method="post" class="flex flex-col space-y-6">
             {% csrf_token %}
