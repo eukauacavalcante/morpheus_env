@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
+{% load static %}
+
 {% block title %} Registre-se {% endblock %}
 
 {% block content %}
@@ -37,9 +39,12 @@
                     <div class="text-red-500">{{ form.password2.errors }}</div>
                 </div>
             </div>
+            <div style="margin-top: 0px;">
+                Ao continuar, você concorda com os nossos <a href="{% url 'terms_use' %}" class="text-blue-500 hover:text-blue-700">Termos de Uso</a>
+            </div>
 
             <div class="pt-2 text-center">
-                <button type="submit" class="bg-purple-700/80 p-3 rounded-full text-xl w-60 hover:bg-purple-700 hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-300 ease-in-out">Concluir</button>
+                <button type="submit" class="bg-purple-700/80 p-3 rounded-full text-xl w-60 hover:bg-purple-700 hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-300 ease-in-out" id="btn-register">Concluir</button>
             </div>
             <div class="text-center">
                 <a href="{% url 'login' %}" class="text-blue-500 hover:text-blue-700 text-xl transition">Já tem uma conta?</a>
@@ -47,4 +52,5 @@
         </form>
     </div>
 </div>
+<script src="{% static 'javascript/register.js' %}"></script>
 {% endblock %}
