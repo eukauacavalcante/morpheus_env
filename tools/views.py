@@ -47,6 +47,9 @@ class NumberConverterAPIView(LoginRequiredMixin, generic.View):
             'or': lambda v: int(request.GET.get('value1')) | int(request.GET.get('value2')),
             'xor': lambda v: int(request.GET.get('value1')) ^ int(request.GET.get('value2')),
         }
-        func = converters.get(operation)
-        result = func(value)
-        return JsonResponse({'result': result})
+        try:
+            func = converters.get(operation)
+            result = func(value)
+            return JsonResponse({'result': result})
+        except (ValueError, TypeError):
+            return JsonResponse({'result': 'Error ao calcular'}, status=400)
