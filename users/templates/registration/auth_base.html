@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %} {% endblock %}
+
+{% block content%}
+    <div class="text-white flex-grow flex items-center justify-center">
+        <div class="bg-white/10 backdrop-blur-lg border border-white/20 p-10 w-full max-w-2xl shadow-2xl hover:scale-105 transition">
+            {% block auth_content %}
+            {% endblock %}
+        </div>
+    </div>
+{% endblock %}
