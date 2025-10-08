@@ -5,8 +5,8 @@ from email.mime.text import MIMEText
 
 from django.conf import settings
 
-from .colors import print_error, print_success
 from .email_oauth2 import get_oauth2_string
+from .logs import log_user_creation
 
 
 def get_date_format():
@@ -53,18 +53,8 @@ def send_oauth_email(user):
             server.ehlo()
             server.docmd('AUTH', 'XOAUTH2 ' + auth_string)
             server.send_message(msg)
-            print('=' * 50)
-            print('NOVO USUÁRIO\n')
-            print_success('[SUCESSO] Email enviado ao usuário')
-            print(f'Destinatário: {user.username}')
-            print(f'Endereço: {user.email}')
-            print('=' * 50)
+            log_user_creation(user)
 
     except smtplib.SMTPException as e:
-        print('=' * 50)
-        print('ERRO SMTP\n')
-        print_error('[ERRO] Falha ao tentar enviar e-mail')
-        print(f'Destinatário: {user.username}')
-        print(f'Endereço: {user.email}')
-        print(f"Detalhes do erro: {e}")
-        print('=' * 50)
+        log_user_creation(user, error=str(e))
+
