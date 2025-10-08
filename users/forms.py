@@ -3,25 +3,25 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 
-class_string = 'bg-white/10 border border-white/20 p-3 rounded-2xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition'
+CSS_INPUT_CLASS = 'bg-white/10 border border-white/20 p-3 rounded-2xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition'
 
 
 class CustomUserCreationForm(UserCreationForm):
     first_name = forms.CharField(
         max_length=100,
         required=True,
-        widget=forms.TextInput(attrs={'class': class_string})
+        widget=forms.TextInput(attrs={'class': CSS_INPUT_CLASS})
     )
     password1 = forms.CharField(
         widget=forms.PasswordInput(
             attrs={
-                'class': class_string,
+                'class': CSS_INPUT_CLASS,
                 'placeholder': 'Pelo menos 8 caracteres.'
             }
         )
     )
     password2 = forms.CharField(
-        widget=forms.PasswordInput(attrs={'class': class_string})
+        widget=forms.PasswordInput(attrs={'class': CSS_INPUT_CLASS})
     )
 
     class Meta:
@@ -29,13 +29,15 @@ class CustomUserCreationForm(UserCreationForm):
         fields = ['first_name', 'username', 'email', 'password1', 'password2']
         widgets = {
             'username': forms.TextInput(attrs={
-                'class': class_string,
+                'class': CSS_INPUT_CLASS,
                 'placeholder': 'Letras, números e @/./+/-/_ apenas.',
-            }),
+                }
+            ),
             'email': forms.EmailInput(attrs={
-                'class': class_string,
+                'class': CSS_INPUT_CLASS,
                 'placeholder': 'Ex: usuario@email.com',
-            })
+                }
+            )
         }
 
     def clean_first_name(self):
