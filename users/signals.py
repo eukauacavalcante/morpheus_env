@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
-from notifications.utils.logs import log_user_creation
+from notifications.utils.new_user_logs import log_user_creation
 from notifications.utils.send_email import send_oauth_email
 
 

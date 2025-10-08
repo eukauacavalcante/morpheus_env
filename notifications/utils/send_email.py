@@ -6,7 +6,7 @@ from email.mime.text import MIMEText
 from django.conf import settings
 
 from .email_oauth2 import get_oauth2_string
-from .logs import log_user_creation
+from .new_user_logs import log_user_creation
 
 
 def get_date_format():
