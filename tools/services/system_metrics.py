@@ -1,3 +1,5 @@
+import platform
+
 import psutil
 
 
@@ -7,7 +9,8 @@ def get_system_status():
     ram_percent = ram.percent
     ram_total = ram.total / (1024 ** 3)
     ram_used = ram.used / (1024 ** 3)
-    memory = psutil.disk_usage('/')
+    disk_path = 'C://' if platform.system() == 'Windows' else '/'
+    memory = psutil.disk_usage(disk_path)
     memory_used = memory.used / (1024 ** 3)
     memory_total = memory.total / (1024 ** 3)
 
