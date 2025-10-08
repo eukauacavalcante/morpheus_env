@@ -5,7 +5,7 @@
         <p class="text-xl">Olá, <strong>{{ user.first_name|default:'usuário' }}</strong>. Bem-vindo!</p>
         <div class="flex gap-x-4">
             {% if user.is_staff %}
-            <a href="{% url 'admin:index' %}" class="hover:text-purple-500 transition text-xl">Admin Page</a>
+            <a href="{% url 'admin:index' %}" class="hover:text-purple-500 transition text-xl" target="_blank">Admin Page</a>
             |
             {% endif %}
             <form method="post" action="{% url 'logout' %}">
