@@ -1,7 +1,9 @@
 from django.conf import settings
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import JsonResponse
+from django.utils.decorators import method_decorator
 from django.views import generic
+from django_ratelimit.decorators import ratelimit
 
 from .services import num_converter
 from .services.ai_analysis import get_ai_analysis
@@ -12,12 +14,14 @@ class SystemAnalysisView(LoginRequiredMixin, generic.TemplateView):
     template_name = 'system_analysis.html'
 
 
+@method_decorator(ratelimit(key='user', rate='20/m', method='GET'), name='dispatch')
 class SystemAnalysisAPIView(LoginRequiredMixin, generic.View):
     def get(self, request, *args, **kwargs):
         data = get_system_status()
         return JsonResponse({'data': data})
 
 
+@method_decorator(ratelimit(key='user', rate='10/m', method='GET'), name='dispatch')
 class AiAPIView(LoginRequiredMixin, generic.View):
     ERROR_MSG = (
         '<p class="text-xl text-red-500">A análise por IA está indisponível no momento :(<br>Possível manutenção ocorrendo no sistema. Tente mais tarde!</p>'
@@ -36,7 +40,7 @@ class NumberConverterAPIView(LoginRequiredMixin, generic.View):
     def get(self, request, *args, **kwargs):
         operation = request.GET.get('type')
         value = request.GET.get('value')
-        converters = {
+        CONVERTERS = {
             'bin2dec': lambda v: num_converter.bin_to_dec(v),
             'dec2bin': lambda v: num_converter.dec_to_bin(int(v)),
             'dec2hex': lambda v: num_converter.dec_to_hex(int(v)),
@@ -48,7 +52,7 @@ class NumberConverterAPIView(LoginRequiredMixin, generic.View):
             'xor': lambda v: int(request.GET.get('value1')) ^ int(request.GET.get('value2')),
         }
         try:
-            func = converters.get(operation)
+            func = CONVERTERS.get(operation)
             result = func(value)
             return JsonResponse({'result': result})
         except (ValueError, TypeError):
