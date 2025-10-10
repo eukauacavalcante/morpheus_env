@@ -1,3 +1,5 @@
+import importlib.resources
+
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
@@ -31,13 +33,11 @@ class CustomUserCreationForm(UserCreationForm):
             'username': forms.TextInput(attrs={
                 'class': CSS_INPUT_CLASS,
                 'placeholder': 'Letras, números e @/./+/-/_ apenas.',
-                }
-            ),
+            }),
             'email': forms.EmailInput(attrs={
                 'class': CSS_INPUT_CLASS,
                 'placeholder': 'Ex: usuario@email.com',
-                }
-            )
+            })
         }
 
     def clean_first_name(self):
@@ -46,6 +46,17 @@ class CustomUserCreationForm(UserCreationForm):
 
     def clean_username(self):
         username = self.cleaned_data.get('username')
+        if User.objects.filter(username=username).exists():
+            raise ValidationError('Esse usuário já existe')
         if username.isdecimal():
             raise ValidationError('Não é permitido apenas números')
         return username
+
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+        domain = email.split('@')[1].lower()
+        with importlib.resources.open_text('users.validators', 'disposable_email_blocklist.conf') as f:
+            blocklist_content = {line.strip().lower() for line in f if line.strip()}
+        if domain in blocklist_content:
+            raise ValidationError('E-mails temporários não são permitidos.')
+        return email
