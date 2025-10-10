@@ -22,3 +22,10 @@ def get_system_status():
         'memory_used': round(memory_used, 2),
         'memory_total': round(memory_total, 2)
     }
+
+
+def sanitize_system_data(status):
+    return {
+        'cpu_level': 'high' if status['cpu_percent'] > 80 else 'normal',
+        'ram_level': 'high' if status['ram_percent'] > 80 else 'normal'
+    }
