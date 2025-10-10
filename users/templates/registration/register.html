@@ -24,6 +24,7 @@
         <div class="flex flex-col ">
             <label class="text-xl mb-3 font-light" for="username">Email (opcional)</label>
             {{ form.email }}
+            <div class="text-red-500">{{ form.email.errors }}</div>
         </div>
         <div class="flex flex-row gap-4">
             <div class="w-1/2 flex flex-col">
