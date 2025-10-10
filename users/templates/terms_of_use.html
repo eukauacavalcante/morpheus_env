@@ -3,55 +3,5 @@
 {% block title %} Termos de Uso {% endblock %}
 
 {% block content %}
-<div class="text-white w-full flex justify-center">
-    <div class="w-[70%] bg-black/20 p-7 rounded-2xl shadow-2xl border border-white/20">
-        {% if user.is_authenticated %}
-            <p><a href="{% url 'home' %}">Home</a> > Termos de Uso e Política de Privacidade</p>
-        {% else %}
-            <p><a href="{% url 'register' %}">Registro</a> > Termos de Uso e Política de Privacidade</p>
-        {% endif %}
-        <div class="text-center mb-10">
-            <h1 class="text-4xl font-bold mt-3">Termos de Uso e Política de Privacidade</h1>
-        </div>
-
-        <hr class="border-white/20 mb-10 mt-10">
-
-        <h2 class="text-3xl mb-5 font-semibold">1. Aceitação dos Termos</h2>
-        <p class="text-xl">Ao utilizar este sistema, você concorda com estes Termos de Uso e com nossa política de privacidade. Caso não concorde, não utilize o sistema.</p>
-
-        <h2 class="text-3xl mt-10 mb-5 font-semibold">2. Cadastro e Informações Pessoais</h2>
-        <p class="text-xl">O fornecimento do e-mail é opcional e será usado apenas para enviar mensagens de boas-vindas. Durante o cadastro, o sistema solicita seu nome, e uma senha para acesso. Estes dados são armazenados em nosso sistema.</p>
-        <p class="text-xl">Nosso sistema não envia e-mails solicitando dados sensíveis ou senhas de outros serviços</p>
-        <p class="text-xl">Não armazenamos dados sensíveis, como CPF, senhas de e-mail, imagens ou quaisquer outros dados pessoais além daqueles mencionados.</p>
-
-        <h2 class="text-3xl mt-10 mb-5 font-semibold">3. Segurança das Senhas</h2>
-        <p class="text-xl">A senha criada pelo usuário é criptografada, garantindo que não possa ser acessada diretamente por terceiros.</p>
-        <p class="text-xl">Nunca pediremos a senha do seu e-mail ou outros dados confidenciais fora deste sistema.</p>
-
-        <h2 class="text-3xl mt-10 mb-5 font-semibold">4. Funcionalidades do Sistema</h2>
-        <p class="text-xl">O sistema realiza funções de conversão numérica e lógica.</p>
-        <p class="text-xl">O sistema também monitora dados de hardware do dispositivo, como CPU, RAM e memória interna, apenas para fins de funcionamento e demonstração de desempenho.</p>
-        <p class="text-xl">Nenhuma informação coletada sobre hardware é compartilhada com terceiros ou usada para outros fins.</p>
-        <h2 class="text-3xl mt-10 mb-5 font-semibold">5. Finalidade do Sistema</h2>
-        <p class="text-xl">Este sistema foi desenvolvido para fins didáticos e acadêmicos.</p>
-        <p class="text-xl">O conteúdo e as funcionalidades são voltados a aprendizado e experimentação, e não devem ser considerados como serviço profissional ou comercial.</p>
-
-        <h2 class="text-3xl mt-10 mb-5 font-semibold">6. Limitação de Responsabilidade</h2>
-        <p class="text-xl">O uso do sistema é por conta e risco do usuário.</p>
-        <p class="text-xl">Não nos responsabilizamos por qualquer dano decorrente do uso do sistema, perda de dados, falhas de hardware ou outras consequências indiretas.</p>
-
-        <h2 class="text-3xl mt-10 mb-5 font-semibold">7. Alterações nos Termos</h2>
-        <p class="text-xl">Podemos atualizar estes Termos de Uso periodicamente. Recomendamos que você revise esta página sempre que utilizar o sistema para estar ciente de possíveis mudanças.</p>
-
-        {% if user.is_authenticated %}
-            <div class="mt-12 pt-6 text-center border-t border-white/20">
-                <a href="{% url 'home' %}" class="bg-purple-700 py-3 px-8 rounded-full text-lg hover:bg-purple-800 transition font-semibold">Voltar</a>
-            </div>
-        {% else %}
-            <div class="mt-12 pt-6 text-center border-t border-white/20">
-                <a href="{% url 'register' %}" class="bg-purple-700 py-3 px-8 rounded-full text-lg hover:bg-purple-800 transition font-semibold">Voltar</a>
-            </div>
-        {% endif %}
-    </div>
-</div>
+    {{ terms_and_policy }}
 {% endblock %}
