@@ -8,7 +8,7 @@ from django.conf import settings
 from .email_oauth2 import get_oauth2_string
 from .emails import (EMAIL_NEW_USER_HTML, EMAIL_NEW_USER_TEXT,
                      EMAIL_TERMS_UPDATED)
-from .new_user_logs import log_user_creation
+from .terminal_msg import msg_user_creation
 
 
 def get_date_format():
@@ -75,7 +75,7 @@ def send_new_user_email(user):
             body_html=body_html,
         )
         send_email_via_oauth(msg)
-        log_user_creation(user)
+        msg_user_creation(user)
 
     except smtplib.SMTPException as e:
-        log_user_creation(user, error=str(e))
+        msg_user_creation(user, error=str(e))

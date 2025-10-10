@@ -5,8 +5,8 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
-from notifications.utils.new_user_logs import log_user_creation
 from notifications.utils.send_email import send_new_user_email
+from notifications.utils.terminal_msg import msg_user_creation
 
 
 @receiver(post_save, sender=User)
@@ -16,6 +16,6 @@ def send_email_user(sender, instance, created, **kwargs):
             if settings.EMAIL_MODE:
                 send_new_user_email(instance)
             else:
-                log_user_creation(instance, email_sent=False)
+                msg_user_creation(instance, email_sent=False)
         except smtplib.SMTPException as e:
-            log_user_creation(instance, error=str(e))
+            msg_user_creation(instance, error=str(e))
