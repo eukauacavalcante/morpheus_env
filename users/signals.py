@@ -6,7 +6,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 
 from notifications.utils.new_user_logs import log_user_creation
-from notifications.utils.send_email import send_oauth_email
+from notifications.utils.send_email import send_new_user_email
 
 
 @receiver(post_save, sender=User)
@@ -14,7 +14,7 @@ def send_email_user(sender, instance, created, **kwargs):
     if created and instance.email:
         try:
             if settings.EMAIL_MODE:
-                send_oauth_email(instance)
+                send_new_user_email(instance)
             else:
                 log_user_creation(instance, email_sent=False)
         except smtplib.SMTPException as e:
