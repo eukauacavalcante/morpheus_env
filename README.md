@@ -3,11 +3,11 @@
 <div align="center">
 
 ![Status](https://img.shields.io/badge/Status-Em%20Desenvolvimento-blue)
-![Python](https://img.shields.io/badge/Python-3.12-blue?logo=python)
+![Python](https://img.shields.io/badge/Python-3.12-yellow?logo=python)
 ![Django](https://img.shields.io/badge/Django-5.2-darkgreen?logo=django)
 ![License](https://img.shields.io/badge/License-GNU-blue)
 
-**Simulador de Sistema Computacional Seguro** 🔐
+**Simulador de Sistema Computacional Seguro**
 
 Um projeto acadêmico e experimental para monitoramento de sistema com análise por IA e ferramentas computacionais.
 
@@ -21,40 +21,40 @@ Um projeto acadêmico e experimental para monitoramento de sistema com análise 
 
 ### Principais Funcionalidades
 
-- 📊 **Monitoramento de Sistema** com análise em tempo real (CPU, RAM, Disco)
-- 🤖 **Análise por IA** usando Groq AI para insights sobre o desempenho
-- 🔢 **Conversor Numérico** com suporte para binário, hexadecimal, octal e decimal
-- ⚡ **Operações Lógicas** (AND, OR, XOR) para trabalhar com valores booleanos
-- 🔐 **Autenticação Segura** com validação de email temporário
-- 📧 **Sistema de Notificações** por email com OAuth2 do Google
-- 🎨 **Interface Moderna** com Tailwind CSS e efeitos glassmorphism
+- **Monitoramento de Sistema** com análise em tempo real (CPU, RAM, Disco)
+- **Análise por IA** usando Groq AI para insights sobre o desempenho
+- **Conversor Numérico** com suporte para binário, hexadecimal, octal e decimal
+- **Operações Lógicas** (AND, OR, XOR) para trabalhar com valores booleanos
+- **Autenticação Segura** com validação de email temporário
+- **Sistema de Notificações** por email com OAuth2 do Google
+- **Interface Moderna** com Tailwind CSS e efeitos glassmorphism
 
 ---
 
 ## ⭐ Features
 
 ### Autenticação e Usuários
-- ✅ Registro de usuários com validação forte
-- ✅ Bloqueio de emails temporários/descartáveis
-- ✅ Senhas com hash seguro (Django)
-- ✅ Logout seguro
+- Registro de usuários com validação forte
+- Bloqueio de emails temporários/descartáveis
+- Senhas com hash seguro (Django)
+- Logout seguro
 
 ### Monitoramento do Sistema
-- ✅ Coleta de métricas em tempo real (CPU, RAM, Disco)
-- ✅ Análise de desempenho via IA
-- ✅ Interface de dashboard responsiva
+- Coleta de métricas em tempo real (CPU, RAM, Disco)
+- Análise de desempenho via IA
+- Interface de dashboard responsiva
 
 ### Conversão Numérica e Lógica Booleana
-- ✅ Conversão entre bases numéricas (2, 8, 10, 16)
-- ✅ Operações lógicas booleanas
-- ✅ Validação de entrada robusta
-- ✅ Respostas via API
+- Conversão entre bases numéricas (2, 8, 10, 16)
+- Operações lógicas booleanas
+- Validação de entrada robusta
+- Respostas via API
 
 ### Notificações
-- ✅ Emails de boas-vindas para novos usuários
-- ✅ Notificações de atualização de termos
-- ✅ Autenticação OAuth2 com Google
-- ✅ Mensagens coloridas no terminal
+- Emails de boas-vindas para novos usuários
+- Notificações de atualização de termos
+- Autenticação OAuth2 com Google
+- Mensagens coloridas no terminal
 
 ---
 
