@@ -19,8 +19,8 @@ def get_date_format():
 def get_auth_string():
     return get_oauth2_string(
         email=settings.EMAIL_HOST_USER,
-        client_secret=settings.GOOGLE_OAUTH2_CLIENT_ID,
-        client_id=settings.GOOGLE_OAUTH2_CLIENT_SECRET,
+        client_id=settings.GOOGLE_OAUTH2_CLIENT_ID,
+        client_secret=settings.GOOGLE_OAUTH2_CLIENT_SECRET,
         refresh_token=settings.GOOGLE_OAUTH2_REFRESH_TOKEN,
     )
 
