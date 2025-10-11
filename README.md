@@ -83,7 +83,7 @@ Um projeto acadêmico e experimental para monitoramento de sistema com análise 
 ## 📦 Instalação
 
 ### Pré-requisitos
-- Python 3.13+
+- Python 3.12+
 - pip (gerenciador de pacotes Python)
 - Git
 
