@@ -1407,32 +1407,37 @@
 </ul>
 <hr />
 <h2 id="arquitetura-geral">Arquitetura Geral</h2>
-<pre><code>┌─────────────────────────────────────────┐
-│         Navegador (Cliente)             │
-├─────────────────────────────────────────┤
-│  HTML/CSS/JavaScript (Tailwind + Icons) │
-└────────────────────┬────────────────────┘
-                     │ HTTP
-┌────────────────────▼────────────────────┐
-│        Django Framework (5.2)           │
-├─────────────────────────────────────────┤
-│ ┌─────────────┬─────────────────────┐   │
-│ │   Views     │   Middleware        │   │
-│ │             │   (CSRF, Auth)      │   │
-│ └──────┬──────┴──────┬──────────────┘   │
-│        │             │                  │
-│ ┌──────▼──────┬──────▼──────────────┐   │
-│ │   Models    │   Templates         │   │
-│ │   (ORM)     │   (Renderização)    │   │
-│ └──────┬──────┴─────────┬──────────┘    │
-│        │                │               │
-└────────┼────────────────┼───────────────┘
-         │                │
-    ┌────▼────┐      ┌────▼──────┐
-    │ SQLite  │      │ Groq AI   │
-    │         │      │ (via API) │
-    └─────────┘      └───────────┘
-</code></pre>
+<pre class="mermaid"><code>flowchart TD
+    subgraph Navegador
+        A["Navegador (Cliente)&lt;br&gt;HTML/CSS/JS (Tailwind + Icons)"]
+    end
+
+    subgraph Django ["Django Framework (5.2)"]
+        B2["Middleware&lt;br&gt;(CSRF, Auth)"]
+        B1["Views"]
+        B3["Models (ORM)"]
+        B4["Templates (Renderização)"]
+    end
+
+    subgraph Persistencia ["Persistência"]
+        C1["SQLite"]
+        C2["Groq AI (via API)"]
+    end
+
+    A --&gt;|HTTP| B2
+    B2 --&gt; B1
+    B1 --&gt; B3
+    B1 --&gt; C2
+    B1 --&gt; B4
+    B4 --&gt; A
+
+    style A stroke:#444,color:#000
+    style B1 stroke:#444,color:#000
+    style B2 stroke:#444,color:#000
+    style B3 stroke:#444,color:#000
+    style B4 stroke:#444,color:#000
+    style C1 stroke:#444,color:#000
+    style C2 stroke:#444,color:#000</code></pre>
 <hr />
 <h2 id="fluxo-de-dados">Fluxo de Dados</h2>
 <h3 id="monitoramento-do-sistema">Monitoramento do Sistema</h3>
@@ -1467,21 +1472,21 @@
 <li><strong>Views</strong>: Contêm a lógica de negócio e processamento de requisições</li>
 <li><strong>Templates</strong>: Renderizam HTML com dados do contexto</li>
 </ul>
-<p>Exemplo:</p>
-<pre><code class="language-python"># models.py - Define estrutura
-class TermsOfUseAndPrivacyPolicy(models.Model):
-    content = models.TextField()
-    updated_at = models.DateTimeField(auto_now=True)
+<p>Exemplo:
+<div class="highlight"><pre><span></span><code><span class="c1"># models.py - Define estrutura</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">TermsOfUseAndPrivacyPolicy</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">content</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">()</span>
+    <span class="n">updated_at</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-# views.py - Lógica de negócio
-class TermsOfUseView(generic.TemplateView):
-    def get_context_data(self):
-        terms = TermsOfUseAndPrivacyPolicy.objects.filter(is_active=True).last()
-        return {'terms_and_policy': terms}
+<span class="c1"># views.py - Lógica de negócio</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">TermsOfUseView</span><span class="p">(</span><span class="n">generic</span><span class="o">.</span><span class="n">TemplateView</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_context_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">terms</span> <span class="o">=</span> <span class="n">TermsOfUseAndPrivacyPolicy</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">is_active</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">last</span><span class="p">()</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;terms_and_policy&#39;</span><span class="p">:</span> <span class="n">terms</span><span class="p">}</span>
 
-# templates/terms_of_use.html - Renderização
-{{ terms_and_policy }}
-</code></pre>
+<span class="c1"># templates/terms_of_use.html - Renderização</span>
+<span class="p">{{</span> <span class="n">terms_and_policy</span> <span class="p">}}</span>
+</code></pre></div></p>
 <hr />
 <h2 id="modulos-principais">Módulos Principais</h2>
 <h3 id="apps-django">Apps Django</h3>
@@ -1492,7 +1497,7 @@ class TermsOfUseView(generic.TemplateView):
 <h4 id="3-notifications-notificacoes-e-emails">3. <strong>notifications</strong> - Notificações e Emails</h4>
 <p>Envia emails via OAuth2 Google.</p>
 <h3 id="estrutura-de-servicos">Estrutura de Serviços</h3>
-<pre><code>tools/services/
+<div class="highlight"><pre><span></span><code>tools/services/
 ├── num_converter.py      # Lógica de conversão numérica
 ├── system_metrics.py     # Coleta de métricas do sistema
 └── ai_analysis.py        # Integração com Groq AI
@@ -1502,7 +1507,7 @@ notifications/utils/
 ├── send_email.py         # Envio de emails
 ├── colors.py             # Mensagens coloridas no terminal
 └── emails.py             # Templates de email
-</code></pre>
+</code></pre></div>
 <hr />
 <h2 id="seguranca-e-conformidade">Segurança e Conformidade</h2>
 <h3 id="implementacoes-de-seguranca">Implementações de Segurança</h3>

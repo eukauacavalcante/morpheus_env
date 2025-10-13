@@ -988,41 +988,41 @@
 <hr />
 <h2 id="instalacao-basica">Instalação Básica</h2>
 <h3 id="1-clonar-repositorio">1. Clonar Repositório</h3>
-<pre><code class="language-bash">git clone https://github.com/eukauacavalcante/morpheus_env.git
-cd morpheus_env
-</code></pre>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/eukauacavalcante/morpheus_env.git
+<span class="nb">cd</span><span class="w"> </span>morpheus_env
+</code></pre></div>
 <h3 id="2-criar-ambiente-virtual">2. Criar Ambiente Virtual</h3>
-<pre><code class="language-bash"># Linux/macOS
-python3 -m venv venv
-source venv/bin/activate
+<div class="highlight"><pre><span></span><code><span class="c1"># Linux/macOS</span>
+python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>venv
+<span class="nb">source</span><span class="w"> </span>venv/bin/activate
 
-# Windows
-python -m venv venv
-venv\Scripts\activate
-</code></pre>
+<span class="c1"># Windows</span>
+python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>venv
+venv<span class="se">\S</span>cripts<span class="se">\a</span>ctivate
+</code></pre></div>
 <h3 id="3-instalar-dependencias">3. Instalar Dependências</h3>
-<pre><code class="language-bash">pip install -r requirements.txt
-</code></pre>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+</code></pre></div>
 <h3 id="4-configurar-env">4. Configurar .env</h3>
-<pre><code class="language-bash">cp .env.example .env
-</code></pre>
+<div class="highlight"><pre><span></span><code>cp<span class="w"> </span>.env.example<span class="w"> </span>.env
+</code></pre></div>
 <p>Edite <code>.env</code>:</p>
-<pre><code class="language-env">DEBUG=True
+<div class="highlight"><pre><span></span><code>DEBUG=True
 ALLOWED_HOSTS=localhost,127.0.0.1
 EMAIL_MODE=False
 AI_MODE=False
 SECRET_KEY=seu-django-secret-key-aqui
-</code></pre>
+</code></pre></div>
 <p>Gerar <code>SECRET_KEY</code>:</p>
-<pre><code class="language-bash">python -c &quot;from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())&quot;
-</code></pre>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())&quot;</span>
+</code></pre></div>
 <h3 id="5-banco-de-dados">5. Banco de Dados</h3>
-<pre><code class="language-bash">python manage.py migrate
-python manage.py createsuperuser
-</code></pre>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>manage.py<span class="w"> </span>migrate
+python<span class="w"> </span>manage.py<span class="w"> </span>createsuperuser
+</code></pre></div>
 <h3 id="6-servidor">6. Servidor</h3>
-<pre><code class="language-bash">python manage.py runserver
-</code></pre>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>manage.py<span class="w"> </span>runserver
+</code></pre></div>
 <p>Acesse: <code>http://localhost:8000</code></p>
 <hr />
 <h2 id="configuracao-opcional">Configuração Opcional</h2>
@@ -1042,29 +1042,29 @@ python manage.py createsuperuser
 <p><strong>Configurar .env</strong>:</p>
 </li>
 </ol>
-<pre><code class="language-env">EMAIL_MODE=True
+<div class="highlight"><pre><span></span><code>EMAIL_MODE=True
 EMAIL_HOST=smtp.gmail.com
 EMAIL_PORT=587
 EMAIL_USE_TLS=True
 EMAIL_HOST_USER=seu-email@gmail.com
 EMAIL_HOST_PASSWORD=senha-de-app-16-caracteres
 DEFAULT_FROM_EMAIL=seu-email@gmail.com
-</code></pre>
+</code></pre></div>
 <ol>
 <li><strong>Testar</strong>:</li>
 </ol>
-<pre><code class="language-bash">python manage.py shell
-</code></pre>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>manage.py<span class="w"> </span>shell
+</code></pre></div>
 <p>Dentro do shell:</p>
-<pre><code class="language-python">from django.core.mail import send_mail
-send_mail(
-    'Teste',
-    'Mensagem de teste',
-    'seu-email@gmail.com',
-    ['seu-email@gmail.com'],
-    fail_silently=False,
-)
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">django.core.mail</span><span class="w"> </span><span class="kn">import</span> <span class="n">send_mail</span>
+<span class="n">send_mail</span><span class="p">(</span>
+    <span class="s1">&#39;Teste&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Mensagem de teste&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;seu-email@gmail.com&#39;</span><span class="p">,</span>
+    <span class="p">[</span><span class="s1">&#39;seu-email@gmail.com&#39;</span><span class="p">],</span>
+    <span class="n">fail_silently</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
+</code></pre></div>
 <hr />
 <h3 id="ativar-ia-groq">Ativar IA (Groq)</h3>
 <ol>
@@ -1082,20 +1082,20 @@ send_mail(
 <p><strong>Configurar .env</strong>:</p>
 </li>
 </ol>
-<pre><code class="language-env">AI_MODE=True
+<div class="highlight"><pre><span></span><code>AI_MODE=True
 API_KEY=sua-api-key-groq
 AI_MODEL=mixtral-8x7b-32768
-</code></pre>
+</code></pre></div>
 <ol>
 <li><strong>Testar</strong>:</li>
 </ol>
-<pre><code class="language-bash">python manage.py shell
-</code></pre>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>manage.py<span class="w"> </span>shell
+</code></pre></div>
 <p>Dentro do shell:</p>
-<pre><code class="language-python">from tools.services.ai_analysis import get_ai_analysis
-analysis = get_ai_analysis()
-print(analysis)
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">tools.services.ai_analysis</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_ai_analysis</span>
+<span class="n">analysis</span> <span class="o">=</span> <span class="n">get_ai_analysis</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">analysis</span><span class="p">)</span>
+</code></pre></div>
 <hr />
 <h3 id="configurar-oauth2-google-avancado">Configurar OAuth2 Google (Avançado)</h3>
 <p>Para envio de emails mais seguro via OAuth2 (não recomendado para produção sem HTTPS).</p>
@@ -1123,48 +1123,48 @@ print(analysis)
 <p><strong>Gerar Refresh Token</strong>:</p>
 </li>
 </ol>
-<pre><code class="language-python">from google_auth_oauthlib.flow import InstalledAppFlow
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">google_auth_oauthlib.flow</span><span class="w"> </span><span class="kn">import</span> <span class="n">InstalledAppFlow</span>
 
-SCOPES = ['https://www.googleapis.com/auth/gmail.send']
-flow = InstalledAppFlow.from_client_secrets_file(
-    'sua-credenciais.json',
-    SCOPES
-)
-creds = flow.run_local_server(port=0)
-print('Refresh Token:', creds.refresh_token)
-</code></pre>
+<span class="n">SCOPES</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;https://www.googleapis.com/auth/gmail.send&#39;</span><span class="p">]</span>
+<span class="n">flow</span> <span class="o">=</span> <span class="n">InstalledAppFlow</span><span class="o">.</span><span class="n">from_client_secrets_file</span><span class="p">(</span>
+    <span class="s1">&#39;sua-credenciais.json&#39;</span><span class="p">,</span>
+    <span class="n">SCOPES</span>
+<span class="p">)</span>
+<span class="n">creds</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">run_local_server</span><span class="p">(</span><span class="n">port</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Refresh Token:&#39;</span><span class="p">,</span> <span class="n">creds</span><span class="o">.</span><span class="n">refresh_token</span><span class="p">)</span>
+</code></pre></div>
 <ol>
 <li><strong>Configurar .env</strong>:</li>
 </ol>
-<pre><code class="language-env">GOOGLE_OAUTH2_CLIENT_ID=seu-client-id
+<div class="highlight"><pre><span></span><code>GOOGLE_OAUTH2_CLIENT_ID=seu-client-id
 GOOGLE_OAUTH2_CLIENT_SECRET=seu-client-secret
 GOOGLE_OAUTH2_REFRESH_TOKEN=seu-refresh-token
 EMAIL_MODE=True
-</code></pre>
+</code></pre></div>
 <hr />
 <h2 id="compilar-tailwind-css">Compilar Tailwind CSS</h2>
 <p>Se modificar <code>static/css/input.css</code>:</p>
-<pre><code class="language-bash">bash build-tailwind.sh
-</code></pre>
+<div class="highlight"><pre><span></span><code>bash<span class="w"> </span>build-tailwind.sh
+</code></pre></div>
 <hr />
 <h2 id="troubleshooting">Troubleshooting</h2>
 <h3 id="erro-no-module-named-django">Erro: "No module named 'django'"</h3>
-<pre><code class="language-bash"># Verificar se venv está ativado
-which python  # Deve mostrar venv/bin/python
+<div class="highlight"><pre><span></span><code><span class="c1"># Verificar se venv está ativado</span>
+which<span class="w"> </span>python<span class="w">  </span><span class="c1"># Deve mostrar venv/bin/python</span>
 
-# Reinstalar
-pip install -r requirements.txt
-</code></pre>
+<span class="c1"># Reinstalar</span>
+pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+</code></pre></div>
 <h3 id="erro-port-8000-already-in-use">Erro: "Port 8000 already in use"</h3>
-<pre><code class="language-bash"># Usar porta diferente
-python manage.py runserver 8001
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1"># Usar porta diferente</span>
+python<span class="w"> </span>manage.py<span class="w"> </span>runserver<span class="w"> </span><span class="m">8001</span>
+</code></pre></div>
 <h3 id="erro-database-is-locked">Erro: "Database is locked"</h3>
-<pre><code class="language-bash"># Deletar e recriar
-rm db.sqlite3
-python manage.py migrate
-python manage.py createsuperuser
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1"># Deletar e recriar</span>
+rm<span class="w"> </span>db.sqlite3
+python<span class="w"> </span>manage.py<span class="w"> </span>migrate
+python<span class="w"> </span>manage.py<span class="w"> </span>createsuperuser
+</code></pre></div>
 <hr />
 <h2 id="proximas-etapas">Próximas Etapas</h2>
 <ul>

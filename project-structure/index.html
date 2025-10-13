@@ -1203,7 +1203,7 @@
 <p>Mapa completo de diretórios e arquivos do Morpheus Env com descrição de cada elemento.</p>
 <hr />
 <h2 id="arvore-de-diretorios">Árvore de Diretórios</h2>
-<pre><code>morpheus_env/
+<div class="highlight"><pre><span></span><code>morpheus_env/
 │
 ├── core/                          # Configurações centrais Django
 │   ├── templates/
@@ -1292,7 +1292,7 @@
 ├── tailwind.config.js
 ├── db.sqlite3                     # Banco (dev only)
 └── venv/                          # Ambiente virtual (ignorado)
-</code></pre>
+</code></pre></div>
 <hr />
 <h2 id="arquivos-principais">Arquivos Principais</h2>
 <h3 id="coresettingspy">core/settings.py</h3>
@@ -1309,13 +1309,13 @@
 <hr />
 <h3 id="coreurlspy">core/urls.py</h3>
 <p>Rotas globais:</p>
-<pre><code class="language-python">urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', HomeView.as_view(), name='home'),
-    path('accounts/', include('users.urls')),
-    path('sistema/', include('tools.urls')),
-]
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;admin/&#39;</span><span class="p">,</span> <span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">urls</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">HomeView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;home&#39;</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;accounts/&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="s1">&#39;users.urls&#39;</span><span class="p">)),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;sistema/&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="s1">&#39;tools.urls&#39;</span><span class="p">)),</span>
+<span class="p">]</span>
+</code></pre></div>
 <hr />
 <h3 id="usersformspy">users/forms.py</h3>
 <p>Formulários customizados para registro:</p>
@@ -1349,72 +1349,72 @@
 <hr />
 <h3 id="toolsservicessystem_metricspy">tools/services/system_metrics.py</h3>
 <p>Coleta de métricas:</p>
-<pre><code class="language-python">def get_system_status():
-    &quot;&quot;&quot;Retorna dict com cpu_percent, ram_percent, etc.&quot;&quot;&quot;
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_system_status</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Retorna dict com cpu_percent, ram_percent, etc.&quot;&quot;&quot;</span>
 
-def sanitize_system_data(status):
-    &quot;&quot;&quot;Normaliza para high/normal para IA.&quot;&quot;&quot;
-</code></pre>
+<span class="k">def</span><span class="w"> </span><span class="nf">sanitize_system_data</span><span class="p">(</span><span class="n">status</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Normaliza para high/normal para IA.&quot;&quot;&quot;</span>
+</code></pre></div>
 <hr />
 <h3 id="toolsservicesai_analysispy">tools/services/ai_analysis.py</h3>
 <p>Integração Groq:</p>
-<pre><code class="language-python">def get_ai_analysis():
-    &quot;&quot;&quot;Coleta dados, sanitiza, chama Groq.&quot;&quot;&quot;
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_ai_analysis</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Coleta dados, sanitiza, chama Groq.&quot;&quot;&quot;</span>
+</code></pre></div>
 <hr />
 <h3 id="toolsservicesnum_converterpy">tools/services/num_converter.py</h3>
 <p>Conversões numéricas:</p>
-<pre><code class="language-python">bin_to_dec(binary: str) -&gt; int
-dec_to_bin(decimal: int) -&gt; str
-hex_to_dec(hex: str) -&gt; int
-dec_to_hex(decimal: int) -&gt; str
-oct_to_dec(oct: str) -&gt; int
-dec_to_oct(decimal: int) -&gt; str
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">bin_to_dec</span><span class="p">(</span><span class="n">binary</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span>
+<span class="n">dec_to_bin</span><span class="p">(</span><span class="n">decimal</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span>
+<span class="n">hex_to_dec</span><span class="p">(</span><span class="nb">hex</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span>
+<span class="n">dec_to_hex</span><span class="p">(</span><span class="n">decimal</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span>
+<span class="n">oct_to_dec</span><span class="p">(</span><span class="nb">oct</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span>
+<span class="n">dec_to_oct</span><span class="p">(</span><span class="n">decimal</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span>
+</code></pre></div>
 <hr />
 <h3 id="notificationsutilssend_emailpy">notifications/utils/send_email.py</h3>
 <p>Lógica de envio:</p>
-<pre><code class="language-python">def send_new_user_email(user):
-    &quot;&quot;&quot;Envia email de boas-vindas.&quot;&quot;&quot;
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">send_new_user_email</span><span class="p">(</span><span class="n">user</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Envia email de boas-vindas.&quot;&quot;&quot;</span>
 
-def send_update_terms_email(user):
-    &quot;&quot;&quot;Notifica atualização de termos.&quot;&quot;&quot;
-</code></pre>
+<span class="k">def</span><span class="w"> </span><span class="nf">send_update_terms_email</span><span class="p">(</span><span class="n">user</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Notifica atualização de termos.&quot;&quot;&quot;</span>
+</code></pre></div>
 <hr />
 <h3 id="notificationsutilsemail_oauth2py">notifications/utils/email_oauth2.py</h3>
 <p>Autenticação OAuth2 Google:</p>
-<pre><code class="language-python">def get_oauth2_string(email, client_id, client_secret, refresh_token):
-    &quot;&quot;&quot;Retorna string XOAUTH2 para SMTP.&quot;&quot;&quot;
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_oauth2_string</span><span class="p">(</span><span class="n">email</span><span class="p">,</span> <span class="n">client_id</span><span class="p">,</span> <span class="n">client_secret</span><span class="p">,</span> <span class="n">refresh_token</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Retorna string XOAUTH2 para SMTP.&quot;&quot;&quot;</span>
+</code></pre></div>
 <hr />
 <h3 id="staticjavascriptsystem-analysisjs">static/javascript/system-analysis.js</h3>
 <p>Dashboard de monitoramento:</p>
-<pre><code class="language-javascript">async function getSystemMetrics()
-    // Requisita API a cada 5s
+<div class="highlight"><pre><span></span><code><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">getSystemMetrics</span><span class="p">()</span>
+<span class="w">    </span><span class="c1">// Requisita API a cada 5s</span>
 
-async function aiAnalysis()
-    // Requisita análise IA
-</code></pre>
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">aiAnalysis</span><span class="p">()</span>
+<span class="w">    </span><span class="c1">// Requisita análise IA</span>
+</code></pre></div>
 <hr />
 <h3 id="staticjavascriptnum-converterjs">static/javascript/num-converter.js</h3>
 <p>Conversor numérico:</p>
-<pre><code class="language-javascript">async function converter()
-    // Requisita conversão
+<div class="highlight"><pre><span></span><code><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">converter</span><span class="p">()</span>
+<span class="w">    </span><span class="c1">// Requisita conversão</span>
 
-async function boolean()
-    // Operações lógicas
-</code></pre>
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="kr">boolean</span><span class="p">()</span>
+<span class="w">    </span><span class="c1">// Operações lógicas</span>
+</code></pre></div>
 <hr />
 <h3 id="build-tailwindsh">build-tailwind.sh</h3>
 <p>Script para compilar Tailwind CSS:</p>
-<pre><code class="language-bash">bash build-tailwind.sh
-</code></pre>
+<div class="highlight"><pre><span></span><code>bash<span class="w"> </span>build-tailwind.sh
+</code></pre></div>
 <p>Execute quando modificar <code>static/css/input.css</code>.</p>
 <hr />
 <h3 id="requirementstxt">requirements.txt</h3>
 <p>Dependências do projeto. Instale com:</p>
-<pre><code class="language-bash">pip install -r requirements.txt
-</code></pre>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+</code></pre></div>
 <hr />
 <h3 id="tailwindconfigjs">tailwind.config.js</h3>
 <p>Configuração do Tailwind CSS. Escaneia templates para classes usadas.</p>
@@ -1449,31 +1449,31 @@ async function boolean()
 <h2 id="fluxo-de-adicao-de-novo-recurso">Fluxo de Adição de Novo Recurso</h2>
 <p>Exemplo: Adicionar novo endpoint para RAM apenas.</p>
 <h3 id="1-criar-funcao-no-service">1. Criar função no service</h3>
-<pre><code class="language-python"># tools/services/system_metrics.py
-def get_ram_only():
-    ram = psutil.virtual_memory()
-    return {
-        'ram_percent': ram.percent,
-        'ram_total': round(ram.total / (1024**3), 2),
-        'ram_used': round(ram.used / (1024**3), 2)
-    }
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1"># tools/services/system_metrics.py</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_ram_only</span><span class="p">():</span>
+    <span class="n">ram</span> <span class="o">=</span> <span class="n">psutil</span><span class="o">.</span><span class="n">virtual_memory</span><span class="p">()</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s1">&#39;ram_percent&#39;</span><span class="p">:</span> <span class="n">ram</span><span class="o">.</span><span class="n">percent</span><span class="p">,</span>
+        <span class="s1">&#39;ram_total&#39;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">ram</span><span class="o">.</span><span class="n">total</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1024</span><span class="o">**</span><span class="mi">3</span><span class="p">),</span> <span class="mi">2</span><span class="p">),</span>
+        <span class="s1">&#39;ram_used&#39;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">ram</span><span class="o">.</span><span class="n">used</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1024</span><span class="o">**</span><span class="mi">3</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="p">}</span>
+</code></pre></div>
 <h3 id="2-criar-view">2. Criar view</h3>
-<pre><code class="language-python"># tools/views.py
-class RamOnlyAPIView(LoginRequiredMixin, generic.View):
-    def get(self, request):
-        data = get_ram_only()
-        return JsonResponse({'data': data})
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1"># tools/views.py</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">RamOnlyAPIView</span><span class="p">(</span><span class="n">LoginRequiredMixin</span><span class="p">,</span> <span class="n">generic</span><span class="o">.</span><span class="n">View</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">get_ram_only</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">JsonResponse</span><span class="p">({</span><span class="s1">&#39;data&#39;</span><span class="p">:</span> <span class="n">data</span><span class="p">})</span>
+</code></pre></div>
 <h3 id="3-adicionar-rota">3. Adicionar rota</h3>
-<pre><code class="language-python"># tools/urls.py
-path('ram/', RamOnlyAPIView.as_view(), name='ram_only_api')
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1"># tools/urls.py</span>
+<span class="n">path</span><span class="p">(</span><span class="s1">&#39;ram/&#39;</span><span class="p">,</span> <span class="n">RamOnlyAPIView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;ram_only_api&#39;</span><span class="p">)</span>
+</code></pre></div>
 <h3 id="4-usar-no-frontend">4. Usar no frontend</h3>
-<pre><code class="language-javascript">fetch('/sistema/ram/')
-    .then(r =&gt; r.json())
-    .then(data =&gt; console.log(data))
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">&#39;/sistema/ram/&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">))</span>
+</code></pre></div>
 <hr />
 <h2 id="proximas-etapas">Próximas Etapas</h2>
 <ul>

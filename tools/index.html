@@ -1081,219 +1081,219 @@
 <li>Proteção CSRF e XSS</li>
 <li>Middleware de segurança</li>
 </ul>
-<pre><code class="language-bash">pip install Django==5.2.6
-</code></pre>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span><span class="nv">Django</span><span class="o">==</span><span class="m">5</span>.2.6
+</code></pre></div>
 <hr />
 <h3 id="psutil-700">psutil 7.0.0</h3>
 <p>Coleta métricas de sistema (CPU, RAM, disco).</p>
 <p><strong>Uso</strong>: <code>tools/services/system_metrics.py</code></p>
-<pre><code class="language-python">import psutil
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">psutil</span>
 
-cpu_percent = psutil.cpu_percent(interval=1)
-ram = psutil.virtual_memory()
-disk = psutil.disk_usage('/')
-</code></pre>
+<span class="n">cpu_percent</span> <span class="o">=</span> <span class="n">psutil</span><span class="o">.</span><span class="n">cpu_percent</span><span class="p">(</span><span class="n">interval</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ram</span> <span class="o">=</span> <span class="n">psutil</span><span class="o">.</span><span class="n">virtual_memory</span><span class="p">()</span>
+<span class="n">disk</span> <span class="o">=</span> <span class="n">psutil</span><span class="o">.</span><span class="n">disk_usage</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
+</code></pre></div>
 <p><strong>Na prática</strong>:</p>
-<pre><code class="language-python"># tools/services/system_metrics.py
-def get_system_status():
-    return {
-        'cpu_percent': psutil.cpu_percent(),
-        'ram_percent': psutil.virtual_memory().percent,
-        'memory_used': disk.used / (1024**3),
-    }
-</code></pre>
-<pre><code class="language-bash">pip install psutil==7.0.0
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1"># tools/services/system_metrics.py</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_system_status</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s1">&#39;cpu_percent&#39;</span><span class="p">:</span> <span class="n">psutil</span><span class="o">.</span><span class="n">cpu_percent</span><span class="p">(),</span>
+        <span class="s1">&#39;ram_percent&#39;</span><span class="p">:</span> <span class="n">psutil</span><span class="o">.</span><span class="n">virtual_memory</span><span class="p">()</span><span class="o">.</span><span class="n">percent</span><span class="p">,</span>
+        <span class="s1">&#39;memory_used&#39;</span><span class="p">:</span> <span class="n">disk</span><span class="o">.</span><span class="n">used</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1024</span><span class="o">**</span><span class="mi">3</span><span class="p">),</span>
+    <span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span><span class="nv">psutil</span><span class="o">==</span><span class="m">7</span>.0.0
+</code></pre></div>
 <hr />
 <h3 id="groq-0311">Groq 0.31.1</h3>
 <p>SDK Python para IA Groq. Análise inteligente de métricas.</p>
 <p><strong>Uso</strong>: <code>tools/services/ai_analysis.py</code></p>
-<pre><code class="language-python">from groq import Groq
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">groq</span><span class="w"> </span><span class="kn">import</span> <span class="n">Groq</span>
 
-client = Groq(api_key='sua-api-key')
-response = client.chat.completions.create(
-    model='mixtral-8x7b-32768',
-    messages=[
-        {'role': 'system', 'content': 'Você é um assistente...'},
-        {'role': 'user', 'content': 'Analise estes dados...'}
-    ]
-)
-</code></pre>
+<span class="n">client</span> <span class="o">=</span> <span class="n">Groq</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s1">&#39;sua-api-key&#39;</span><span class="p">)</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+    <span class="n">model</span><span class="o">=</span><span class="s1">&#39;mixtral-8x7b-32768&#39;</span><span class="p">,</span>
+    <span class="n">messages</span><span class="o">=</span><span class="p">[</span>
+        <span class="p">{</span><span class="s1">&#39;role&#39;</span><span class="p">:</span> <span class="s1">&#39;system&#39;</span><span class="p">,</span> <span class="s1">&#39;content&#39;</span><span class="p">:</span> <span class="s1">&#39;Você é um assistente...&#39;</span><span class="p">},</span>
+        <span class="p">{</span><span class="s1">&#39;role&#39;</span><span class="p">:</span> <span class="s1">&#39;user&#39;</span><span class="p">,</span> <span class="s1">&#39;content&#39;</span><span class="p">:</span> <span class="s1">&#39;Analise estes dados...&#39;</span><span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+</code></pre></div>
 <p><strong>Na prática</strong>:</p>
 <p>Sistema envia métricas (CPU, RAM em níveis "high"/"normal") e recebe análise em texto.</p>
-<pre><code class="language-bash">pip install groq==0.31.1
-</code></pre>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span><span class="nv">groq</span><span class="o">==</span><span class="m">0</span>.31.1
+</code></pre></div>
 <hr />
 <h3 id="google-auth-2411">google-auth 2.41.1</h3>
 <p>Autenticação OAuth2 para Gmail. Envio de emails seguro.</p>
 <p><strong>Uso</strong>: <code>notifications/utils/email_oauth2.py</code></p>
-<pre><code class="language-python">from google.auth.transport.requests import Request
-from google.oauth2.credentials import Credentials
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">google.auth.transport.requests</span><span class="w"> </span><span class="kn">import</span> <span class="n">Request</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">google.oauth2.credentials</span><span class="w"> </span><span class="kn">import</span> <span class="n">Credentials</span>
 
-creds = Credentials(
-    None,
-    refresh_token=refresh_token,
-    token_uri='https://oauth2.googleapis.com/token',
-    client_id=client_id,
-    client_secret=client_secret
-)
-creds.refresh(Request())
-</code></pre>
+<span class="n">creds</span> <span class="o">=</span> <span class="n">Credentials</span><span class="p">(</span>
+    <span class="kc">None</span><span class="p">,</span>
+    <span class="n">refresh_token</span><span class="o">=</span><span class="n">refresh_token</span><span class="p">,</span>
+    <span class="n">token_uri</span><span class="o">=</span><span class="s1">&#39;https://oauth2.googleapis.com/token&#39;</span><span class="p">,</span>
+    <span class="n">client_id</span><span class="o">=</span><span class="n">client_id</span><span class="p">,</span>
+    <span class="n">client_secret</span><span class="o">=</span><span class="n">client_secret</span>
+<span class="p">)</span>
+<span class="n">creds</span><span class="o">.</span><span class="n">refresh</span><span class="p">(</span><span class="n">Request</span><span class="p">())</span>
+</code></pre></div>
 <p><strong>Na prática</strong>: Renovação automática de access token para envio de emails.</p>
-<pre><code class="language-bash">pip install google-auth==2.41.1
-</code></pre>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>google-auth<span class="o">==</span><span class="m">2</span>.41.1
+</code></pre></div>
 <hr />
 <h3 id="python-decouple-38">python-decouple 3.8</h3>
 <p>Gerenciador de variáveis de ambiente (.env).</p>
 <p><strong>Uso</strong>: <code>core/settings.py</code></p>
-<pre><code class="language-python">from decouple import config
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">decouple</span><span class="w"> </span><span class="kn">import</span> <span class="n">config</span>
 
-SECRET_KEY = config('SECRET_KEY')
-DEBUG = config('DEBUG', 'False') == 'True'
-TIMEOUT = config('TIMEOUT', cast=int, default=30)
-</code></pre>
+<span class="n">SECRET_KEY</span> <span class="o">=</span> <span class="n">config</span><span class="p">(</span><span class="s1">&#39;SECRET_KEY&#39;</span><span class="p">)</span>
+<span class="n">DEBUG</span> <span class="o">=</span> <span class="n">config</span><span class="p">(</span><span class="s1">&#39;DEBUG&#39;</span><span class="p">,</span> <span class="s1">&#39;False&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;True&#39;</span>
+<span class="n">TIMEOUT</span> <span class="o">=</span> <span class="n">config</span><span class="p">(</span><span class="s1">&#39;TIMEOUT&#39;</span><span class="p">,</span> <span class="n">cast</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+</code></pre></div>
 <p><strong>Na prática</strong>: Carrega variáveis sensíveis sem hardcode.</p>
-<pre><code class="language-bash">pip install python-decouple==3.8
-</code></pre>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>python-decouple<span class="o">==</span><span class="m">3</span>.8
+</code></pre></div>
 <hr />
 <h3 id="colorama-046">colorama 0.4.6</h3>
 <p>Cores no terminal. Mensagens de notificação coloridas.</p>
 <p><strong>Uso</strong>: <code>notifications/utils/colors.py</code></p>
-<pre><code class="language-python">from colorama import Fore, Style
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">colorama</span><span class="w"> </span><span class="kn">import</span> <span class="n">Fore</span><span class="p">,</span> <span class="n">Style</span>
 
-print(Fore.GREEN + &quot;Sucesso!&quot;)
-print(Fore.RED + &quot;Erro!&quot;)
-print(Fore.YELLOW + &quot;Aviso&quot;)
-</code></pre>
+<span class="nb">print</span><span class="p">(</span><span class="n">Fore</span><span class="o">.</span><span class="n">GREEN</span> <span class="o">+</span> <span class="s2">&quot;Sucesso!&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Fore</span><span class="o">.</span><span class="n">RED</span> <span class="o">+</span> <span class="s2">&quot;Erro!&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Fore</span><span class="o">.</span><span class="n">YELLOW</span> <span class="o">+</span> <span class="s2">&quot;Aviso&quot;</span><span class="p">)</span>
+</code></pre></div>
 <p><strong>Na prática</strong>: Feedback visual em logs e notificações.</p>
-<pre><code class="language-bash">pip install colorama==0.4.6
-</code></pre>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span><span class="nv">colorama</span><span class="o">==</span><span class="m">0</span>.4.6
+</code></pre></div>
 <hr />
 <h3 id="django-ratelimit-410">django-ratelimit 4.1.0</h3>
 <p>Rate limiting para APIs. Proteção contra abuso.</p>
 <p><strong>Uso</strong>: <code>tools/views.py</code></p>
-<pre><code class="language-python">from django_ratelimit.decorators import ratelimit
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">django_ratelimit.decorators</span><span class="w"> </span><span class="kn">import</span> <span class="n">ratelimit</span>
 
-@method_decorator(
-    ratelimit(key='user', rate='20/m', method='GET'),
-    name='dispatch'
-)
-class SystemAnalysisAPIView(LoginRequiredMixin, generic.View):
-    pass
-</code></pre>
+<span class="nd">@method_decorator</span><span class="p">(</span>
+    <span class="n">ratelimit</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="s1">&#39;user&#39;</span><span class="p">,</span> <span class="n">rate</span><span class="o">=</span><span class="s1">&#39;20/m&#39;</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;GET&#39;</span><span class="p">),</span>
+    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;dispatch&#39;</span>
+<span class="p">)</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">SystemAnalysisAPIView</span><span class="p">(</span><span class="n">LoginRequiredMixin</span><span class="p">,</span> <span class="n">generic</span><span class="o">.</span><span class="n">View</span><span class="p">):</span>
+    <span class="k">pass</span>
+</code></pre></div>
 <p><strong>Na prática</strong>: Máximo 20 requisições/minuto por usuário para métricas.</p>
-<pre><code class="language-bash">pip install django-ratelimit==4.1.0
-</code></pre>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>django-ratelimit<span class="o">==</span><span class="m">4</span>.1.0
+</code></pre></div>
 <hr />
 <h2 id="frontend">Frontend</h2>
 <h3 id="tailwind-css-4">Tailwind CSS 4</h3>
 <p>Framework CSS utility-first para estilização.</p>
 <p><strong>Uso</strong>: <code>static/css/styles.css</code> (compilado)</p>
-<pre><code class="language-html">&lt;div class=&quot;bg-purple-500 text-white p-4 rounded-lg&quot;&gt;
-    &lt;h1 class=&quot;text-2xl font-bold&quot;&gt;Título&lt;/h1&gt;
-&lt;/div&gt;
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;bg-purple-500 text-white p-4 rounded-lg&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h1</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;text-2xl font-bold&quot;</span><span class="p">&gt;</span>Título<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</code></pre></div>
 <p><strong>Compilação</strong>:</p>
-<pre><code class="language-bash">bash build-tailwind.sh
-</code></pre>
+<div class="highlight"><pre><span></span><code>bash<span class="w"> </span>build-tailwind.sh
+</code></pre></div>
 <p><strong>Configuração</strong>: <code>tailwind.config.js</code></p>
-<pre><code class="language-javascript">module.exports = {
-  content: [
-    './core/templates/**/*.html',
-    './tools/templates/**/*.html',
-    './users/templates/**/*.html',
-  ],
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">content</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="s1">&#39;./core/templates/**/*.html&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="s1">&#39;./tools/templates/**/*.html&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="s1">&#39;./users/templates/**/*.html&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="p">}</span>
+</code></pre></div>
 <hr />
 <h3 id="bootstrap-icons-1131">Bootstrap Icons 1.13.1</h3>
 <p>Conjunto de ícones SVG.</p>
 <p><strong>Uso</strong>: <code>core/templates/base.html</code></p>
-<pre><code class="language-html">&lt;link rel=&quot;stylesheet&quot; 
-      href=&quot;https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css&quot;&gt;
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> 
+      <span class="na">href</span><span class="o">=</span><span class="s">&quot;https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css&quot;</span><span class="p">&gt;</span>
 
-&lt;!-- Usar --&gt;
-&lt;i class=&quot;bi bi-github&quot;&gt;&lt;/i&gt;
-&lt;i class=&quot;bi bi-briefcase-fill&quot;&gt;&lt;/i&gt;
-</code></pre>
+<span class="cm">&lt;!-- Usar --&gt;</span>
+<span class="p">&lt;</span><span class="nt">i</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;bi bi-github&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">i</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">i</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;bi bi-briefcase-fill&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">i</span><span class="p">&gt;</span>
+</code></pre></div>
 <p><strong>Ícones disponíveis</strong>: <a href="https://icons.getbootstrap.com">icons.getbootstrap.com</a></p>
 <hr />
 <h2 id="desenvolvimento">Desenvolvimento</h2>
 <h3 id="flake8-730">flake8 7.3.0</h3>
 <p>Linter Python para qualidade de código (PEP 8).</p>
-<pre><code class="language-bash">flake8 .
-flake8 tools/views.py
-</code></pre>
-<pre><code class="language-bash">pip install flake8==7.3.0
-</code></pre>
+<div class="highlight"><pre><span></span><code>flake8<span class="w"> </span>.
+flake8<span class="w"> </span>tools/views.py
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span><span class="nv">flake8</span><span class="o">==</span><span class="m">7</span>.3.0
+</code></pre></div>
 <hr />
 <h3 id="isort-610">isort 6.1.0</h3>
 <p>Ordena imports Python automaticamente.</p>
-<pre><code class="language-bash">isort .
-isort . --check-only
-</code></pre>
-<pre><code class="language-bash">pip install isort==6.1.0
-</code></pre>
+<div class="highlight"><pre><span></span><code>isort<span class="w"> </span>.
+isort<span class="w"> </span>.<span class="w"> </span>--check-only
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span><span class="nv">isort</span><span class="o">==</span><span class="m">6</span>.1.0
+</code></pre></div>
 <hr />
 <h2 id="instalacao">Instalação</h2>
-<pre><code class="language-bash"># Todos os requisitos
-pip install -r requirements.txt
+<div class="highlight"><pre><span></span><code><span class="c1"># Todos os requisitos</span>
+pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
 
-# Desenvolvimento
-pip install -r requirements_dev.txt
+<span class="c1"># Desenvolvimento</span>
+pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements_dev.txt
 
-# Individual
-pip install Django psutil groq google-auth python-decouple colorama django-ratelimit
-</code></pre>
+<span class="c1"># Individual</span>
+pip<span class="w"> </span>install<span class="w"> </span>Django<span class="w"> </span>psutil<span class="w"> </span>groq<span class="w"> </span>google-auth<span class="w"> </span>python-decouple<span class="w"> </span>colorama<span class="w"> </span>django-ratelimit
+</code></pre></div>
 <hr />
 <h2 id="producao-opcional">Produção (Opcional)</h2>
 <h3 id="gunicorn">gunicorn</h3>
 <p>Servidor WSGI HTTP para produção.</p>
-<pre><code class="language-bash">pip install gunicorn
-gunicorn core.wsgi:application --workers=4
-</code></pre>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>gunicorn
+gunicorn<span class="w"> </span>core.wsgi:application<span class="w"> </span>--workers<span class="o">=</span><span class="m">4</span>
+</code></pre></div>
 <hr />
 <h3 id="psycopg2-binary">psycopg2-binary</h3>
 <p>Driver PostgreSQL para Python.</p>
-<pre><code class="language-bash">pip install psycopg2-binary
-</code></pre>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>psycopg2-binary
+</code></pre></div>
 <p><strong>Configuração</strong> (<code>settings.py</code>):</p>
-<pre><code class="language-python">DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'morpheus_db',
-        'USER': 'user',
-        'PASSWORD': 'password',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">DATABASES</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;ENGINE&#39;</span><span class="p">:</span> <span class="s1">&#39;django.db.backends.postgresql&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;NAME&#39;</span><span class="p">:</span> <span class="s1">&#39;morpheus_db&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;USER&#39;</span><span class="p">:</span> <span class="s1">&#39;user&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;PASSWORD&#39;</span><span class="p">:</span> <span class="s1">&#39;password&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;HOST&#39;</span><span class="p">:</span> <span class="s1">&#39;localhost&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;PORT&#39;</span><span class="p">:</span> <span class="s1">&#39;5432&#39;</span><span class="p">,</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 <hr />
 <h3 id="django-redis">django-redis</h3>
 <p>Cache backend Redis para Django.</p>
-<pre><code class="language-bash">pip install django-redis
-</code></pre>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>django-redis
+</code></pre></div>
 <p><strong>Configuração</strong>:</p>
-<pre><code class="language-python">CACHES = {
-    'default': {
-        'BACKEND': 'django_redis.cache.RedisCache',
-        'LOCATION': 'redis://127.0.0.1:6379/1',
-    }
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">CACHES</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;BACKEND&#39;</span><span class="p">:</span> <span class="s1">&#39;django_redis.cache.RedisCache&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;LOCATION&#39;</span><span class="p">:</span> <span class="s1">&#39;redis://127.0.0.1:6379/1&#39;</span><span class="p">,</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 <hr />
 <h3 id="whitenoise">whitenoise</h3>
 <p>Servidor de arquivos estáticos para produção.</p>
-<pre><code class="language-bash">pip install whitenoise
-</code></pre>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>whitenoise
+</code></pre></div>
 <p><strong>Configuração</strong> (<code>settings.py</code>):</p>
-<pre><code class="language-python">MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
-    # ... resto
-]
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">MIDDLEWARE</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;django.middleware.security.SecurityMiddleware&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;whitenoise.middleware.WhiteNoiseMiddleware&#39;</span><span class="p">,</span>
+    <span class="c1"># ... resto</span>
+<span class="p">]</span>
+</code></pre></div>
 <hr />
 <h2 id="proximas-etapas">Próximas Etapas</h2>
 <ul>

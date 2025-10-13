@@ -1102,17 +1102,17 @@
 <hr />
 <h2 id="comecar">Começar</h2>
 <h3 id="1-fork-e-clone">1. Fork e Clone</h3>
-<pre><code class="language-bash"># No GitHub, clique em &quot;Fork&quot;
-git clone https://github.com/SEU_USERNAME/morpheus_env.git
-cd morpheus_env
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1"># No GitHub, clique em &quot;Fork&quot;</span>
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/SEU_USERNAME/morpheus_env.git
+<span class="nb">cd</span><span class="w"> </span>morpheus_env
+</code></pre></div>
 <h3 id="2-criar-branch">2. Criar Branch</h3>
-<pre><code class="language-bash">git checkout -b feature/minha-feature
-# ou
-git checkout -b fix/meu-bug
-# ou
-git checkout -b docs/melhorias
-</code></pre>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>feature/minha-feature
+<span class="c1"># ou</span>
+git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>fix/meu-bug
+<span class="c1"># ou</span>
+git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>docs/melhorias
+</code></pre></div>
 <p><strong>Padrões de branch</strong>:</p>
 <ul>
 <li><code>feature/</code>: Nova funcionalidade</li>
@@ -1121,18 +1121,18 @@ git checkout -b docs/melhorias
 </ul>
 <h3 id="3-fazer-alteracoes">3. Fazer Alterações</h3>
 <p>Siga <a href="../guidelines/">Guidelines</a> para padrões de código.</p>
-<pre><code class="language-bash"># Testar
-python manage.py runserver
-python manage.py test
+<div class="highlight"><pre><span></span><code><span class="c1"># Testar</span>
+python<span class="w"> </span>manage.py<span class="w"> </span>runserver
+python<span class="w"> </span>manage.py<span class="w"> </span><span class="nb">test</span>
 
-# Verificar qualidade
-flake8 .
-isort . --check-only
-</code></pre>
+<span class="c1"># Verificar qualidade</span>
+flake8<span class="w"> </span>.
+isort<span class="w"> </span>.<span class="w"> </span>--check-only
+</code></pre></div>
 <h3 id="4-commit-com-mensagem-clara">4. Commit com Mensagem Clara</h3>
-<pre><code class="language-bash">git add .
-git commit -m &quot;feat: Descrição do que mudou&quot;
-</code></pre>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>add<span class="w"> </span>.
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;feat: Descrição do que mudou&quot;</span>
+</code></pre></div>
 <p><strong>Tipos de commit</strong> (Conventional Commits):</p>
 <ul>
 <li><code>feat</code>: Nova funcionalidade</li>
@@ -1142,74 +1142,74 @@ git commit -m &quot;feat: Descrição do que mudou&quot;
 <li><code>refactor</code>: Reorganização</li>
 </ul>
 <h3 id="5-push-e-pull-request">5. Push e Pull Request</h3>
-<pre><code class="language-bash">git push origin feature/minha-feature
-</code></pre>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>feature/minha-feature
+</code></pre></div>
 <p>No GitHub: criar PR para branch <code>develop</code> (não <code>main</code>).</p>
 <p><strong>Template PR</strong>:</p>
-<pre><code class="language-markdown">## Descrição
+<div class="highlight"><pre><span></span><code><span class="gu">## Descrição</span>
 Breve descrição do que foi implementado.
 
-## Tipo
-- [ ] Bug fix
-- [ ] Nova funcionalidade
-- [ ] Documentação
+<span class="gu">## Tipo</span>
+<span class="k">- [ ]</span> Bug fix
+<span class="k">- [ ]</span> Nova funcionalidade
+<span class="k">- [ ]</span> Documentação
 
-## Checklist
-- [ ] Código segue guidelines
-- [ ] Testes adicionados
-- [ ] Documentação atualizada
-- [ ] Sem conflitos com base
-- [ ] Commits com mensagens claras
-</code></pre>
+<span class="gu">## Checklist</span>
+<span class="k">- [ ]</span> Código segue guidelines
+<span class="k">- [ ]</span> Testes adicionados
+<span class="k">- [ ]</span> Documentação atualizada
+<span class="k">- [ ]</span> Sem conflitos com base
+<span class="k">- [ ]</span> Commits com mensagens claras
+</code></pre></div>
 <hr />
 <h2 id="tipos-de-contribuicao">Tipos de Contribuição</h2>
 <h3 id="bug-fixes">Bug Fixes</h3>
 <p>Corrigir comportamento inesperado.</p>
-<pre><code class="language-bash">git checkout -b fix/nome-do-bug
-# Editar e testar
-git commit -m &quot;fix: Descrever correção&quot;
-</code></pre>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>fix/nome-do-bug
+<span class="c1"># Editar e testar</span>
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;fix: Descrever correção&quot;</span>
+</code></pre></div>
 <hr />
 <h3 id="novas-funcionalidades">Novas Funcionalidades</h3>
 <p>Adicionar novo recurso.</p>
 <p><strong>Exemplo: Novo endpoint de API</strong></p>
-<pre><code class="language-python"># tools/services/new_service.py
-def get_new_metric():
-    &quot;&quot;&quot;Coleta nova métrica.&quot;&quot;&quot;
-    return {'data': 'valor'}
+<div class="highlight"><pre><span></span><code><span class="c1"># tools/services/new_service.py</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_new_metric</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Coleta nova métrica.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;data&#39;</span><span class="p">:</span> <span class="s1">&#39;valor&#39;</span><span class="p">}</span>
 
-# tools/views.py
-class NewMetricAPIView(LoginRequiredMixin, generic.View):
-    def get(self, request):
-        data = get_new_metric()
-        return JsonResponse({'data': data})
+<span class="c1"># tools/views.py</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">NewMetricAPIView</span><span class="p">(</span><span class="n">LoginRequiredMixin</span><span class="p">,</span> <span class="n">generic</span><span class="o">.</span><span class="n">View</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">get_new_metric</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">JsonResponse</span><span class="p">({</span><span class="s1">&#39;data&#39;</span><span class="p">:</span> <span class="n">data</span><span class="p">})</span>
 
-# tools/urls.py
-path('new-metric/', NewMetricAPIView.as_view(), name='new_metric_api')
-</code></pre>
+<span class="c1"># tools/urls.py</span>
+<span class="n">path</span><span class="p">(</span><span class="s1">&#39;new-metric/&#39;</span><span class="p">,</span> <span class="n">NewMetricAPIView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;new_metric_api&#39;</span><span class="p">)</span>
+</code></pre></div>
 <p>Adicione testes e atualize documentação.</p>
 <hr />
 <h3 id="melhorias-na-documentacao">Melhorias na Documentação</h3>
 <p>Adicionar ou melhorar docs.</p>
-<pre><code class="language-bash">git checkout -b docs/melhorias-docs
-# Editar arquivos .md em /docs/
-git commit -m &quot;docs: Descrever melhoria&quot;
-</code></pre>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>docs/melhorias-docs
+<span class="c1"># Editar arquivos .md em /docs/</span>
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;docs: Descrever melhoria&quot;</span>
+</code></pre></div>
 <hr />
 <h3 id="testes">Testes</h3>
 <p>Adicionar testes para funcionalidades.</p>
-<pre><code class="language-python"># tools/tests.py
-from django.test import TestCase
+<div class="highlight"><pre><span></span><code><span class="c1"># tools/tests.py</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">django.test</span><span class="w"> </span><span class="kn">import</span> <span class="n">TestCase</span>
 
-class SystemMetricsTests(TestCase):
-    def test_get_system_status(self):
-        &quot;&quot;&quot;Testa coleta de métricas.&quot;&quot;&quot;
-        data = get_system_status()
-        self.assertIn('cpu_percent', data)
-</code></pre>
+<span class="k">class</span><span class="w"> </span><span class="nc">SystemMetricsTests</span><span class="p">(</span><span class="n">TestCase</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_get_system_status</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Testa coleta de métricas.&quot;&quot;&quot;</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">get_system_status</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertIn</span><span class="p">(</span><span class="s1">&#39;cpu_percent&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+</code></pre></div>
 <p>Executar:</p>
-<pre><code class="language-bash">python manage.py test tools.tests.SystemMetricsTests
-</code></pre>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>manage.py<span class="w"> </span><span class="nb">test</span><span class="w"> </span>tools.tests.SystemMetricsTests
+</code></pre></div>
 <hr />
 <h2 id="processo-de-review">Processo de Review</h2>
 <h3 id="checklist-de-review">Checklist de Review</h3>
@@ -1225,54 +1225,54 @@ class SystemMetricsTests(TestCase):
 </ul>
 <h3 id="responder-a-feedback">Responder a Feedback</h3>
 <p>Se feedback for solicitado:</p>
-<pre><code class="language-bash"># Fazer ajustes
-nano file.py
+<div class="highlight"><pre><span></span><code><span class="c1"># Fazer ajustes</span>
+nano<span class="w"> </span>file.py
 
-# Commit do ajuste
-git add .
-git commit -m &quot;refactor: Ajustar conforme feedback&quot;
+<span class="c1"># Commit do ajuste</span>
+git<span class="w"> </span>add<span class="w"> </span>.
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;refactor: Ajustar conforme feedback&quot;</span>
 
-# Push novamente
-git push origin feature/minha-feature
+<span class="c1"># Push novamente</span>
+git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>feature/minha-feature
 
-# ⚠️ Não use --force em PRs públicos
-</code></pre>
+<span class="c1"># ⚠️ Não use --force em PRs públicos</span>
+</code></pre></div>
 <hr />
 <h2 id="setup-local">Setup Local</h2>
-<pre><code class="language-bash"># Clonar seu fork
-git clone https://github.com/SEU_USERNAME/morpheus_env.git
-cd morpheus_env
+<div class="highlight"><pre><span></span><code><span class="c1"># Clonar seu fork</span>
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/SEU_USERNAME/morpheus_env.git
+<span class="nb">cd</span><span class="w"> </span>morpheus_env
 
-# Criar venv
-python -m venv venv
-source venv/bin/activate  # ou venv\Scripts\activate (Windows)
+<span class="c1"># Criar venv</span>
+python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>venv
+<span class="nb">source</span><span class="w"> </span>venv/bin/activate<span class="w">  </span><span class="c1"># ou venv\Scripts\activate (Windows)</span>
 
-# Instalar dependências
-pip install -r requirements.txt
-pip install -r requirements_dev.txt
+<span class="c1"># Instalar dependências</span>
+pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements_dev.txt
 
-# Criar .env
-cp .env.example .env
-# Edite com DEBUG=True, EMAIL_MODE=False, AI_MODE=False
+<span class="c1"># Criar .env</span>
+cp<span class="w"> </span>.env.example<span class="w"> </span>.env
+<span class="c1"># Edite com DEBUG=True, EMAIL_MODE=False, AI_MODE=False</span>
 
-# Banco de dados
-python manage.py migrate
-python manage.py createsuperuser
+<span class="c1"># Banco de dados</span>
+python<span class="w"> </span>manage.py<span class="w"> </span>migrate
+python<span class="w"> </span>manage.py<span class="w"> </span>createsuperuser
 
-# Servidor
-python manage.py runserver
-</code></pre>
+<span class="c1"># Servidor</span>
+python<span class="w"> </span>manage.py<span class="w"> </span>runserver
+</code></pre></div>
 <hr />
 <h2 id="problemas-comuns">Problemas Comuns</h2>
 <h3 id="branch-divergiu-de-develop">Branch divergiu de develop</h3>
-<pre><code class="language-bash">git fetch origin
-git rebase origin/develop
-# Se conflitos: resolver e git rebase --continue
-</code></pre>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>fetch<span class="w"> </span>origin
+git<span class="w"> </span>rebase<span class="w"> </span>origin/develop
+<span class="c1"># Se conflitos: resolver e git rebase --continue</span>
+</code></pre></div>
 <h3 id="pr-nao-aparece-para-merge">PR não aparece para merge</h3>
 <p>Pode haver conflitos. Verifique:</p>
-<pre><code class="language-bash">git merge origin/develop
-</code></pre>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>merge<span class="w"> </span>origin/develop
+</code></pre></div>
 <hr />
 <h2 id="boas-praticas">Boas Práticas</h2>
 <h3 id="fazer">✅ Fazer</h3>

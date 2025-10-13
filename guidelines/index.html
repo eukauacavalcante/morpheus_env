@@ -448,9 +448,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#service-layer-pattern" class="md-nav__link">
+  <a href="#padrao-da-camada-de-servicos" class="md-nav__link">
     <span class="md-ellipsis">
-      Service Layer Pattern
+      Padrão da Camada de Serviços
     </span>
   </a>
   
@@ -798,9 +798,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#service-layer-pattern" class="md-nav__link">
+  <a href="#padrao-da-camada-de-servicos" class="md-nav__link">
     <span class="md-ellipsis">
-      Service Layer Pattern
+      Padrão da Camada de Serviços
     </span>
   </a>
   
@@ -969,114 +969,114 @@
 <p>Padrões de código, estilo e boas práticas para contribuir ao Morpheus Env.</p>
 <hr />
 <h2 id="arquitetura-e-padroes">Arquitetura e Padrões</h2>
-<h3 id="service-layer-pattern">Service Layer Pattern</h3>
+<h3 id="padrao-da-camada-de-servicos">Padrão da Camada de Serviços</h3>
 <p>Toda lógica de negócio deve estar em <code>services/</code> ou <code>utils/</code>, não nas views.</p>
-<p><strong>❌ Evitar</strong>:</p>
-<pre><code class="language-python">class SystemAnalysisView(View):
-    def get(self, request):
-        cpu = psutil.cpu_percent()
-        ram = psutil.virtual_memory()
-        # ... 50 linhas de lógica aqui
-        return JsonResponse(data)
-</code></pre>
-<p><strong>✅ Fazer</strong>:</p>
-<pre><code class="language-python"># tools/services/system_metrics.py
-def get_system_status():
-    cpu = psutil.cpu_percent()
-    ram = psutil.virtual_memory()
-    return {'cpu_percent': cpu, ...}
+<p><strong>❌ Evitar</strong>:
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">SystemAnalysisView</span><span class="p">(</span><span class="n">View</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+        <span class="n">cpu</span> <span class="o">=</span> <span class="n">psutil</span><span class="o">.</span><span class="n">cpu_percent</span><span class="p">()</span>
+        <span class="n">ram</span> <span class="o">=</span> <span class="n">psutil</span><span class="o">.</span><span class="n">virtual_memory</span><span class="p">()</span>
+        <span class="c1"># ... 50 linhas de lógica aqui</span>
+        <span class="k">return</span> <span class="n">JsonResponse</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</code></pre></div></p>
+<p><strong>✅ Fazer</strong>:
+<div class="highlight"><pre><span></span><code><span class="c1"># tools/services/system_metrics.py</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_system_status</span><span class="p">():</span>
+    <span class="n">cpu</span> <span class="o">=</span> <span class="n">psutil</span><span class="o">.</span><span class="n">cpu_percent</span><span class="p">()</span>
+    <span class="n">ram</span> <span class="o">=</span> <span class="n">psutil</span><span class="o">.</span><span class="n">virtual_memory</span><span class="p">()</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;cpu_percent&#39;</span><span class="p">:</span> <span class="n">cpu</span><span class="p">,</span> <span class="o">...</span><span class="p">}</span>
 
-# tools/views.py
-class SystemAnalysisView(View):
-    def get(self, request):
-        data = get_system_status()
-        return JsonResponse({'data': data})
-</code></pre>
+<span class="c1"># tools/views.py</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">SystemAnalysisView</span><span class="p">(</span><span class="n">View</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">get_system_status</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">JsonResponse</span><span class="p">({</span><span class="s1">&#39;data&#39;</span><span class="p">:</span> <span class="n">data</span><span class="p">})</span>
+</code></pre></div></p>
 <hr />
 <h3 id="django-views-class-based-cbv-obrigatorio">Django Views: Class-Based (CBV) Obrigatório</h3>
 <p>Sempre use Class-Based Views para consistência.</p>
-<pre><code class="language-python"># ✅ Bom
-class SystemAnalysisView(LoginRequiredMixin, generic.TemplateView):
-    template_name = 'system_analysis.html'
+<div class="highlight"><pre><span></span><code><span class="c1"># ✅ Bom</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">SystemAnalysisView</span><span class="p">(</span><span class="n">LoginRequiredMixin</span><span class="p">,</span> <span class="n">generic</span><span class="o">.</span><span class="n">TemplateView</span><span class="p">):</span>
+    <span class="n">template_name</span> <span class="o">=</span> <span class="s1">&#39;system_analysis.html&#39;</span>
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['data'] = get_system_status()
-        return context
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_context_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">context</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">get_context_data</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">context</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">get_system_status</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">context</span>
 
-# ❌ Evitar Function-Based Views
-@login_required
-def system_analysis(request):
-    pass
-</code></pre>
+<span class="c1"># ❌ Evitar Function-Based Views</span>
+<span class="nd">@login_required</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">system_analysis</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="k">pass</span>
+</code></pre></div>
 <hr />
 <h2 id="seguranca-em-codigo">Segurança em Código</h2>
 <h3 id="validacao-de-input">Validação de Input</h3>
 <p>Valide <strong>sempre</strong> entrada do usuário em formulários.</p>
-<pre><code class="language-python"># users/forms.py - Exemplo do Morpheus
-class CustomUserCreationForm(UserCreationForm):
-    def clean_username(self):
-        username = self.cleaned_data.get('username')
+<div class="highlight"><pre><span></span><code><span class="c1"># users/forms.py - Exemplo do Morpheus</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">CustomUserCreationForm</span><span class="p">(</span><span class="n">UserCreationForm</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">clean_username</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">username</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cleaned_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;username&#39;</span><span class="p">)</span>
 
-        if User.objects.filter(username=username).exists():
-            raise ValidationError('Esse usuário já existe')
+        <span class="k">if</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="n">username</span><span class="p">)</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+            <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">(</span><span class="s1">&#39;Esse usuário já existe&#39;</span><span class="p">)</span>
 
-        if username.isdecimal():
-            raise ValidationError('Não é permitido apenas números')
+        <span class="k">if</span> <span class="n">username</span><span class="o">.</span><span class="n">isdecimal</span><span class="p">():</span>
+            <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">(</span><span class="s1">&#39;Não é permitido apenas números&#39;</span><span class="p">)</span>
 
-        return username
+        <span class="k">return</span> <span class="n">username</span>
 
-    def clean_email(self):
-        email = self.cleaned_data.get('email')
-        domain = email.split('@')[1].lower()
+    <span class="k">def</span><span class="w"> </span><span class="nf">clean_email</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">email</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cleaned_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;email&#39;</span><span class="p">)</span>
+        <span class="n">domain</span> <span class="o">=</span> <span class="n">email</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;@&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
 
-        # Verifica blocklist de emails temporários
-        with importlib.resources.open_text(
-            'users.validators',
-            'disposable_email_blocklist.conf'
-        ) as f:
-            blocklist = {line.strip().lower() for line in f}
+        <span class="c1"># Verifica blocklist de emails temporários</span>
+        <span class="k">with</span> <span class="n">importlib</span><span class="o">.</span><span class="n">resources</span><span class="o">.</span><span class="n">open_text</span><span class="p">(</span>
+            <span class="s1">&#39;users.validators&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;disposable_email_blocklist.conf&#39;</span>
+        <span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">blocklist</span> <span class="o">=</span> <span class="p">{</span><span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">}</span>
 
-        if domain in blocklist:
-            raise ValidationError('E-mails temporários não são permitidos.')
+        <span class="k">if</span> <span class="n">domain</span> <span class="ow">in</span> <span class="n">blocklist</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">(</span><span class="s1">&#39;E-mails temporários não são permitidos.&#39;</span><span class="p">)</span>
 
-        return email
-</code></pre>
+        <span class="k">return</span> <span class="n">email</span>
+</code></pre></div>
 <h3 id="sql-injection-prevention">SQL Injection Prevention</h3>
 <p>Sempre use Django ORM:</p>
-<pre><code class="language-python"># ✅ Seguro
-user = User.objects.filter(username=username).first()
+<div class="highlight"><pre><span></span><code><span class="c1"># ✅ Seguro</span>
+<span class="n">user</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="n">username</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
 
-# ❌ NUNCA fazer isto
-user = User.objects.raw(f&quot;SELECT * FROM auth_user WHERE username='{username}'&quot;)
-</code></pre>
+<span class="c1"># ❌ NUNCA fazer isto</span>
+<span class="n">user</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">raw</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;SELECT * FROM auth_user WHERE username=&#39;</span><span class="si">{</span><span class="n">username</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+</code></pre></div>
 <h3 id="xss-prevention">XSS Prevention</h3>
 <p>Templates escapam HTML por padrão:</p>
-<pre><code class="language-html">&lt;!-- ✅ Seguro (Django escapa automaticamente) --&gt;
-&lt;p&gt;{{ user_input }}&lt;/p&gt;
+<div class="highlight"><pre><span></span><code><span class="cm">&lt;!-- ✅ Seguro (Django escapa automaticamente) --&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>{{ user_input }}<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
 
-&lt;!-- ❌ NUNCA usar |safe com dados de usuário --&gt;
-&lt;p&gt;{{ user_input|safe }}&lt;/p&gt;
-</code></pre>
+<span class="cm">&lt;!-- ❌ NUNCA usar |safe com dados de usuário --&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>{{ user_input|safe }}<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</code></pre></div>
 <h3 id="csrf-protection">CSRF Protection</h3>
 <p>Sempre incluir token em formulários:</p>
-<pre><code class="language-html">&lt;!-- ✅ Obrigatório --&gt;
-&lt;form method=&quot;post&quot;&gt;
+<div class="highlight"><pre><span></span><code><span class="cm">&lt;!-- ✅ Obrigatório --&gt;</span>
+<span class="p">&lt;</span><span class="nt">form</span> <span class="na">method</span><span class="o">=</span><span class="s">&quot;post&quot;</span><span class="p">&gt;</span>
     {% csrf_token %}
-    &lt;input type=&quot;text&quot; name=&quot;field&quot;&gt;
-&lt;/form&gt;
-</code></pre>
-<p>Em AJAX:</p>
-<pre><code class="language-javascript">const token = document.querySelector('[name=csrfmiddlewaretoken]').value;
-fetch('/api/endpoint/', {
-    method: 'POST',
-    headers: {
-        'X-CSRFToken': token,
-        'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({...})
-});
-</code></pre>
+    <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;field&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+</code></pre></div>
+<p>Em AJAX:
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;[name=csrfmiddlewaretoken]&#39;</span><span class="p">).</span><span class="nx">value</span><span class="p">;</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">&#39;/api/endpoint/&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;POST&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">headers</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="s1">&#39;X-CSRFToken&#39;</span><span class="o">:</span><span class="w"> </span><span class="nx">token</span><span class="p">,</span>
+<span class="w">        </span><span class="s1">&#39;Content-Type&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;application/json&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({...})</span>
+<span class="p">});</span>
+</code></pre></div></p>
 <hr />
 <h2 id="nomes-e-convencoes">Nomes e Convenções</h2>
 <h3 id="python">Python</h3>
@@ -1098,39 +1098,39 @@ fetch('/api/endpoint/', {
 <hr />
 <h2 id="commits">Commits</h2>
 <p>Use Conventional Commits:</p>
-<pre><code>feat: Adicionar nova funcionalidade
+<div class="highlight"><pre><span></span><code>feat: Adicionar nova funcionalidade
 fix: Corrigir bug
 docs: Atualizar documentação
 refactor: Reorganizar código
 test: Adicionar testes
-</code></pre>
-<p>Exemplo real:</p>
-<pre><code class="language-bash">git commit -m &quot;feat: Implementar análise por IA com Groq&quot;
-git commit -m &quot;fix: Corrigir validação de email temporário&quot;
-</code></pre>
+</code></pre></div>
+<p>Exemplo real:
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;feat: Implementar análise por IA com Groq&quot;</span>
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;fix: Corrigir validação de email temporário&quot;</span>
+</code></pre></div></p>
 <hr />
 <h2 id="testes">Testes</h2>
 <p>Adicione testes para funcionalidades novas:</p>
-<pre><code class="language-python"># tools/tests.py
-from django.test import TestCase
+<div class="highlight"><pre><span></span><code><span class="c1"># tools/tests.py</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">django.test</span><span class="w"> </span><span class="kn">import</span> <span class="n">TestCase</span>
 
-class SystemMetricsTests(TestCase):
-    def test_get_system_status(self):
-        &quot;&quot;&quot;Testa coleta de métricas.&quot;&quot;&quot;
-        data = get_system_status()
-        self.assertIn('cpu_percent', data)
-        self.assertIn('ram_percent', data)
+<span class="k">class</span><span class="w"> </span><span class="nc">SystemMetricsTests</span><span class="p">(</span><span class="n">TestCase</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_get_system_status</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Testa coleta de métricas.&quot;&quot;&quot;</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">get_system_status</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertIn</span><span class="p">(</span><span class="s1">&#39;cpu_percent&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertIn</span><span class="p">(</span><span class="s1">&#39;ram_percent&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
 
-    def test_ai_analysis(self):
-        &quot;&quot;&quot;Testa análise por IA.&quot;&quot;&quot;
-        analysis = get_ai_analysis()
-        self.assertIsNotNone(analysis)
-        self.assertIsInstance(analysis, str)
-</code></pre>
-<p>Executar:</p>
-<pre><code class="language-bash">python manage.py test
-python manage.py test tools.tests.SystemMetricsTests.test_get_system_status
-</code></pre>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_ai_analysis</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Testa análise por IA.&quot;&quot;&quot;</span>
+        <span class="n">analysis</span> <span class="o">=</span> <span class="n">get_ai_analysis</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertIsNotNone</span><span class="p">(</span><span class="n">analysis</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertIsInstance</span><span class="p">(</span><span class="n">analysis</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span>
+</code></pre></div>
+<p>Executar:
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>manage.py<span class="w"> </span><span class="nb">test</span>
+python<span class="w"> </span>manage.py<span class="w"> </span><span class="nb">test</span><span class="w"> </span>tools.tests.SystemMetricsTests.test_get_system_status
+</code></pre></div></p>
 <hr />
 <h2 id="checklist-antes-de-submeter-pr">Checklist Antes de Submeter PR</h2>
 <ul class="task-list">

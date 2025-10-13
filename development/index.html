@@ -1149,76 +1149,76 @@
 <p>Instruções práticas para setup e workflow para desenvolvimento do Morpheus Env.</p>
 <hr />
 <h2 id="setup-inicial">Setup Inicial</h2>
-<pre><code class="language-bash"># 1. Clonar
-git clone https://github.com/eukauacavalcante/morpheus_env.git
-cd morpheus_env
+<div class="highlight"><pre><span></span><code><span class="c1"># 1. Clonar</span>
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/eukauacavalcante/morpheus_env.git
+<span class="nb">cd</span><span class="w"> </span>morpheus_env
 
-# 2. Ambiente virtual
-python -m venv venv
-source venv/bin/activate  # Linux/macOS
-# ou
-venv\Scripts\activate  # Windows
+<span class="c1"># 2. Ambiente virtual</span>
+python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>venv
+<span class="nb">source</span><span class="w"> </span>venv/bin/activate<span class="w">  </span><span class="c1"># Linux/macOS</span>
+<span class="c1"># ou</span>
+venv<span class="se">\S</span>cripts<span class="se">\a</span>ctivate<span class="w">  </span><span class="c1"># Windows</span>
 
-# 3. Dependências
-pip install -r requirements.txt
-pip install -r requirements_dev.txt
+<span class="c1"># 3. Dependências</span>
+pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements_dev.txt
 
-# 4. Configuração
-cp .env.example .env
-# Edite .env: DEBUG=True, EMAIL_MODE=False, AI_MODE=False
+<span class="c1"># 4. Configuração</span>
+cp<span class="w"> </span>.env.example<span class="w"> </span>.env
+<span class="c1"># Edite .env: DEBUG=True, EMAIL_MODE=False, AI_MODE=False</span>
 
-# 5. Banco de dados
-python manage.py migrate
-python manage.py createsuperuser
+<span class="c1"># 5. Banco de dados</span>
+python<span class="w"> </span>manage.py<span class="w"> </span>migrate
+python<span class="w"> </span>manage.py<span class="w"> </span>createsuperuser
 
-# 6. Servidor
-python manage.py runserver
-</code></pre>
+<span class="c1"># 6. Servidor</span>
+python<span class="w"> </span>manage.py<span class="w"> </span>runserver
+</code></pre></div>
 <p>Acesse: <code>http://localhost:8000</code></p>
 <hr />
 <h2 id="workflow-com-git">Workflow com Git</h2>
 <h3 id="criar-branch">Criar Branch</h3>
-<pre><code class="language-bash">git checkout -b feature/nome-da-feature
-# ou
-git checkout -b fix/nome-do-bug
-</code></pre>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>feature/nome-da-feature
+<span class="c1"># ou</span>
+git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>fix/nome-do-bug
+</code></pre></div>
 <h3 id="fazer-alteracoes">Fazer Alterações</h3>
-<pre><code class="language-bash"># Editar arquivos
-nano tools/views.py
+<div class="highlight"><pre><span></span><code><span class="c1"># Editar arquivos</span>
+nano<span class="w"> </span>tools/views.py
 
-# Testar localmente
-python manage.py runserver
+<span class="c1"># Testar localmente</span>
+python<span class="w"> </span>manage.py<span class="w"> </span>runserver
 
-# Fazer commit com mensagem clara
-git add .
-git commit -m &quot;feat: Descrição do que mudou&quot;
-</code></pre>
+<span class="c1"># Fazer commit com mensagem clara</span>
+git<span class="w"> </span>add<span class="w"> </span>.
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;feat: Descrição do que mudou&quot;</span>
+</code></pre></div>
 <h3 id="submeter-pr">Submeter PR</h3>
-<pre><code class="language-bash">git push origin feature/nome-da-feature
-</code></pre>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>feature/nome-da-feature
+</code></pre></div>
 <p>No GitHub: criar Pull Request para branch <code>develop</code> (não <code>main</code>).</p>
 <hr />
 <h2 id="debugging">Debugging</h2>
 <h3 id="django-shell">Django Shell</h3>
-<pre><code class="language-bash">python manage.py shell
-</code></pre>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>manage.py<span class="w"> </span>shell
+</code></pre></div>
 <p>Dentro do shell:</p>
-<pre><code class="language-python">from django.contrib.auth.models import User
-from tools.services import system_metrics
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">django.contrib.auth.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">User</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tools.services</span><span class="w"> </span><span class="kn">import</span> <span class="n">system_metrics</span>
 
-# Testar coleta de métricas
-metrics = system_metrics.get_system_status()
-print(f&quot;CPU: {metrics['cpu_percent']}%&quot;)
+<span class="c1"># Testar coleta de métricas</span>
+<span class="n">metrics</span> <span class="o">=</span> <span class="n">system_metrics</span><span class="o">.</span><span class="n">get_system_status</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;CPU: </span><span class="si">{</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;cpu_percent&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
 
-# Testar queries
-user = User.objects.get(username='joao')
-print(user.email)
-</code></pre>
+<span class="c1"># Testar queries</span>
+<span class="n">user</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="s1">&#39;joao&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">user</span><span class="o">.</span><span class="n">email</span><span class="p">)</span>
+</code></pre></div>
 <h3 id="print-debugging">Print Debugging</h3>
-<pre><code class="language-python"># Em views ou services
-print(f&quot;CPU: {cpu_percent}&quot;)
-print(f&quot;User: {request.user.username}&quot;)
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1"># Em views ou services</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;CPU: </span><span class="si">{</span><span class="n">cpu_percent</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;User: </span><span class="si">{</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">username</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
 <p>Aparece no terminal do servidor.</p>
 <h3 id="browser-devtools">Browser DevTools</h3>
 <p>Abra F12 para:</p>
@@ -1229,122 +1229,122 @@ print(f&quot;User: {request.user.username}&quot;)
 </ul>
 <hr />
 <h2 id="testes">Testes</h2>
-<pre><code class="language-bash"># Todos os testes
-python manage.py test
+<div class="highlight"><pre><span></span><code><span class="c1"># Todos os testes</span>
+python<span class="w"> </span>manage.py<span class="w"> </span><span class="nb">test</span>
 
-# App específica
-python manage.py test users
+<span class="c1"># App específica</span>
+python<span class="w"> </span>manage.py<span class="w"> </span><span class="nb">test</span><span class="w"> </span>users
 
-# Teste específico
-python manage.py test users.tests.UserTests.test_user_created
+<span class="c1"># Teste específico</span>
+python<span class="w"> </span>manage.py<span class="w"> </span><span class="nb">test</span><span class="w"> </span>users.tests.UserTests.test_user_created
 
-# Com verbosity
-python manage.py test --verbosity=2
-</code></pre>
+<span class="c1"># Com verbosity</span>
+python<span class="w"> </span>manage.py<span class="w"> </span><span class="nb">test</span><span class="w"> </span>--verbosity<span class="o">=</span><span class="m">2</span>
+</code></pre></div>
 <h3 id="escrever-testes">Escrever Testes</h3>
-<pre><code class="language-python"># users/tests.py
-from django.test import TestCase
-from django.contrib.auth.models import User
+<div class="highlight"><pre><span></span><code><span class="c1"># users/tests.py</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">django.test</span><span class="w"> </span><span class="kn">import</span> <span class="n">TestCase</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">django.contrib.auth.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">User</span>
 
-class UserTests(TestCase):
-    def setUp(self):
-        self.user = User.objects.create_user(
-            username='testuser',
-            email='test@example.com',
-            password='testpass123'
-        )
+<span class="k">class</span><span class="w"> </span><span class="nc">UserTests</span><span class="p">(</span><span class="n">TestCase</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">user</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create_user</span><span class="p">(</span>
+            <span class="n">username</span><span class="o">=</span><span class="s1">&#39;testuser&#39;</span><span class="p">,</span>
+            <span class="n">email</span><span class="o">=</span><span class="s1">&#39;test@example.com&#39;</span><span class="p">,</span>
+            <span class="n">password</span><span class="o">=</span><span class="s1">&#39;testpass123&#39;</span>
+        <span class="p">)</span>
 
-    def test_user_created(self):
-        &quot;&quot;&quot;Testa criação de usuário.&quot;&quot;&quot;
-        self.assertEqual(self.user.username, 'testuser')
-        self.assertTrue(self.user.is_active)
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_user_created</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Testa criação de usuário.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">username</span><span class="p">,</span> <span class="s1">&#39;testuser&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">is_active</span><span class="p">)</span>
 
-    def test_password_hashed(self):
-        &quot;&quot;&quot;Testa que senha está com hash.&quot;&quot;&quot;
-        self.assertTrue(self.user.check_password('testpass123'))
-</code></pre>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_password_hashed</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Testa que senha está com hash.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">check_password</span><span class="p">(</span><span class="s1">&#39;testpass123&#39;</span><span class="p">))</span>
+</code></pre></div>
 <hr />
 <h2 id="performance-e-otimizacao">Performance e Otimização</h2>
 <h3 id="n1-queries-problem">N+1 Queries Problem</h3>
-<pre><code class="language-python"># ❌ RUIM - Query extra para cada usuário
-users = User.objects.all()
-for user in users:
-    print(user.profile.bio)
+<div class="highlight"><pre><span></span><code><span class="c1"># ❌ RUIM - Query extra para cada usuário</span>
+<span class="n">users</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">user</span> <span class="ow">in</span> <span class="n">users</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">user</span><span class="o">.</span><span class="n">profile</span><span class="o">.</span><span class="n">bio</span><span class="p">)</span>
 
-# ✅ BOM - Uma query
-users = User.objects.select_related('profile')
-</code></pre>
+<span class="c1"># ✅ BOM - Uma query</span>
+<span class="n">users</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">select_related</span><span class="p">(</span><span class="s1">&#39;profile&#39;</span><span class="p">)</span>
+</code></pre></div>
 <h3 id="verificar-queries-em-debug">Verificar Queries em Debug</h3>
-<pre><code class="language-python">from django.db import connection
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">django.db</span><span class="w"> </span><span class="kn">import</span> <span class="n">connection</span>
 
-users = User.objects.all()
-print(f&quot;Total queries: {len(connection.queries)}&quot;)
-for q in connection.queries:
-    print(q['sql'])
-</code></pre>
+<span class="n">users</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total queries: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">connection</span><span class="o">.</span><span class="n">queries</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">connection</span><span class="o">.</span><span class="n">queries</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">q</span><span class="p">[</span><span class="s1">&#39;sql&#39;</span><span class="p">])</span>
+</code></pre></div>
 <hr />
 <h2 id="compilar-css">Compilar CSS</h2>
 <p>Se modificar Tailwind em <code>static/css/input.css</code>:</p>
-<pre><code class="language-bash">bash build-tailwind.sh
-</code></pre>
+<div class="highlight"><pre><span></span><code>bash<span class="w"> </span>build-tailwind.sh
+</code></pre></div>
 <p>Ou manualmente:</p>
-<pre><code class="language-bash">source venv/bin/activate
-venv/bin/tailwind -i ./static/css/input.css \
-                  -o ./static/css/styles.css \
-                  --minify
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nb">source</span><span class="w"> </span>venv/bin/activate
+venv/bin/tailwind<span class="w"> </span>-i<span class="w"> </span>./static/css/input.css<span class="w"> </span><span class="se">\</span>
+<span class="w">                  </span>-o<span class="w"> </span>./static/css/styles.css<span class="w"> </span><span class="se">\</span>
+<span class="w">                  </span>--minify
+</code></pre></div>
 <hr />
 <h2 id="linting">Linting</h2>
 <p>Verificar qualidade de código:</p>
-<pre><code class="language-bash"># flake8
-flake8 .
-flake8 tools/views.py
+<div class="highlight"><pre><span></span><code><span class="c1"># flake8</span>
+flake8<span class="w"> </span>.
+flake8<span class="w"> </span>tools/views.py
 
-# isort (ordernar imports)
-isort .
+<span class="c1"># isort (ordernar imports)</span>
+isort<span class="w"> </span>.
 
-# Verificar sem fazer alterações
-isort . --check-only
-</code></pre>
+<span class="c1"># Verificar sem fazer alterações</span>
+isort<span class="w"> </span>.<span class="w"> </span>--check-only
+</code></pre></div>
 <hr />
 <h2 id="ambiente-de-variaveis">Ambiente de Variáveis</h2>
 <h3 id="desenvolvimento">Desenvolvimento</h3>
-<pre><code class="language-env">DEBUG=True
+<div class="highlight"><pre><span></span><code>DEBUG=True
 ALLOWED_HOSTS=localhost,127.0.0.1
 EMAIL_MODE=False
 AI_MODE=False
 SECRET_KEY=desenvolvimento-key
-</code></pre>
+</code></pre></div>
 <h3 id="producao">Produção</h3>
-<pre><code class="language-env">DEBUG=False
+<div class="highlight"><pre><span></span><code>DEBUG=False
 ALLOWED_HOSTS=example.com,www.example.com
 EMAIL_MODE=True
 AI_MODE=True
 SECRET_KEY=super-secreto-muito-seguro
-</code></pre>
+</code></pre></div>
 <hr />
 <h2 id="troubleshooting">Troubleshooting</h2>
 <h3 id="port-8000-em-uso">Port 8000 em uso</h3>
-<pre><code class="language-bash"># Usar porta diferente
-python manage.py runserver 8001
+<div class="highlight"><pre><span></span><code><span class="c1"># Usar porta diferente</span>
+python<span class="w"> </span>manage.py<span class="w"> </span>runserver<span class="w"> </span><span class="m">8001</span>
 
-# Ou matar processo
-lsof -i :8000
-kill -9 &lt;PID&gt;
-</code></pre>
+<span class="c1"># Ou matar processo</span>
+lsof<span class="w"> </span>-i<span class="w"> </span>:8000
+<span class="nb">kill</span><span class="w"> </span>-9<span class="w"> </span>&lt;PID&gt;
+</code></pre></div>
 <h3 id="database-locked">Database locked</h3>
-<pre><code class="language-bash"># Deletar e recriar
-rm db.sqlite3
-python manage.py migrate
-python manage.py createsuperuser
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1"># Deletar e recriar</span>
+rm<span class="w"> </span>db.sqlite3
+python<span class="w"> </span>manage.py<span class="w"> </span>migrate
+python<span class="w"> </span>manage.py<span class="w"> </span>createsuperuser
+</code></pre></div>
 <h3 id="modulenotfounderror">ModuleNotFoundError</h3>
-<pre><code class="language-bash"># Verificar se venv está ativado
-which python  # Deve mostrar venv/bin/python
+<div class="highlight"><pre><span></span><code><span class="c1"># Verificar se venv está ativado</span>
+which<span class="w"> </span>python<span class="w">  </span><span class="c1"># Deve mostrar venv/bin/python</span>
 
-# Reinstalar dependências
-pip install -r requirements.txt
-</code></pre>
+<span class="c1"># Reinstalar dependências</span>
+pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+</code></pre></div>
 <hr />
 <h2 id="proximas-etapas">Próximas Etapas</h2>
 <ul>

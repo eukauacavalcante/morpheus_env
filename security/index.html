@@ -990,93 +990,93 @@
 <h3 id="csrf-cross-site-request-forgery">CSRF (Cross-Site Request Forgery)</h3>
 <p>Todos os formulários incluem token CSRF automaticamente.</p>
 <p><strong>Em templates</strong>:</p>
-<pre><code class="language-html">&lt;form method=&quot;post&quot;&gt;
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">form</span> <span class="na">method</span><span class="o">=</span><span class="s">&quot;post&quot;</span><span class="p">&gt;</span>
     {% csrf_token %}
-    &lt;input type=&quot;text&quot; name=&quot;field&quot;&gt;
-&lt;/form&gt;
-</code></pre>
+    <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;field&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+</code></pre></div>
 <p>Django valida automaticamente na submissão.</p>
 <p><strong>Em AJAX</strong>:</p>
-<pre><code class="language-javascript">const token = document.querySelector('[name=csrfmiddlewaretoken]').value;
-fetch('/api/endpoint/', {
-    method: 'POST',
-    headers: {
-        'X-CSRFToken': token,
-        'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({...})
-});
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;[name=csrfmiddlewaretoken]&#39;</span><span class="p">).</span><span class="nx">value</span><span class="p">;</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">&#39;/api/endpoint/&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;POST&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">headers</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="s1">&#39;X-CSRFToken&#39;</span><span class="o">:</span><span class="w"> </span><span class="nx">token</span><span class="p">,</span>
+<span class="w">        </span><span class="s1">&#39;Content-Type&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;application/json&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({...})</span>
+<span class="p">});</span>
+</code></pre></div>
 <hr />
 <h3 id="xss-cross-site-scripting">XSS (Cross-Site Scripting)</h3>
 <p>Templates escapam HTML por padrão:</p>
-<pre><code class="language-html">&lt;!-- ✅ Seguro (Django escapa automaticamente) --&gt;
-&lt;p&gt;{{ user_input }}&lt;/p&gt;
+<div class="highlight"><pre><span></span><code><span class="cm">&lt;!-- ✅ Seguro (Django escapa automaticamente) --&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>{{ user_input }}<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
 
-&lt;!-- Entrada: &lt;script&gt;alert('XSS')&lt;/script&gt; --&gt;
-&lt;!-- Output: &lt;p&gt;&amp;lt;script&amp;gt;alert('XSS')&amp;lt;/script&amp;gt;&lt;/p&gt; --&gt;
+<span class="cm">&lt;!-- Entrada: &lt;script&gt;alert(&#39;XSS&#39;)&lt;/script&gt; --&gt;</span>
+<span class="cm">&lt;!-- Output: &lt;p&gt;&amp;lt;script&amp;gt;alert(&#39;XSS&#39;)&amp;lt;/script&amp;gt;&lt;/p&gt; --&gt;</span>
 
-&lt;!-- ❌ NUNCA usar |safe com dados de usuário --&gt;
-&lt;p&gt;{{ user_input|safe }}&lt;/p&gt;
-</code></pre>
+<span class="cm">&lt;!-- ❌ NUNCA usar |safe com dados de usuário --&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>{{ user_input|safe }}<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</code></pre></div>
 <hr />
 <h3 id="sql-injection">SQL Injection</h3>
 <p>Sempre use Django ORM:</p>
-<pre><code class="language-python"># ✅ Seguro
-user = User.objects.filter(username=username).first()
+<div class="highlight"><pre><span></span><code><span class="c1"># ✅ Seguro</span>
+<span class="n">user</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="n">username</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
 
-# ❌ NUNCA fazer isto
-user = User.objects.raw(f&quot;SELECT * FROM auth_user WHERE username='{username}'&quot;)
-</code></pre>
+<span class="c1"># ❌ NUNCA fazer isto</span>
+<span class="n">user</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">raw</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;SELECT * FROM auth_user WHERE username=&#39;</span><span class="si">{</span><span class="n">username</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+</code></pre></div>
 <hr />
 <h3 id="validacao-de-email">Validação de Email</h3>
 <p>O Morpheus bloqueia emails temporários/descartáveis.</p>
 <p><strong>Arquivo</strong>: <code>users/validators/disposable_email_blocklist.conf</code></p>
 <p>Domínios bloqueados (um por linha):</p>
-<pre><code>tempmail.com
+<div class="highlight"><pre><span></span><code>tempmail.com
 guerrillamail.com
 10minutemail.com
-</code></pre>
+</code></pre></div>
 <p><strong>Validação no registro</strong> (<code>users/forms.py</code>):</p>
-<pre><code class="language-python">def clean_email(self):
-    email = self.cleaned_data.get('email')
-    domain = email.split('@')[1].lower()
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">clean_email</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">email</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cleaned_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;email&#39;</span><span class="p">)</span>
+    <span class="n">domain</span> <span class="o">=</span> <span class="n">email</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;@&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
 
-    with importlib.resources.open_text(
-        'users.validators',
-        'disposable_email_blocklist.conf'
-    ) as f:
-        blocklist = {line.strip().lower() for line in f}
+    <span class="k">with</span> <span class="n">importlib</span><span class="o">.</span><span class="n">resources</span><span class="o">.</span><span class="n">open_text</span><span class="p">(</span>
+        <span class="s1">&#39;users.validators&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;disposable_email_blocklist.conf&#39;</span>
+    <span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">blocklist</span> <span class="o">=</span> <span class="p">{</span><span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">}</span>
 
-    if domain in blocklist:
-        raise ValidationError('E-mails temporários não são permitidos.')
+    <span class="k">if</span> <span class="n">domain</span> <span class="ow">in</span> <span class="n">blocklist</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">(</span><span class="s1">&#39;E-mails temporários não são permitidos.&#39;</span><span class="p">)</span>
 
-    return email
-</code></pre>
+    <span class="k">return</span> <span class="n">email</span>
+</code></pre></div>
 <hr />
 <h3 id="senhas-com-hash-seguro">Senhas com Hash Seguro</h3>
 <p>Django usa PBKDF2 com 260.000 iterações por padrão.</p>
 <p><strong>Criar usuário</strong>:</p>
-<pre><code class="language-python">user = User.objects.create_user(
-    username='joao',
-    email='joao@example.com',
-    password='senha123'
-)
-# Senha é hasheada automaticamente
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">user</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create_user</span><span class="p">(</span>
+    <span class="n">username</span><span class="o">=</span><span class="s1">&#39;joao&#39;</span><span class="p">,</span>
+    <span class="n">email</span><span class="o">=</span><span class="s1">&#39;joao@example.com&#39;</span><span class="p">,</span>
+    <span class="n">password</span><span class="o">=</span><span class="s1">&#39;senha123&#39;</span>
+<span class="p">)</span>
+<span class="c1"># Senha é hasheada automaticamente</span>
+</code></pre></div>
 <p><strong>Verificar senha</strong>:</p>
-<pre><code class="language-python">user.check_password('senha123')  # True
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">user</span><span class="o">.</span><span class="n">check_password</span><span class="p">(</span><span class="s1">&#39;senha123&#39;</span><span class="p">)</span>  <span class="c1"># True</span>
+</code></pre></div>
 <p><strong>Nunca armazene em texto plano.</strong></p>
 <hr />
 <h3 id="rate-limiting">Rate Limiting</h3>
 <p>Protege endpoints contra abuso.</p>
 <p><strong>Configuração</strong> (<code>tools/views.py</code>):</p>
-<pre><code class="language-python">@method_decorator(ratelimit(key='user', rate='20/m', method='GET'), name='dispatch')
-class SystemAnalysisAPIView(LoginRequiredMixin, generic.View):
-    # 20 requisições/minuto por usuário
-    pass
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nd">@method_decorator</span><span class="p">(</span><span class="n">ratelimit</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="s1">&#39;user&#39;</span><span class="p">,</span> <span class="n">rate</span><span class="o">=</span><span class="s1">&#39;20/m&#39;</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;GET&#39;</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;dispatch&#39;</span><span class="p">)</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">SystemAnalysisAPIView</span><span class="p">(</span><span class="n">LoginRequiredMixin</span><span class="p">,</span> <span class="n">generic</span><span class="o">.</span><span class="n">View</span><span class="p">):</span>
+    <span class="c1"># 20 requisições/minuto por usuário</span>
+    <span class="k">pass</span>
+</code></pre></div>
 <p><strong>Limites atuais</strong>:</p>
 <ul>
 <li>Métricas do sistema: 20/minuto (CPU-intensive)</li>
@@ -1084,34 +1084,34 @@ class SystemAnalysisAPIView(LoginRequiredMixin, generic.View):
 <li>Conversor: Sem limite (operação leve)</li>
 </ul>
 <p><strong>Response ao exceder limite</strong>:</p>
-<pre><code>HTTP 429 Too Many Requests
-</code></pre>
+<div class="highlight"><pre><span></span><code>HTTP 429 Too Many Requests
+</code></pre></div>
 <hr />
 <h3 id="protecao-de-sessao">Proteção de Sessão</h3>
 <p>Configurações em <code>core/settings.py</code>:</p>
-<pre><code class="language-python">SESSION_COOKIE_SECURE = False  # True em produção (HTTPS)
-SESSION_COOKIE_HTTPONLY = True  # Não acessível via JS
-SESSION_EXPIRE_AT_BROWSER_CLOSE = True  # Expira ao fechar navegador
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">SESSION_COOKIE_SECURE</span> <span class="o">=</span> <span class="kc">False</span>  <span class="c1"># True em produção (HTTPS)</span>
+<span class="n">SESSION_COOKIE_HTTPONLY</span> <span class="o">=</span> <span class="kc">True</span>  <span class="c1"># Não acessível via JS</span>
+<span class="n">SESSION_EXPIRE_AT_BROWSER_CLOSE</span> <span class="o">=</span> <span class="kc">True</span>  <span class="c1"># Expira ao fechar navegador</span>
+</code></pre></div>
 <hr />
 <h2 id="variaveis-sensiveis">Variáveis Sensíveis</h2>
 <p>Nunca armazene secrets no código:</p>
 <p><strong>❌ NUNCA fazer isto</strong>:</p>
-<pre><code class="language-python">SECRET_KEY = 'django-insecure-abc123xyz789'
-API_KEY = 'gsk_abc123xyz789'
-EMAIL_PASSWORD = 'senha123'
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">SECRET_KEY</span> <span class="o">=</span> <span class="s1">&#39;django-insecure-abc123xyz789&#39;</span>
+<span class="n">API_KEY</span> <span class="o">=</span> <span class="s1">&#39;gsk_abc123xyz789&#39;</span>
+<span class="n">EMAIL_PASSWORD</span> <span class="o">=</span> <span class="s1">&#39;senha123&#39;</span>
+</code></pre></div>
 <p><strong>✅ Usar .env</strong>:</p>
-<pre><code class="language-env">SECRET_KEY=django-insecure-abc123xyz789
+<div class="highlight"><pre><span></span><code>SECRET_KEY=django-insecure-abc123xyz789
 API_KEY=gsk_abc123xyz789
 EMAIL_HOST_PASSWORD=senha123
-</code></pre>
+</code></pre></div>
 <p><strong>Carregamento seguro</strong>:</p>
-<pre><code class="language-python">from decouple import config
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">decouple</span><span class="w"> </span><span class="kn">import</span> <span class="n">config</span>
 
-SECRET_KEY = config('SECRET_KEY')
-API_KEY = config('API_KEY')
-</code></pre>
+<span class="n">SECRET_KEY</span> <span class="o">=</span> <span class="n">config</span><span class="p">(</span><span class="s1">&#39;SECRET_KEY&#39;</span><span class="p">)</span>
+<span class="n">API_KEY</span> <span class="o">=</span> <span class="n">config</span><span class="p">(</span><span class="s1">&#39;API_KEY&#39;</span><span class="p">)</span>
+</code></pre></div>
 <hr />
 <h2 id="checklist-de-seguranca">Checklist de Segurança</h2>
 <p>Antes de fazer deploy:</p>
@@ -1135,15 +1135,15 @@ API_KEY = config('API_KEY')
 <h3 id="forca-bruta-em-login">Força Bruta em Login</h3>
 <p><strong>Status</strong>: Não implementado</p>
 <p><strong>Solução</strong>: Instalar <code>django-axes</code></p>
-<pre><code class="language-bash">pip install django-axes
-</code></pre>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>django-axes
+</code></pre></div>
 <p>Configure em <code>settings.py</code>:</p>
-<pre><code class="language-python">INSTALLED_APPS += ['axes']
-MIDDLEWARE += ['axes.middleware.AxesMiddleware']
+<div class="highlight"><pre><span></span><code><span class="n">INSTALLED_APPS</span> <span class="o">+=</span> <span class="p">[</span><span class="s1">&#39;axes&#39;</span><span class="p">]</span>
+<span class="n">MIDDLEWARE</span> <span class="o">+=</span> <span class="p">[</span><span class="s1">&#39;axes.middleware.AxesMiddleware&#39;</span><span class="p">]</span>
 
-AXES_FAILURE_LIMIT = 5
-AXES_COOLOFF_TIME = timedelta(minutes=30)
-</code></pre>
+<span class="n">AXES_FAILURE_LIMIT</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">AXES_COOLOFF_TIME</span> <span class="o">=</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">minutes</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+</code></pre></div>
 <hr />
 <h3 id="rate-limiting-sem-cache">Rate Limiting sem Cache</h3>
 <p><strong>Status</strong>: Implementado</p>

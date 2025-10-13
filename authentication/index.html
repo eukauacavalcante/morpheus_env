@@ -875,8 +875,8 @@
 <li><strong>Email</strong>: Bloqueio de domínios temporários (blocklist em <code>users/validators/disposable_email_blocklist.conf</code>)</li>
 <li><strong>Senha</strong>: Validadores built-in do Django (8 caracteres mín, força)</li>
 </ol>
-<p><strong>Fluxo</strong>:</p>
-<pre><code>POST /accounts/registrar/
+<p><strong>Fluxo</strong>:
+<div class="highlight"><pre><span></span><code>POST /accounts/registrar/
     ↓
 CustomUserCreationForm valida
     ├─ clean_username() - verifica duplicação e formato
@@ -888,96 +888,96 @@ User criado no banco
 Signal post_save dispara
     ↓
 send_new_user_email() (se EMAIL_MODE=True)
-</code></pre>
+</code></pre></div></p>
 <p><strong>Bloqueio de Emails Temporários</strong>:</p>
-<p>O arquivo <code>users/validators/disposable_email_blocklist.conf</code> contém domínios bloqueados:</p>
-<pre><code>tempmail.com
+<p>O arquivo <code>users/validators/disposable_email_blocklist.conf</code> contém domínios bloqueados:
+<div class="highlight"><pre><span></span><code>tempmail.com
 guerrillamail.com
 10minutemail.com
-</code></pre>
+</code></pre></div></p>
 <p>Adicione novos domínios conforme necessário.</p>
 <hr />
 <h3 id="login">Login</h3>
 <p>Usa <code>LoginView</code> padrão do Django com proteção CSRF.</p>
-<p><strong>Request</strong>:</p>
-<pre><code>POST /accounts/login/
+<p><strong>Request</strong>:
+<div class="highlight"><pre><span></span><code>POST /accounts/login/
 username=joao&amp;password=senha123&amp;csrfmiddlewaretoken=abc123
-</code></pre>
+</code></pre></div></p>
 <p><strong>Response</strong>: Sessão criada (cookie HttpOnly <code>sessionid</code>)</p>
 <hr />
 <h3 id="logout">Logout</h3>
 <p>Usa <code>LogoutView</code> padrão do Django. Remove sessão do banco.</p>
-<p><strong>Request</strong>:</p>
-<pre><code>POST /accounts/logout/
+<p><strong>Request</strong>:
+<div class="highlight"><pre><span></span><code>POST /accounts/logout/
 csrfmiddlewaretoken=abc123
-</code></pre>
+</code></pre></div></p>
 <hr />
 <h2 id="protecao-de-acesso-a-views">Proteção de Acesso a Views</h2>
 <h3 id="loginrequiredmixin">LoginRequiredMixin</h3>
 <p>Restringe acesso apenas para usuários autenticados.</p>
 <p><strong>Implementação no Morpheus</strong>:</p>
-<pre><code class="language-python"># core/views.py
-class HomeView(LoginRequiredMixin, generic.TemplateView):
-    template_name = 'index.html'
+<div class="highlight"><pre><span></span><code><span class="c1"># core/views.py</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">HomeView</span><span class="p">(</span><span class="n">LoginRequiredMixin</span><span class="p">,</span> <span class="n">generic</span><span class="o">.</span><span class="n">TemplateView</span><span class="p">):</span>
+    <span class="n">template_name</span> <span class="o">=</span> <span class="s1">&#39;index.html&#39;</span>
 
-# tools/views.py
-class SystemAnalysisView(LoginRequiredMixin, generic.TemplateView):
-    template_name = 'system_analysis.html'
+<span class="c1"># tools/views.py</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">SystemAnalysisView</span><span class="p">(</span><span class="n">LoginRequiredMixin</span><span class="p">,</span> <span class="n">generic</span><span class="o">.</span><span class="n">TemplateView</span><span class="p">):</span>
+    <span class="n">template_name</span> <span class="o">=</span> <span class="s1">&#39;system_analysis.html&#39;</span>
 
-# users/views.py
-class TermsOfUseView(LoginRequiredMixin, generic.TemplateView):
-    template_name = 'terms_of_use.html'
-</code></pre>
+<span class="c1"># users/views.py</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">TermsOfUseView</span><span class="p">(</span><span class="n">LoginRequiredMixin</span><span class="p">,</span> <span class="n">generic</span><span class="o">.</span><span class="n">TemplateView</span><span class="p">):</span>
+    <span class="n">template_name</span> <span class="o">=</span> <span class="s1">&#39;terms_of_use.html&#39;</span>
+</code></pre></div>
 <p>Se não autenticado: Redirect para <code>/accounts/login/?next=/original-url/</code></p>
 <hr />
 <h3 id="acessar-usuario-em-views">Acessar Usuário em Views</h3>
-<pre><code class="language-python">def my_view(request):
-    if request.user.is_authenticated:
-        username = request.user.username
-        email = request.user.email
-</code></pre>
-<p>Em templates:</p>
-<pre><code class="language-html">{% if user.is_authenticated %}
-    &lt;p&gt;Olá, {{ user.first_name }}!&lt;/p&gt;
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">my_view</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">is_authenticated</span><span class="p">:</span>
+        <span class="n">username</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">username</span>
+        <span class="n">email</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">email</span>
+</code></pre></div>
+<p>Em templates:
+<div class="highlight"><pre><span></span><code>{% if user.is_authenticated %}
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Olá, {{ user.first_name }}!<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
 {% endif %}
-</code></pre>
+</code></pre></div></p>
 <hr />
 <h2 id="sinais-de-autenticacao">Sinais de Autenticação</h2>
 <p>Quando um novo usuário é criado, um signal dispara automaticamente:</p>
-<pre><code class="language-python"># users/signals.py
-@receiver(post_save, sender=User)
-def send_email_user(sender, instance, created, **kwargs):
-    if created:  # Apenas para novo usuário
-        send_new_user_email(instance)
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1"># users/signals.py</span>
+<span class="nd">@receiver</span><span class="p">(</span><span class="n">post_save</span><span class="p">,</span> <span class="n">sender</span><span class="o">=</span><span class="n">User</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">send_email_user</span><span class="p">(</span><span class="n">sender</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="n">created</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">created</span><span class="p">:</span>  <span class="c1"># Apenas para novo usuário</span>
+        <span class="n">send_new_user_email</span><span class="p">(</span><span class="n">instance</span><span class="p">)</span>
+</code></pre></div>
 <p>Este sinal envia email de boas-vindas (se <code>EMAIL_MODE=True</code>).</p>
-<p><strong>Registro do signal</strong> (<code>users/apps.py</code>):</p>
-<pre><code class="language-python">def ready(self):
-    import users.signals
-</code></pre>
+<p><strong>Registro do signal</strong> (<code>users/apps.py</code>):
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">ready</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">users.signals</span>
+</code></pre></div></p>
 <hr />
 <h2 id="modelo-de-dados-de-usuario">Modelo de Dados de Usuário</h2>
 <p>O Django fornece <code>User</code> padrão. O Morpheus adiciona:</p>
 <p><strong>TermsOfUseAndPrivacyPolicy</strong> (<code>users/models.py</code>):</p>
-<pre><code class="language-python">class TermsOfUseAndPrivacyPolicy(models.Model):
-    content = models.TextField()
-    updated_at = models.DateTimeField(auto_now=True)
-    is_active = models.BooleanField(default=True)
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">TermsOfUseAndPrivacyPolicy</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">content</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">()</span>
+    <span class="n">updated_at</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">is_active</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">BooleanField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
 <p>Permite histórico de termos sem redeploy.</p>
 <hr />
 <h2 id="rate-limiting-em-login">Rate Limiting em Login</h2>
 <p><strong>Status</strong>: Não implementado</p>
 <p><strong>Recomendação</strong>: Instalar <code>django-axes</code> para prevenir força bruta</p>
-<pre><code class="language-bash">pip install django-axes
-</code></pre>
-<p>Configurar em <code>settings.py</code>:</p>
-<pre><code class="language-python">INSTALLED_APPS += ['axes']
-MIDDLEWARE += ['axes.middleware.AxesMiddleware']
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>django-axes
+</code></pre></div>
+<p>Configurar em <code>settings.py</code>:
+<div class="highlight"><pre><span></span><code><span class="n">INSTALLED_APPS</span> <span class="o">+=</span> <span class="p">[</span><span class="s1">&#39;axes&#39;</span><span class="p">]</span>
+<span class="n">MIDDLEWARE</span> <span class="o">+=</span> <span class="p">[</span><span class="s1">&#39;axes.middleware.AxesMiddleware&#39;</span><span class="p">]</span>
 
-AXES_FAILURE_LIMIT = 5
-AXES_COOLOFF_TIME = timedelta(minutes=30)
-</code></pre>
+<span class="n">AXES_FAILURE_LIMIT</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">AXES_COOLOFF_TIME</span> <span class="o">=</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">minutes</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+</code></pre></div></p>
 <hr />
 <h2 id="boas-praticas">Boas Práticas</h2>
 <ul>

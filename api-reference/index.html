@@ -893,17 +893,17 @@
 <p>Retorna métricas atuais do sistema.</p>
 <p><strong>Rate Limit</strong>: 20 requisições/minuto</p>
 <p><strong>Response (200)</strong>:</p>
-<pre><code class="language-json">{
-  &quot;data&quot;: {
-    &quot;cpu_percent&quot;: 45.2,
-    &quot;ram_percent&quot;: 62.5,
-    &quot;ram_total&quot;: 16.0,
-    &quot;ram_used&quot;: 10.0,
-    &quot;memory_used&quot;: 450.5,
-    &quot;memory_total&quot;: 1000.0
-  }
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;cpu_percent&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">45.2</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;ram_percent&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">62.5</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;ram_total&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">16.0</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;ram_used&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">10.0</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;memory_used&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">450.5</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;memory_total&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1000.0</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 <p><strong>Campos</strong>:</p>
 <ul>
 <li><code>cpu_percent</code> (float): 0-100</li>
@@ -914,27 +914,27 @@
 <li><code>memory_total</code> (float): GB (disco)</li>
 </ul>
 <p><strong>Exemplo</strong>:</p>
-<pre><code class="language-bash">curl -b &quot;sessionid=abc123&quot; \
-  http://localhost:8000/sistema/monitoramento/v1/metrics-api
-</code></pre>
-<pre><code class="language-javascript">const response = await fetch('/sistema/monitoramento/v1/metrics-api');
-const data = await response.json();
-console.log(`CPU: ${data.data.cpu_percent}%`);
-</code></pre>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-b<span class="w"> </span><span class="s2">&quot;sessionid=abc123&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>http://localhost:8000/sistema/monitoramento/v1/metrics-api
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="s1">&#39;/sistema/monitoramento/v1/metrics-api&#39;</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`CPU: </span><span class="si">${</span><span class="nx">data</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">cpu_percent</span><span class="si">}</span><span class="sb">%`</span><span class="p">);</span>
+</code></pre></div>
 <hr />
 <h3 id="get-sistemamonitoramentov1ai-api">GET /sistema/monitoramento/v1/ai-api</h3>
 <p>Análise inteligente das métricas.</p>
 <p><strong>Rate Limit</strong>: 10 requisições/minuto</p>
 <p><strong>Response (200) - Com IA ativada</strong>:</p>
-<pre><code class="language-json">{
-  &quot;ai&quot;: &quot;O sistema está operando normalmente. CPU em 45%, RAM em 62% com 10GB de 16GB em uso...&quot;
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;ai&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;O sistema está operando normalmente. CPU em 45%, RAM em 62% com 10GB de 16GB em uso...&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
 <p><strong>Response (200) - Sem IA</strong>:</p>
-<pre><code class="language-json">{
-  &quot;ai&quot;: &quot;&lt;p class=\&quot;text-xl text-red-500\&quot;&gt;Análise por IA indisponível no momento :(&lt;br&gt;...&lt;/p&gt;&quot;
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;ai&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;p class=\&quot;text-xl text-red-500\&quot;&gt;Análise por IA indisponível no momento :(&lt;br&gt;...&lt;/p&gt;&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
 <p><strong>Notas</strong>:
 - IA disponível se <code>AI_MODE=True</code> e API key válida
 - Pode levar 2-5 segundos</p>
@@ -956,24 +956,24 @@ console.log(`CPU: ${data.data.cpu_percent}%`);
 <li><code>dec2oct</code> - Decimal → Octal</li>
 </ul>
 <p><strong>Response (200)</strong>:</p>
-<pre><code class="language-json">{
-  &quot;result&quot;: 10
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;result&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span>
+<span class="p">}</span>
+</code></pre></div>
 <p><strong>Response (400)</strong>:</p>
-<pre><code class="language-json">{
-  &quot;result&quot;: &quot;Error ao calcular&quot;
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;result&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Error ao calcular&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
 <p><strong>Exemplos</strong>:</p>
-<pre><code class="language-bash"># Binário para Decimal
-curl &quot;http://localhost:8000/sistema/conversor/v1/api?type=bin2dec&amp;value=1010&quot;
-# Retorna: 10
+<div class="highlight"><pre><span></span><code><span class="c1"># Binário para Decimal</span>
+curl<span class="w"> </span><span class="s2">&quot;http://localhost:8000/sistema/conversor/v1/api?type=bin2dec&amp;value=1010&quot;</span>
+<span class="c1"># Retorna: 10</span>
 
-# Decimal para Hexadecimal
-curl &quot;http://localhost:8000/sistema/conversor/v1/api?type=dec2hex&amp;value=255&quot;
-# Retorna: FF
-</code></pre>
+<span class="c1"># Decimal para Hexadecimal</span>
+curl<span class="w"> </span><span class="s2">&quot;http://localhost:8000/sistema/conversor/v1/api?type=dec2hex&amp;value=255&quot;</span>
+<span class="c1"># Retorna: FF</span>
+</code></pre></div>
 <hr />
 <h3 id="get-sistemaconversorv1api-operacoes-logicas">GET /sistema/conversor/v1/api (Operações Lógicas)</h3>
 <p>Operações AND, OR, XOR.</p>
@@ -984,10 +984,10 @@ curl &quot;http://localhost:8000/sistema/conversor/v1/api?type=dec2hex&amp;value
 <li><code>value2</code> (string): 0 ou 1</li>
 </ul>
 <p><strong>Response (200)</strong>:</p>
-<pre><code class="language-json">{
-  &quot;result&quot;: 1
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;result&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+<span class="p">}</span>
+</code></pre></div>
 <p><strong>Tabelas de Verdade</strong>:</p>
 <table>
 <thead>
@@ -1031,12 +1031,12 @@ curl &quot;http://localhost:8000/sistema/conversor/v1/api?type=dec2hex&amp;value
 </tbody>
 </table>
 <p><strong>Exemplos</strong>:</p>
-<pre><code class="language-bash">curl &quot;http://localhost:8000/sistema/conversor/v1/api?type=and&amp;value1=1&amp;value2=1&quot;
-# Retorna: 1
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span><span class="s2">&quot;http://localhost:8000/sistema/conversor/v1/api?type=and&amp;value1=1&amp;value2=1&quot;</span>
+<span class="c1"># Retorna: 1</span>
 
-curl &quot;http://localhost:8000/sistema/conversor/v1/api?type=xor&amp;value1=1&amp;value2=0&quot;
-# Retorna: 1
-</code></pre>
+curl<span class="w"> </span><span class="s2">&quot;http://localhost:8000/sistema/conversor/v1/api?type=xor&amp;value1=1&amp;value2=0&quot;</span>
+<span class="c1"># Retorna: 1</span>
+</code></pre></div>
 <hr />
 <h2 id="status-http">Status HTTP</h2>
 <table>
@@ -1072,8 +1072,8 @@ curl &quot;http://localhost:8000/sistema/conversor/v1/api?type=xor&amp;value1=1&
 <hr />
 <h2 id="rate-limiting">Rate Limiting</h2>
 <p>Exceder limite retorna:</p>
-<pre><code>HTTP 429 Too Many Requests
-</code></pre>
+<div class="highlight"><pre><span></span><code>HTTP 429 Too Many Requests
+</code></pre></div>
 <p><strong>Limites atuais</strong>:</p>
 <table>
 <thead>
@@ -1100,50 +1100,50 @@ curl &quot;http://localhost:8000/sistema/conversor/v1/api?type=xor&amp;value1=1&
 <hr />
 <h2 id="exemplos-completos">Exemplos Completos</h2>
 <h3 id="python-requests">Python + Requests</h3>
-<pre><code class="language-python">import requests
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
 
-session = requests.Session()
+<span class="n">session</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span>
 
-# Autenticar
-session.post('http://localhost:8000/accounts/login/', data={
-    'username': 'usuario',
-    'password': 'senha123'
-})
+<span class="c1"># Autenticar</span>
+<span class="n">session</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;http://localhost:8000/accounts/login/&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="p">{</span>
+    <span class="s1">&#39;username&#39;</span><span class="p">:</span> <span class="s1">&#39;usuario&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;password&#39;</span><span class="p">:</span> <span class="s1">&#39;senha123&#39;</span>
+<span class="p">})</span>
 
-# Métricas
-r = session.get('http://localhost:8000/sistema/monitoramento/v1/metrics-api')
-print(f&quot;CPU: {r.json()['data']['cpu_percent']}%&quot;)
+<span class="c1"># Métricas</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;http://localhost:8000/sistema/monitoramento/v1/metrics-api&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;CPU: </span><span class="si">{</span><span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="s1">&#39;cpu_percent&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
 
-# Análise IA
-r = session.get('http://localhost:8000/sistema/monitoramento/v1/ai-api')
-print(f&quot;IA: {r.json()['ai']}&quot;)
+<span class="c1"># Análise IA</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;http://localhost:8000/sistema/monitoramento/v1/ai-api&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;IA: </span><span class="si">{</span><span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s1">&#39;ai&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-# Conversão
-r = session.get('http://localhost:8000/sistema/conversor/v1/api',
-                 params={'type': 'dec2bin', 'value': '255'})
-print(f&quot;255 em binário: {r.json()['result']}&quot;)
-</code></pre>
+<span class="c1"># Conversão</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;http://localhost:8000/sistema/conversor/v1/api&#39;</span><span class="p">,</span>
+                 <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;dec2bin&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="s1">&#39;255&#39;</span><span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;255 em binário: </span><span class="si">{</span><span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s1">&#39;result&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
 <h3 id="javascript-fetch">JavaScript + Fetch</h3>
-<pre><code class="language-javascript">async function getMetrics() {
-    const response = await fetch('/sistema/monitoramento/v1/metrics-api');
-    const data = await response.json();
-    console.log(`CPU: ${data.data.cpu_percent}%`);
-}
+<div class="highlight"><pre><span></span><code><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">getMetrics</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="s1">&#39;/sistema/monitoramento/v1/metrics-api&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`CPU: </span><span class="si">${</span><span class="nx">data</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">cpu_percent</span><span class="si">}</span><span class="sb">%`</span><span class="p">);</span>
+<span class="p">}</span>
 
-async function convertNumber(type, value) {
-    const url = `/sistema/conversor/v1/api?type=${type}&amp;value=${value}`;
-    const response = await fetch(url);
-    const data = await response.json();
-    return data.result;
-}
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">convertNumber</span><span class="p">(</span><span class="nx">type</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`/sistema/conversor/v1/api?type=</span><span class="si">${</span><span class="nx">type</span><span class="si">}</span><span class="sb">&amp;value=</span><span class="si">${</span><span class="nx">value</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="nx">url</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">data</span><span class="p">.</span><span class="nx">result</span><span class="p">;</span>
+<span class="p">}</span>
 
-// Uso
-(async () =&gt; {
-    await getMetrics();
-    const result = await convertNumber('dec2bin', '10');
-    console.log('10 em binário:', result);
-})();
-</code></pre>
+<span class="c1">// Uso</span>
+<span class="p">(</span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">getMetrics</span><span class="p">();</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">convertNumber</span><span class="p">(</span><span class="s1">&#39;dec2bin&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;10&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;10 em binário:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">result</span><span class="p">);</span>
+<span class="p">})();</span>
+</code></pre></div>
 <hr />
 <h2 id="proximas-etapas">Próximas Etapas</h2>
 <ul>
