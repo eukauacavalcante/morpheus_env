@@ -1,0 +1,1540 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentação oficial do simulador educacional Morpheus Env">
+      
+      
+        <meta name="author" content="Kauã Cavalcante">
+      
+      
+        <link rel="canonical" href="https://eukauacavalcante.github.io/morpheus/project-structure/">
+      
+      
+        <link rel="prev" href="../architecture/">
+      
+      
+        <link rel="next" href="../guidelines/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.21">
+    
+    
+      
+        <title>Estrutura do Projeto - Morpheus Env</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.2a3383ac.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#estrutura-do-projeto" class="md-skip">
+          Pular para conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href=".." title="Morpheus Env" class="md-header__button md-logo" aria-label="Morpheus Env" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Morpheus Env
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Estrutura do Projeto
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="amber"  aria-label="Alterar para o modo escuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Alterar para o modo escuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="amber"  aria-label="Alterar para o modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Alterar para o modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando busca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Morpheus Env" class="md-nav__button md-logo" aria-label="Morpheus Env" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Morpheus Env
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Visão Geral
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prerequisites/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Pré-requisitos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Instalação
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Configuração
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Arquitetura
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Estrutura do Projeto
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Estrutura do Projeto
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#arvore-de-diretorios" class="md-nav__link">
+    <span class="md-ellipsis">
+      Árvore de Diretórios
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arquivos-principais" class="md-nav__link">
+    <span class="md-ellipsis">
+      Arquivos Principais
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Arquivos Principais">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#coresettingspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      core/settings.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#coreurlspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      core/urls.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usersformspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      users/forms.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usersmodelspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      users/models.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#userssignalspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      users/signals.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#toolsviewspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      tools/views.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#toolsservicessystem_metricspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      tools/services/system_metrics.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#toolsservicesai_analysispy" class="md-nav__link">
+    <span class="md-ellipsis">
+      tools/services/ai_analysis.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#toolsservicesnum_converterpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      tools/services/num_converter.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#notificationsutilssend_emailpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      notifications/utils/send_email.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#notificationsutilsemail_oauth2py" class="md-nav__link">
+    <span class="md-ellipsis">
+      notifications/utils/email_oauth2.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#staticjavascriptsystem-analysisjs" class="md-nav__link">
+    <span class="md-ellipsis">
+      static/javascript/system-analysis.js
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#staticjavascriptnum-converterjs" class="md-nav__link">
+    <span class="md-ellipsis">
+      static/javascript/num-converter.js
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#build-tailwindsh" class="md-nav__link">
+    <span class="md-ellipsis">
+      build-tailwind.sh
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requirementstxt" class="md-nav__link">
+    <span class="md-ellipsis">
+      requirements.txt
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tailwindconfigjs" class="md-nav__link">
+    <span class="md-ellipsis">
+      tailwind.config.js
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#convencoes-de-nomenclatura" class="md-nav__link">
+    <span class="md-ellipsis">
+      Convenções de Nomenclatura
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Convenções de Nomenclatura">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python" class="md-nav__link">
+    <span class="md-ellipsis">
+      Python
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#htmlcss" class="md-nav__link">
+    <span class="md-ellipsis">
+      HTML/CSS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#javascript" class="md-nav__link">
+    <span class="md-ellipsis">
+      JavaScript
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arquivos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Arquivos
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fluxo-de-adicao-de-novo-recurso" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fluxo de Adição de Novo Recurso
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Fluxo de Adição de Novo Recurso">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-criar-funcao-no-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Criar função no service
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-criar-view" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Criar view
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-adicionar-rota" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Adicionar rota
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-usar-no-frontend" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Usar no frontend
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proximas-etapas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Próximas Etapas
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guidelines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Guidelines
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../development/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Desenvolvimento
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../authentication/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Autenticação
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../security/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Segurança
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Referência da API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ferramentas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contributing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Contribuindo
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../release-notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Notas de Lançamento
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#arvore-de-diretorios" class="md-nav__link">
+    <span class="md-ellipsis">
+      Árvore de Diretórios
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arquivos-principais" class="md-nav__link">
+    <span class="md-ellipsis">
+      Arquivos Principais
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Arquivos Principais">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#coresettingspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      core/settings.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#coreurlspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      core/urls.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usersformspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      users/forms.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usersmodelspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      users/models.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#userssignalspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      users/signals.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#toolsviewspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      tools/views.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#toolsservicessystem_metricspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      tools/services/system_metrics.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#toolsservicesai_analysispy" class="md-nav__link">
+    <span class="md-ellipsis">
+      tools/services/ai_analysis.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#toolsservicesnum_converterpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      tools/services/num_converter.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#notificationsutilssend_emailpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      notifications/utils/send_email.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#notificationsutilsemail_oauth2py" class="md-nav__link">
+    <span class="md-ellipsis">
+      notifications/utils/email_oauth2.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#staticjavascriptsystem-analysisjs" class="md-nav__link">
+    <span class="md-ellipsis">
+      static/javascript/system-analysis.js
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#staticjavascriptnum-converterjs" class="md-nav__link">
+    <span class="md-ellipsis">
+      static/javascript/num-converter.js
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#build-tailwindsh" class="md-nav__link">
+    <span class="md-ellipsis">
+      build-tailwind.sh
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requirementstxt" class="md-nav__link">
+    <span class="md-ellipsis">
+      requirements.txt
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tailwindconfigjs" class="md-nav__link">
+    <span class="md-ellipsis">
+      tailwind.config.js
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#convencoes-de-nomenclatura" class="md-nav__link">
+    <span class="md-ellipsis">
+      Convenções de Nomenclatura
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Convenções de Nomenclatura">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python" class="md-nav__link">
+    <span class="md-ellipsis">
+      Python
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#htmlcss" class="md-nav__link">
+    <span class="md-ellipsis">
+      HTML/CSS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#javascript" class="md-nav__link">
+    <span class="md-ellipsis">
+      JavaScript
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arquivos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Arquivos
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fluxo-de-adicao-de-novo-recurso" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fluxo de Adição de Novo Recurso
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Fluxo de Adição de Novo Recurso">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-criar-funcao-no-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Criar função no service
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-criar-view" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Criar view
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-adicionar-rota" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Adicionar rota
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-usar-no-frontend" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Usar no frontend
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proximas-etapas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Próximas Etapas
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="estrutura-do-projeto">Estrutura do Projeto</h1>
+<p>Mapa completo de diretórios e arquivos do Morpheus Env com descrição de cada elemento.</p>
+<hr />
+<h2 id="arvore-de-diretorios">Árvore de Diretórios</h2>
+<pre><code>morpheus_env/
+│
+├── core/                          # Configurações centrais Django
+│   ├── templates/
+│   │   ├── base.html              # Template base (herança)
+│   │   ├── index.html             # Home
+│   │   └── components/
+│   │       ├── _header.html
+│   │       └── _footer.html
+│   ├── settings.py                # Configurações Django
+│   ├── urls.py                    # Rotas globais
+│   ├── views.py                   # Views globais
+│   ├── wsgi.py                    # Configuração WSGI
+│   └── asgi.py                    # Configuração ASGI
+│
+├── users/                         # App autenticação
+│   ├── migrations/                # Histórico banco de dados
+│   ├── templates/registration/
+│   │   ├── login.html
+│   │   └── register.html
+│   ├── validators/
+│   │   └── disposable_email_blocklist.conf  # Emails bloqueados
+│   ├── forms.py                   # Formulários customizados
+│   ├── models.py                  # Modelos de dados
+│   ├── signals.py                 # Sinais (emails automáticos)
+│   ├── urls.py                    # Rotas
+│   ├── views.py                   # Views
+│   └── admin.py                   # Admin panel
+│
+├── tools/                         # App ferramentas
+│   ├── services/                  # Lógica de negócio
+│   │   ├── system_metrics.py
+│   │   ├── ai_analysis.py
+│   │   └── num_converter.py
+│   ├── templates/
+│   │   ├── system_analysis.html
+│   │   └── num_converter.html
+│   ├── views.py                   # Views e APIs
+│   ├── urls.py                    # Rotas
+│   ├── admin.py
+│   └── migrations/
+│
+├── notifications/                 # App notificações
+│   ├── utils/
+│   │   ├── send_email.py
+│   │   ├── email_oauth2.py
+│   │   ├── colors.py
+│   │   ├── emails.py
+│   │   └── terminal_msg.py
+│   ├── models.py
+│   └── admin.py
+│
+├── static/                        # Arquivos estáticos
+│   ├── css/
+│   │   ├── input.css              # Input Tailwind
+│   │   └── styles.css             # Output compilado
+│   ├── img/                       # Imagens
+│   └── javascript/
+│       ├── system-analysis.js
+│       ├── num-converter.js
+│       └── register.js
+│
+├── docs/                          # Documentação
+│   ├── index.md
+│   ├── overview.md
+│   ├── installation.md
+│   ├── configuration.md
+│   ├── architecture.md
+│   ├── project-structure.md
+│   ├── authentication.md
+│   ├── security.md
+│   ├── api-reference.md
+│   ├── guidelines.md
+│   ├── contributing.md
+│   ├── development.md
+│   ├── tools.md
+│   ├── prerequisites.md
+│   └── release-notes.md
+│
+├── .gitignore
+├── .env.example
+├── build-tailwind.sh
+├── manage.py
+├── README.md
+├── requirements.txt
+├── requirements_dev.txt
+├── tailwind.config.js
+├── db.sqlite3                     # Banco (dev only)
+└── venv/                          # Ambiente virtual (ignorado)
+</code></pre>
+<hr />
+<h2 id="arquivos-principais">Arquivos Principais</h2>
+<h3 id="coresettingspy">core/settings.py</h3>
+<p>Configurações centrais do Django:</p>
+<ul>
+<li><code>SECRET_KEY</code>: Chave de segurança</li>
+<li><code>DEBUG</code>: Modo debug</li>
+<li><code>INSTALLED_APPS</code>: Apps registradas</li>
+<li><code>MIDDLEWARE</code>: Middlewares ativas</li>
+<li><code>TEMPLATES</code>: Configuração de templates</li>
+<li><code>DATABASES</code>: Banco de dados</li>
+</ul>
+<p><strong>Quando editar</strong>: Adicionar apps, configurar variáveis, modificar middlewares.</p>
+<hr />
+<h3 id="coreurlspy">core/urls.py</h3>
+<p>Rotas globais:</p>
+<pre><code class="language-python">urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', HomeView.as_view(), name='home'),
+    path('accounts/', include('users.urls')),
+    path('sistema/', include('tools.urls')),
+]
+</code></pre>
+<hr />
+<h3 id="usersformspy">users/forms.py</h3>
+<p>Formulários customizados para registro:</p>
+<ul>
+<li><code>CustomUserCreationForm</code>: Valida username, email, senha</li>
+<li><code>clean_email()</code>: Bloqueia emails temporários</li>
+<li><code>clean_username()</code>: Verifica duplicação</li>
+</ul>
+<hr />
+<h3 id="usersmodelspy">users/models.py</h3>
+<p>Modelos:</p>
+<ul>
+<li><code>TermsOfUseAndPrivacyPolicy</code>: Histórico de termos</li>
+</ul>
+<hr />
+<h3 id="userssignalspy">users/signals.py</h3>
+<p>Quando usuário é criado, dispara <code>send_new_user_email()</code>.</p>
+<hr />
+<h3 id="toolsviewspy">tools/views.py</h3>
+<p><strong>Template Views</strong>:</p>
+<ul>
+<li><code>SystemAnalysisView</code>: Dashboard monitoramento</li>
+<li><code>NumberConverterView</code>: Página conversor</li>
+</ul>
+<p><strong>API Views</strong>:</p>
+<ul>
+<li><code>SystemAnalysisAPIView</code>: GET <code>/sistema/monitoramento/v1/metrics-api</code></li>
+<li><code>AiAPIView</code>: GET <code>/sistema/monitoramento/v1/ai-api</code></li>
+<li><code>NumberConverterAPIView</code>: GET <code>/sistema/conversor/v1/api</code></li>
+</ul>
+<hr />
+<h3 id="toolsservicessystem_metricspy">tools/services/system_metrics.py</h3>
+<p>Coleta de métricas:</p>
+<pre><code class="language-python">def get_system_status():
+    &quot;&quot;&quot;Retorna dict com cpu_percent, ram_percent, etc.&quot;&quot;&quot;
+
+def sanitize_system_data(status):
+    &quot;&quot;&quot;Normaliza para high/normal para IA.&quot;&quot;&quot;
+</code></pre>
+<hr />
+<h3 id="toolsservicesai_analysispy">tools/services/ai_analysis.py</h3>
+<p>Integração Groq:</p>
+<pre><code class="language-python">def get_ai_analysis():
+    &quot;&quot;&quot;Coleta dados, sanitiza, chama Groq.&quot;&quot;&quot;
+</code></pre>
+<hr />
+<h3 id="toolsservicesnum_converterpy">tools/services/num_converter.py</h3>
+<p>Conversões numéricas:</p>
+<pre><code class="language-python">bin_to_dec(binary: str) -&gt; int
+dec_to_bin(decimal: int) -&gt; str
+hex_to_dec(hex: str) -&gt; int
+dec_to_hex(decimal: int) -&gt; str
+oct_to_dec(oct: str) -&gt; int
+dec_to_oct(decimal: int) -&gt; str
+</code></pre>
+<hr />
+<h3 id="notificationsutilssend_emailpy">notifications/utils/send_email.py</h3>
+<p>Lógica de envio:</p>
+<pre><code class="language-python">def send_new_user_email(user):
+    &quot;&quot;&quot;Envia email de boas-vindas.&quot;&quot;&quot;
+
+def send_update_terms_email(user):
+    &quot;&quot;&quot;Notifica atualização de termos.&quot;&quot;&quot;
+</code></pre>
+<hr />
+<h3 id="notificationsutilsemail_oauth2py">notifications/utils/email_oauth2.py</h3>
+<p>Autenticação OAuth2 Google:</p>
+<pre><code class="language-python">def get_oauth2_string(email, client_id, client_secret, refresh_token):
+    &quot;&quot;&quot;Retorna string XOAUTH2 para SMTP.&quot;&quot;&quot;
+</code></pre>
+<hr />
+<h3 id="staticjavascriptsystem-analysisjs">static/javascript/system-analysis.js</h3>
+<p>Dashboard de monitoramento:</p>
+<pre><code class="language-javascript">async function getSystemMetrics()
+    // Requisita API a cada 5s
+
+async function aiAnalysis()
+    // Requisita análise IA
+</code></pre>
+<hr />
+<h3 id="staticjavascriptnum-converterjs">static/javascript/num-converter.js</h3>
+<p>Conversor numérico:</p>
+<pre><code class="language-javascript">async function converter()
+    // Requisita conversão
+
+async function boolean()
+    // Operações lógicas
+</code></pre>
+<hr />
+<h3 id="build-tailwindsh">build-tailwind.sh</h3>
+<p>Script para compilar Tailwind CSS:</p>
+<pre><code class="language-bash">bash build-tailwind.sh
+</code></pre>
+<p>Execute quando modificar <code>static/css/input.css</code>.</p>
+<hr />
+<h3 id="requirementstxt">requirements.txt</h3>
+<p>Dependências do projeto. Instale com:</p>
+<pre><code class="language-bash">pip install -r requirements.txt
+</code></pre>
+<hr />
+<h3 id="tailwindconfigjs">tailwind.config.js</h3>
+<p>Configuração do Tailwind CSS. Escaneia templates para classes usadas.</p>
+<hr />
+<h2 id="convencoes-de-nomenclatura">Convenções de Nomenclatura</h2>
+<h3 id="python">Python</h3>
+<ul>
+<li><strong>Classes</strong>: <code>PascalCase</code> → <code>SystemAnalysisView</code></li>
+<li><strong>Funções</strong>: <code>snake_case</code> → <code>get_system_status()</code></li>
+<li><strong>Variáveis</strong>: <code>snake_case</code> → <code>cpu_percent</code></li>
+<li><strong>Constantes</strong>: <code>UPPER_SNAKE_CASE</code> → <code>API_TIMEOUT</code></li>
+</ul>
+<h3 id="htmlcss">HTML/CSS</h3>
+<ul>
+<li><strong>Classes Tailwind</strong>: <code>kebab-case</code> → <code>bg-purple-500</code>, <code>text-white</code></li>
+<li><strong>IDs</strong>: <code>snake_case</code> → <code>cpu_meter</code></li>
+<li><strong>Data attributes</strong>: <code>kebab-case</code> → <code>data-system-id</code></li>
+</ul>
+<h3 id="javascript">JavaScript</h3>
+<ul>
+<li><strong>Funções</strong>: <code>camelCase</code> → <code>getSystemMetrics()</code></li>
+<li><strong>Variáveis</strong>: <code>camelCase</code> → <code>cpuValue</code></li>
+<li><strong>Constantes</strong>: <code>UPPER_SNAKE_CASE</code> → <code>API_ENDPOINT</code></li>
+</ul>
+<h3 id="arquivos">Arquivos</h3>
+<ul>
+<li><strong>Python</strong>: <code>snake_case.py</code> → <code>system_metrics.py</code></li>
+<li><strong>HTML</strong>: <code>snake_case.html</code> → <code>system_analysis.html</code></li>
+<li><strong>JavaScript</strong>: <code>kebab-case.js</code> → <code>system-analysis.js</code></li>
+</ul>
+<hr />
+<h2 id="fluxo-de-adicao-de-novo-recurso">Fluxo de Adição de Novo Recurso</h2>
+<p>Exemplo: Adicionar novo endpoint para RAM apenas.</p>
+<h3 id="1-criar-funcao-no-service">1. Criar função no service</h3>
+<pre><code class="language-python"># tools/services/system_metrics.py
+def get_ram_only():
+    ram = psutil.virtual_memory()
+    return {
+        'ram_percent': ram.percent,
+        'ram_total': round(ram.total / (1024**3), 2),
+        'ram_used': round(ram.used / (1024**3), 2)
+    }
+</code></pre>
+<h3 id="2-criar-view">2. Criar view</h3>
+<pre><code class="language-python"># tools/views.py
+class RamOnlyAPIView(LoginRequiredMixin, generic.View):
+    def get(self, request):
+        data = get_ram_only()
+        return JsonResponse({'data': data})
+</code></pre>
+<h3 id="3-adicionar-rota">3. Adicionar rota</h3>
+<pre><code class="language-python"># tools/urls.py
+path('ram/', RamOnlyAPIView.as_view(), name='ram_only_api')
+</code></pre>
+<h3 id="4-usar-no-frontend">4. Usar no frontend</h3>
+<pre><code class="language-javascript">fetch('/sistema/ram/')
+    .then(r =&gt; r.json())
+    .then(data =&gt; console.log(data))
+</code></pre>
+<hr />
+<h2 id="proximas-etapas">Próximas Etapas</h2>
+<ul>
+<li><a href="../architecture/">Arquitetura</a> - Design técnico</li>
+<li><a href="../development/">Desenvolvimento</a> - Workflow local</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.expand"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>
