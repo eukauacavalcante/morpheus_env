@@ -10,7 +10,7 @@ EMAIL_NEW_USER_TEXT = (
 
 EMAIL_NEW_USER_HTML = """
     <html>
-    <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #ffffff; max-width: 600px; margin: 0 auto; padding: 20px;">
+    <body style="font-family: Arial, sans-serif; line-height: 1.6; max-width: 600px; margin: 0 auto; padding: 20px;">
         <div style="background-color: #f8f9fa; border-radius: 8px; padding: 30px; border-left: 4px solid #4d179a;">
             <h2 style="color: #7f22fe; margin-top: 0;">Olá, {user_first_name}!</h2>
             <p style="margin-bottom: 15px;">
@@ -39,10 +39,10 @@ EMAIL_NEW_USER_HTML = """
                     </a>
                 </p>
             </div>
-            <p style="margin-bottom: 0; margin-top: 25px; color: #ffffff; font-weight: 500;">
+            <p style="margin-bottom: 0; margin-top: 25px; font-weight: 500;">
                 Estamos felizes em tê-lo(a) conosco! 🚀
             </p>
-            <p style="margin-bottom: 0; margin-top: 5px; color: #ffffff; font-weight: 500;">
+            <p style="margin-bottom: 0; margin-top: 5px; font-weight: 500;">
                 Equipe Morpheus Env, {date}.
             </p>
         </div>
@@ -57,7 +57,7 @@ EMAIL_NEW_USER_HTML = """
 
 EMAIL_TERMS_UPDATED = """
     <html>
-    <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #ffffff; max-width: 600px; margin: 0 auto; padding: 20px;">
+    <body style="font-family: Arial, sans-serif; line-height: 1.6; max-width: 600px; margin: 0 auto; padding: 20px;">
         <div style="background-color: #f8f9fa; border-radius: 8px; padding: 30px; border-left: 4px solid #4d179a;">
             <h2 style="color: #7f22fe; margin-top: 0;">Parabéns, {user_first_name}!</h2>
             <p style="margin-bottom: 15px;">
@@ -72,10 +72,10 @@ EMAIL_TERMS_UPDATED = """
             <p style="margin-bottom: 15px;">
                 Para mais informações, entre em contato com o setor de Desenvolvimento de Softwares (vulgo Kauã)
             </p>
-            <p style="margin-bottom: 0; margin-top: 25px; color: #ffffff; font-weight: 500;">
+            <p style="margin-bottom: 0; margin-top: 25px; font-weight: 500;">
                 Agradecemos a compreensão! (e a paciência) 🚀
             </p>
-            <p style="margin-bottom: 0; margin-top: 5px; color: #ffffff; font-weight: 500;">
+            <p style="margin-bottom: 0; margin-top: 5px; font-weight: 500;">
                 Equipe Morpheus Env, {date}.
             </p>
         </div>
