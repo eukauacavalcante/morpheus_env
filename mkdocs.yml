@@ -1,0 +1,45 @@
+site_name: Morpheus Env
+site_description: Documentação oficial do simulador educacional Morpheus Env
+site_author: Kauã Cavalcante
+site_url: 'https://eukauacavalcante.github.io/morpheus/'
+theme:
+  name: material
+  language: pt-BR
+  features:
+    - navigation.expand
+  palette:
+    - scheme: default
+      toggle:
+        icon: material/brightness-4
+        name: Alterar para o modo escuro
+      primary: teal
+      accent: amber
+
+    - scheme: slate
+      toggle:
+          icon: material/brightness-7 
+          name: Alterar para o modo claro
+      primary: teal
+      accent: amber
+    
+nav:
+  - Home: index.md
+  - Visão Geral: overview.md
+  - Pré-requisitos: prerequisites.md
+  - Instalação: installation.md
+  - Configuração: configuration.md
+  - Arquitetura: architecture.md
+  - Estrutura do Projeto: project-structure.md
+  - Guidelines: guidelines.md
+  - Desenvolvimento: development.md
+  - Autenticação: authentication.md
+  - Segurança: security.md
+  - Referência da API: api-reference.md
+  - Ferramentas: tools.md
+  - Contribuindo: contributing.md
+  - Notas de Lançamento: release-notes.md
+
+markdown_extensions:
+  - pymdownx.tasklist:
+      custom_checkbox: true
+      clickable_checkbox: true
