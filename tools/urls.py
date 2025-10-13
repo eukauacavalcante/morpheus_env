@@ -5,8 +5,8 @@ from .views import (AiAPIView, NumberConverterAPIView, NumberConverterView,
 
 urlpatterns = [
     path('monitoramento/', SystemAnalysisView.as_view(), name='system_data'),
-    path('monitoramento/metrics/api', SystemAnalysisAPIView.as_view(), name='system_data_api'),
-    path('monitoramento/ai/api', AiAPIView.as_view(), name='ai_api'),
+    path('monitoramento/v1/metrics-api', SystemAnalysisAPIView.as_view(), name='system_data_api'),
+    path('monitoramento/v1/ai-api', AiAPIView.as_view(), name='ai_api'),
     path('conversor/', NumberConverterView.as_view(), name='num_converter'),
-    path('conversor/api/', NumberConverterAPIView.as_view(), name='num_converter_api'),
+    path('conversor/v1/api', NumberConverterAPIView.as_view(), name='num_converter_api'),
 ]

@@ -14,7 +14,7 @@ async function converter() {
     resultElement.innerHTML = `<span class="text-gray-400">Processando...</span>`;
     
     try {
-        const request = await fetch(`api/?value=${value}&type=${type}`);
+        const request = await fetch(`v1/api/?value=${value}&type=${type}`);
         if (!request.ok) {
             throw new Error(`Erro na API: ${request.statusText}`);
         }
@@ -50,7 +50,7 @@ async function boolean() {
     resultElement.innerHTML = `<span class="text-gray-400">Processando...</span>`;
 
     try {
-        const request = await fetch(`api/?type=${type}&value1=${value1}&value2=${value2}`);
+        const request = await fetch(`v1/api/?type=${type}&value1=${value1}&value2=${value2}`);
             if (!request.ok) {
             throw new Error(`Erro na API: ${request.statusText}`);
         }
