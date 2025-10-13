@@ -13,6 +13,7 @@ ALLOWED_HOSTS = []
 
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -22,7 +23,7 @@ INSTALLED_APPS = [
 
     'users',
     'tools',
-    'notifications'
+    'notifications',
 ]
 
 MIDDLEWARE = [
@@ -96,7 +97,7 @@ API_KEY = config('API_KEY')
 AI_MODEL = config('AI_MODEL')
 
 # E-mail functions
-EMAIL_MODE = False
+EMAIL_MODE = False # To do: se falso, imprime apenas no console
 
 # E-mail Config
 EMAIL_BACKEND = config('EMAIL_BACKEND')
@@ -114,3 +115,35 @@ GOOGLE_OAUTH2_REFRESH_TOKEN = config('GOOGLE_OAUTH2_REFRESH_TOKEN')
 
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'login'
+
+JAZZMIN_SETTINGS = {
+    "site_title": "Morpheus Env",
+    "site_header": "Morpheus Env",
+    "site_brand": "Morpheus Env",
+    "site_logo": None,
+    "login_logo": None,
+    "login_logo_dark": None,
+    "site_logo_classes": "img-circle",
+    "site_icon": None,
+    "welcome_sign": "Bem-vindo ao Morpheus Env Admin!",
+    "copyright": "Kauã Cavalcante",
+    "show_sidebar": True,
+    "navigation_expanded": True,
+    "hide_apps": [],
+    "hide_models": [],
+    "order_with_respect_to": ["auth",],
+    "icons": {
+        "auth": "fas fa-users-cog",
+        "auth.user": "fas fa-user",
+        "auth.Group": "fas fa-users",
+
+        "users.TermsOfUseAndPrivacyPolicy": "fa-solid fa-file-lines",
+    },
+    "default_icon_parents": "fas fa-chevron-circle-right",
+    "default_icon_children": "fas fa-circle",
+    "related_modal_active": False,
+    "custom_css": None,
+    "custom_js": None,
+    "use_google_fonts_cdn": True,
+    "show_ui_builder": True,
+}
