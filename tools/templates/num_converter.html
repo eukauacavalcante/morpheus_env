@@ -9,7 +9,13 @@
 
 {% block content %}
     <div class="text-white">
-        <p><a href="{% url 'home' %}">Home</a> > Conversor Numérico e Lógico</p>
+        <div class="mb-5">
+            <a href="{% url 'home' %}" class="text-purple-400 hover:text-purple-300 transition inline-flex items-center gap-2">
+                <i class="bi bi-house"></i> Home
+            </a>
+            <span class="text-gray-500 mx-2">/</span>
+            <span class="text-gray-300">Conversor Numérico e Lógico</span>
+        </div>
         <div class="text-center mb-10">
             <h1 class="text-4xl font-bold">Conversor Numérico e Lógico</h1>
         </div>
