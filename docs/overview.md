@@ -101,32 +101,38 @@ Implementa operações fundamentais:
 
 ## Arquitetura Geral
 
-```
-┌─────────────────────────────────────────┐
-│         Navegador (Cliente)             │
-├─────────────────────────────────────────┤
-│  HTML/CSS/JavaScript (Tailwind + Icons) │
-└────────────────────┬────────────────────┘
-                     │ HTTP
-┌────────────────────▼────────────────────┐
-│        Django Framework (5.2)           │
-├─────────────────────────────────────────┤
-│ ┌─────────────┬─────────────────────┐   │
-│ │   Views     │   Middleware        │   │
-│ │             │   (CSRF, Auth)      │   │
-│ └──────┬──────┴──────┬──────────────┘   │
-│        │             │                  │
-│ ┌──────▼──────┬──────▼──────────────┐   │
-│ │   Models    │   Templates         │   │
-│ │   (ORM)     │   (Renderização)    │   │
-│ └──────┬──────┴─────────┬──────────┘    │
-│        │                │               │
-└────────┼────────────────┼───────────────┘
-         │                │
-    ┌────▼────┐      ┌────▼──────┐
-    │ SQLite  │      │ Groq AI   │
-    │         │      │ (via API) │
-    └─────────┘      └───────────┘
+``` mermaid
+flowchart TD
+    subgraph Navegador
+        A["Navegador (Cliente)<br>HTML/CSS/JS (Tailwind + Icons)"]
+    end
+
+    subgraph Django ["Django Framework (5.2)"]
+        B2["Middleware<br>(CSRF, Auth)"]
+        B1["Views"]
+        B3["Models (ORM)"]
+        B4["Templates (Renderização)"]
+    end
+
+    subgraph Persistencia ["Persistência"]
+        C1["SQLite"]
+        C2["Groq AI (via API)"]
+    end
+
+    A -->|HTTP| B2
+    B2 --> B1
+    B1 --> B3
+    B1 --> C2
+    B1 --> B4
+    B4 --> A
+
+    style A stroke:#444,color:#000
+    style B1 stroke:#444,color:#000
+    style B2 stroke:#444,color:#000
+    style B3 stroke:#444,color:#000
+    style B4 stroke:#444,color:#000
+    style C1 stroke:#444,color:#000
+    style C2 stroke:#444,color:#000
 ```
 
 ---

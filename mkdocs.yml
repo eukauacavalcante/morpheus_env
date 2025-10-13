@@ -1,7 +1,6 @@
 site_name: Morpheus Env
 site_description: Documentação oficial do simulador educacional Morpheus Env
 site_author: Kauã Cavalcante
-site_url: 'https://eukauacavalcante.github.io/morpheus/'
 theme:
   name: material
   language: pt-BR
@@ -40,6 +39,10 @@ nav:
   - Notas de Lançamento: release-notes.md
 
 markdown_extensions:
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
   - pymdownx.tasklist:
       custom_checkbox: true
       clickable_checkbox: true

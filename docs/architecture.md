@@ -4,39 +4,33 @@ Design técnico, padrões de arquitetura e decisões de design do Morpheus Env.
 
 ---
 
-## Arquitetura em Três Camadas
+## Arquitetura em camadas
+
+```mermaid
+
+graph TD
+    A["<b>Apresentação</b><br/>Templates + Tailwind CSS"]
+    B["<b>URLs</b><br/>urls.py<br/>Roteamento"]
+    C["<b>Lógica</b><br/>Views Django<br/>- HomeView<br/>- SystemAnalysisView<br/>- NumberConverterView"]
+    D["<b>Serviços</b><br/>Service Layer + Utils<br/>Lógica de Negócio"]
+    E["<b>Dados</b><br/>Models Django<br/>ORM"]
+    F["<b>Banco de Dados</b><br/>SQLite/PostgreSQL"]
+    G["<b>APIs Externas</b><br/>- Groq AI<br/>- Gmail OAuth2"]
+    
+    A -->|Requisição HTTP| B
+    B -->|Route Match| C
+    C -->|Renderiza| A
+    C -->|Chama| D
+    D -->|Usa| E
+    D -->|Consulta| G
+    E -->|SQL via ORM| F
+    
+    classDef default fill:#f9f9f9,stroke:#333,stroke-width:2px
 
 ```
-┌────────────────────────────┐
-│ Apresentação               │
-│ (Templates + Tailwind CSS) │
-└────────────┬───────────────┘
-             ↓ HTTP
-┌────────────────────────────┐
-│ Lógica (Views Django)      │
-│ - HomeView                 │
-│ - SystemAnalysisView       │
-│ - NumberConverterView      │
-└────────────┬───────────────┘
-             ↓ ORM + Services
-┌────────────────────────────┐
-│ Dados                      │
-│ - Models Django            │
-│ - Service Layer            │
-│ - Utils                    │
-└────────────┬───────────────┘
-             ↓ SQL + API Calls
-┌────────────────────────────┐
-│ Persistência               │
-│ - SQLite/PostgreSQL        │
-│ - Groq AI                  │
-│ - Gmail OAuth2             │
-└────────────────────────────┘
-```
-
 ---
 
-## Service Layer Pattern
+## Padrão da Camada de Serviços (Service Layer)
 
 Toda lógica de negócio está em `services/` ou `utils/`, nunca nas views.
 
@@ -178,11 +172,12 @@ Email enviado
 
 ---
 
-### Service Layer
+### Camada de Serviço
 
 **Escolha**: Lógica separada em `services/`
 
 **Razão**: 
+
 - Código testável
 - Reutilizável em múltiplos contextos
 - Fácil de manter

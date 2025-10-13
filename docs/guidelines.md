@@ -6,7 +6,7 @@ Padrões de código, estilo e boas práticas para contribuir ao Morpheus Env.
 
 ## Arquitetura e Padrões
 
-### Service Layer Pattern
+### Padrão da Camada de Serviços
 
 Toda lógica de negócio deve estar em `services/` ou `utils/`, não nas views.
 
