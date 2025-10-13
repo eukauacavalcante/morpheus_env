@@ -25,7 +25,7 @@ graph TD
     D -->|Consulta| G
     E -->|SQL via ORM| F
     
-    classDef default fill:#f9f9f9,stroke:#333,stroke-width:2px
+    classDef default stroke:#333,stroke-width:2px
 
 ```
 ---

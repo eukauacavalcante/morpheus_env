@@ -102,37 +102,21 @@ Implementa operações fundamentais:
 ## Arquitetura Geral
 
 ``` mermaid
-flowchart TD
-    subgraph Navegador
-        A["Navegador (Cliente)<br>HTML/CSS/JS (Tailwind + Icons)"]
-    end
 
-    subgraph Django ["Django Framework (5.2)"]
-        B2["Middleware<br>(CSRF, Auth)"]
-        B1["Views"]
-        B3["Models (ORM)"]
-        B4["Templates (Renderização)"]
-    end
+flowchart LR
+    A["🌐 Cliente<br/>Navegador"] -->|HTTP| B["⚙️ Django<br/>Backend"]
+    B -->|Consulta| C["💾 SQLite"]
+    B -->|API| D["🤖 Groq AI"]
+    B -->|Monitoramento| E["📊 psutil"]
+    B -->|Conversão| F["🔢 Conversor<br/>Numérico/Lógico"]
+    B -->|Resposta| A
 
-    subgraph Persistencia ["Persistência"]
-        C1["SQLite"]
-        C2["Groq AI (via API)"]
-    end
-
-    A -->|HTTP| B2
-    B2 --> B1
-    B1 --> B3
-    B1 --> C2
-    B1 --> B4
-    B4 --> A
-
-    style A stroke:#444,color:#000
-    style B1 stroke:#444,color:#000
-    style B2 stroke:#444,color:#000
-    style B3 stroke:#444,color:#000
-    style B4 stroke:#444,color:#000
-    style C1 stroke:#444,color:#000
-    style C2 stroke:#444,color:#000
+    style A stroke:#0288d1,stroke-width:2px,color:#000
+    style B stroke:#7b1fa2,stroke-width:2px,color:#000
+    style C stroke:#f9a825,stroke-width:2px,color:#000
+    style D stroke:#00897b,stroke-width:2px,color:#000
+    style E stroke:#e64a19,stroke-width:2px,color:#000
+    style F stroke:#5e35b1,stroke-width:2px,color:#000
 ```
 
 ---
