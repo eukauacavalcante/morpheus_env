@@ -1407,37 +1407,21 @@
 </ul>
 <hr />
 <h2 id="arquitetura-geral">Arquitetura Geral</h2>
-<pre class="mermaid"><code>flowchart TD
-    subgraph Navegador
-        A["Navegador (Cliente)&lt;br&gt;HTML/CSS/JS (Tailwind + Icons)"]
-    end
+<pre class="mermaid"><code>
+flowchart LR
+    A["🌐 Cliente&lt;br/&gt;Navegador"] --&gt;|HTTP| B["⚙️ Django&lt;br/&gt;Backend"]
+    B --&gt;|Consulta| C["💾 SQLite"]
+    B --&gt;|API| D["🤖 Groq AI"]
+    B --&gt;|Monitoramento| E["📊 psutil"]
+    B --&gt;|Conversão| F["🔢 Conversor&lt;br/&gt;Numérico/Lógico"]
+    B --&gt;|Resposta| A
 
-    subgraph Django ["Django Framework (5.2)"]
-        B2["Middleware&lt;br&gt;(CSRF, Auth)"]
-        B1["Views"]
-        B3["Models (ORM)"]
-        B4["Templates (Renderização)"]
-    end
-
-    subgraph Persistencia ["Persistência"]
-        C1["SQLite"]
-        C2["Groq AI (via API)"]
-    end
-
-    A --&gt;|HTTP| B2
-    B2 --&gt; B1
-    B1 --&gt; B3
-    B1 --&gt; C2
-    B1 --&gt; B4
-    B4 --&gt; A
-
-    style A stroke:#444,color:#000
-    style B1 stroke:#444,color:#000
-    style B2 stroke:#444,color:#000
-    style B3 stroke:#444,color:#000
-    style B4 stroke:#444,color:#000
-    style C1 stroke:#444,color:#000
-    style C2 stroke:#444,color:#000</code></pre>
+    style A stroke:#0288d1,stroke-width:2px,color:#000
+    style B stroke:#7b1fa2,stroke-width:2px,color:#000
+    style C stroke:#f9a825,stroke-width:2px,color:#000
+    style D stroke:#00897b,stroke-width:2px,color:#000
+    style E stroke:#e64a19,stroke-width:2px,color:#000
+    style F stroke:#5e35b1,stroke-width:2px,color:#000</code></pre>
 <hr />
 <h2 id="fluxo-de-dados">Fluxo de Dados</h2>
 <h3 id="monitoramento-do-sistema">Monitoramento do Sistema</h3>
