@@ -82,6 +82,7 @@ Análise inteligente das métricas.
 ```
 
 **Notas**:
+
 - IA disponível se `AI_MODE=True` e API key válida
 - Pode levar 2-5 segundos
 

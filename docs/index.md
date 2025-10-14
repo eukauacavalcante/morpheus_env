@@ -13,18 +13,18 @@ Bem-vindo à documentação do **Morpheus Env**, um simulador web educacional pa
 
 ### Desenvolvimento
 
-- [Development](./development.md) - Workflow local
+- [Desenvolvimento](./development.md) - Workflow local
 - [Guidelines](./guidelines.md) - Padrões de código do projeto
-- [Contributing](./contributing.md) - Como contribuir
+- [Contribuição](./contributing.md) - Como contribuir
 
 ### Referência
 
-- [Architecture](./architecture.md) - Design técnico
-- [Project Structure](./project-structure.md) - Organização de arquivos
-- [Authentication](./authentication.md) - Sistema de autenticação
-- [Security](./security.md) - Proteções implementadas
+- [Arquitetura](./architecture.md) - Design técnico
+- [Estrutura do Projeto](./project-structure.md) - Organização de arquivos
+- [Autenticação](./authentication.md) - Sistema de autenticação
+- [Segurança](./security.md) - Proteções implementadas
 - [API Reference](./api-reference.md) - Endpoints disponíveis
-- [Tools](./tools.md) - Dependências do projeto
+- [Ferramentas](./tools.md) - Dependências do projeto
 
 ### Manutenção
 

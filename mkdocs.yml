@@ -35,7 +35,7 @@ nav:
   - Segurança: security.md
   - Referência da API: api-reference.md
   - Ferramentas: tools.md
-  - Contribuindo: contributing.md
+  - Contribuição: contributing.md
   - Notas de Lançamento: release-notes.md
 
 markdown_extensions:
