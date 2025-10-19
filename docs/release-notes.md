@@ -4,7 +4,7 @@ Histórico de versões do Morpheus Env.
 
 ---
 
-## [1.0.0] - 13/10/2025
+## [1.0.0] - 19/10/2025
 
 ### Added
 
@@ -39,6 +39,10 @@ Histórico de versões do Morpheus Env.
 
 - 20 requisições/minuto para métricas
 - 10 requisições/minuto para análise IA
+
+**Django Axes**:
+
+- 5 tentativas válidas para o login (proteção contra força bruta)
 
 **Documentação Completa**:
 
