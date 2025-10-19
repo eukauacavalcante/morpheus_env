@@ -107,9 +107,10 @@ Gerencia notificação via email com autenticação segura.
 
 ## 📚 Documentação
 
+**Acesse**: [Documentação Morpheus Env](https://eukauacavalcante.github.io/morpheus_env/)
+
 ### Links Úteis
 
-- [Documentação Morpheus Env](https://eukauacavalcante.github.io/morpheus_env/)
 - [Documentação Django](https://docs.djangoproject.com/)
 - [Tailwind CSS Docs](https://tailwindcss.com/docs)
 - [Groq API Docs](https://console.groq.com/docs)
