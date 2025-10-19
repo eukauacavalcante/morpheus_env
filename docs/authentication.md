@@ -155,22 +155,33 @@ Permite histórico de termos sem redeploy.
 
 ## Rate Limiting em Login
 
-**Status**: Não implementado
-
-**Recomendação**: Instalar `django-axes` para prevenir força bruta
-
-```bash
-pip install django-axes
-```
-
-Configurar em `settings.py`:
+Configuração em `settings.py`:
 ```python
-INSTALLED_APPS += ['axes']
-MIDDLEWARE += ['axes.middleware.AxesMiddleware']
+INSTALLED_APPS = [
+    #...
+    'axes',
+    ]
+MIDDLEWARE = [
+    #...
+    'axes.middleware.AxesMiddleware',
+    ]
 
+AXES_ENABLED = True
+AXES_ENABLE_ADMIN = True
 AXES_FAILURE_LIMIT = 5
-AXES_COOLOFF_TIME = timedelta(minutes=30)
+AXES_COOLOFF_TIME = timedelta(minutes=10)
+AXES_LOCKOUT_PARAMETERS = ['username', 'ip_address']
+AXES_LOCKOUT_CALLABLE = 'users.views.custom_lockout'
 ```
+**AXES_ENABLED:** Define se o Axes estará ou não em funcionamento. Se o sistema estiver em teste, é recomendado desativar para evitar bloqueios.
+
+**AXES_ENABLE_ADMIN:** Define se o Axes estará monitorando também a página de administração.
+
+**AXES_FAILURE_LIMIT:** A quantidade de tentativas válidas.
+
+**AXES_COOLOFF_TIME:** O tempo de bloqueio.
+
+**AXES_LOCKOUT_PARAMETERS:** Quais os parâmetros que serão utilizados para o bloqueio. No Morpheus Env, é por usuário e IP.
 
 ---
 

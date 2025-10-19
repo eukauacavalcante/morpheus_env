@@ -220,28 +220,6 @@ Antes de fazer deploy:
 
 ## Vulnerabilidades Conhecidas e Mitigações
 
-### Força Bruta em Login
-
-**Status**: Não implementado
-
-**Solução**: Instalar `django-axes`
-
-```bash
-pip install django-axes
-```
-
-Configure em `settings.py`:
-
-```python
-INSTALLED_APPS += ['axes']
-MIDDLEWARE += ['axes.middleware.AxesMiddleware']
-
-AXES_FAILURE_LIMIT = 5
-AXES_COOLOFF_TIME = timedelta(minutes=30)
-```
-
----
-
 ### Rate Limiting sem Cache
 
 **Status**: Implementado

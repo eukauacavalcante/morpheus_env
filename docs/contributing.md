@@ -1,6 +1,6 @@
 # Guia de Contribuição
 
-Como contribuir para o Morpheus Env. Este documento fornece diretrizes para contribuir ao projeto.
+Agradecemos o seu interesse em contribuir com o projeto. Esta página dará a você uma breve visão geral de como as coisas são organizadas e, mais importante, como participar. Todos são bem-vindos para contribuir e valorizamos cada contribuição.
 
 ---
 

@@ -213,9 +213,10 @@ notifications/utils/
 1. **Proteção CSRF**: Todos os formulários incluem token CSRF
 2. **Autenticação por Login**: Decoradores `LoginRequiredMixin` em views
 3. **Rate Limiting**: Limitação de requisições por usuário (20/minuto para métricas)
-4. **Validação de Email**: Bloqueio de domínios temporários
-5. **Hash de Senha**: Django utiliza PBKDF2 por padrão
-6. **Variáveis de Ambiente**: Senhas e API keys em `.env` (não versionadas)
+4. **Django Axes**: Limitação de tentativas de login (5 tentativas disponíveis)
+5. **Validação de Email**: Bloqueio de domínios temporários
+6. **Hash de Senha**: Django utiliza PBKDF2 por padrão
+7. **Variáveis de Ambiente**: Senhas e API keys em `.env` (não versionadas)
 
 ### Validações
 
@@ -255,7 +256,6 @@ notifications/utils/
 - ⚠️ SQLite é inadequado para produção (use PostgreSQL/MySQL)
 - ⚠️ Análise de IA requer configuração de API key da Groq
 - ⚠️ Emails requerem configuração OAuth2 do Google
-- ⚠️ Rate limiting é por usuário, não por IP
 - ⚠️ Não há cache implementado
 
 ---

@@ -28,7 +28,7 @@ Bem-vindo à documentação do **Morpheus Env**, um simulador web educacional pa
 
 ### Manutenção
 
-- [Release Notes](./release-notes.md) - Histórico de versões
+- [Notas de Lançamento](./release-notes.md) - Histórico de versões
 
 ---
 

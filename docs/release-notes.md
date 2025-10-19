@@ -78,7 +78,7 @@ Histórico de versões do Morpheus Env.
 
 ### Curto Prazo
 
-- Implementar django-axes (proteção força bruta)
+- API REST com autenticação por token
 - Cache de 5 segundos para métricas
 - Testes unitários
 
@@ -91,7 +91,6 @@ Histórico de versões do Morpheus Env.
 
 ### Longo Prazo
 
-- API REST com autenticação por token
 - Aplicação mobile
 - Integração com mais modelos de IA
 - Exportação de relatórios

@@ -195,7 +195,7 @@ bash build-tailwind.sh
 
 ---
 
-## Troubleshooting
+## Possíveis Erros
 
 ### Erro: "No module named 'django'"
 
@@ -227,5 +227,5 @@ python manage.py createsuperuser
 
 ## Próximas Etapas
 
-- [Development](./development.md) - Workflow de desenvolvimento
-- [Configuration](./configuration.md) - Variáveis de ambiente
+- [Desenvolvimento](./development.md) - Workflow de desenvolvimento
+- [Configuração](./configuration.md) - Variáveis de ambiente
