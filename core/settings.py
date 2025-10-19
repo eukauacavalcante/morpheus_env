@@ -1,4 +1,5 @@
 import os
+from datetime import timedelta
 from pathlib import Path
 
 from decouple import config
@@ -20,6 +21,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'axes',
 
     'users',
     'tools',
@@ -32,6 +34,7 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'axes.middleware.AxesMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
@@ -62,6 +65,7 @@ DATABASES = {
     }
 }
 
+# Configurações de Login e Signin
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -75,13 +79,22 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+AUTHENTICATION_BACKENDS = [
+    'axes.backends.AxesStandaloneBackend',
+    'django.contrib.auth.backends.ModelBackend',
+]
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'login'
+AXES_ENABLED = True
+AXES_ENABLE_ADMIN = True
+AXES_FAILURE_LIMIT = 5
+AXES_COOLOFF_TIME = timedelta(minutes=10)
+AXES_LOCKOUT_PARAMETERS = ['username', 'ip_address']
+AXES_LOCKOUT_CALLABLE = 'users.views.custom_lockout'
 
 LANGUAGE_CODE = 'pt-br'
-
 TIME_ZONE = 'America/Sao_Paulo'
-
 USE_I18N = True
-
 USE_TZ = True
 
 STATIC_URL = '/static/'
@@ -100,7 +113,6 @@ AI_MODEL = config('AI_MODEL')
 EMAIL_MODE = False # To do: se falso, imprime apenas no console
 
 # E-mail Config
-EMAIL_BACKEND = config('EMAIL_BACKEND')
 EMAIL_HOST = config('EMAIL_HOST')
 EMAIL_PORT = config('EMAIL_PORT')
 EMAIL_USE_TLS = config('EMAIL_USE_TLS')
@@ -113,37 +125,28 @@ GOOGLE_OAUTH2_CLIENT_ID = config('GOOGLE_OAUTH2_CLIENT_ID')
 GOOGLE_OAUTH2_CLIENT_SECRET = config('GOOGLE_OAUTH2_CLIENT_SECRET')
 GOOGLE_OAUTH2_REFRESH_TOKEN = config('GOOGLE_OAUTH2_REFRESH_TOKEN')
 
-LOGIN_REDIRECT_URL = 'home'
-LOGOUT_REDIRECT_URL = 'login'
-
 JAZZMIN_SETTINGS = {
     "site_title": "Morpheus Env",
     "site_header": "Morpheus Env",
     "site_brand": "Morpheus Env",
-    "site_logo": None,
-    "login_logo": None,
-    "login_logo_dark": None,
     "site_logo_classes": "img-circle",
-    "site_icon": None,
     "welcome_sign": "Bem-vindo ao Morpheus Env Admin!",
     "copyright": "Kauã Cavalcante",
     "show_sidebar": True,
     "navigation_expanded": True,
-    "hide_apps": [],
-    "hide_models": [],
     "order_with_respect_to": ["auth",],
     "icons": {
         "auth": "fas fa-users-cog",
         "auth.user": "fas fa-user",
         "auth.Group": "fas fa-users",
-
+        "axes.accessattempt": "fa-solid fa-folder-open",
+        "axes.accesslog": "fa-solid fa-circle-check",
+        "axes.accessfailurelog": "fa-solid fa-triangle-exclamation",
         "users.TermsOfUseAndPrivacyPolicy": "fa-solid fa-file-lines",
     },
     "default_icon_parents": "fas fa-chevron-circle-right",
     "default_icon_children": "fas fa-circle",
     "related_modal_active": False,
-    "custom_css": None,
-    "custom_js": None,
     "use_google_fonts_cdn": True,
     "show_ui_builder": True,
 }

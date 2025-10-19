@@ -1,4 +1,5 @@
 from django.contrib.auth.models import User
+from django.shortcuts import render
 from django.template import Context, Template
 from django.urls import reverse_lazy
 from django.utils.safestring import mark_safe
@@ -30,3 +31,8 @@ class TermsOfUseView(generic.TemplateView):
         else:
             context['terms_and_policy'] = 'Termos não disponíveis'
         return context
+
+
+def custom_lockout(request, credentials, *args, **kwargs):
+    context = {'blocked': True}
+    return render(request, 'registration/login.html', context, status=403)
