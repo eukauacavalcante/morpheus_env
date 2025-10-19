@@ -610,15 +610,6 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#forca-bruta-em-login" class="md-nav__link">
-    <span class="md-ellipsis">
-      Força Bruta em Login
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#rate-limiting-sem-cache" class="md-nav__link">
     <span class="md-ellipsis">
       Rate Limiting sem Cache
@@ -903,15 +894,6 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#forca-bruta-em-login" class="md-nav__link">
-    <span class="md-ellipsis">
-      Força Bruta em Login
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#rate-limiting-sem-cache" class="md-nav__link">
     <span class="md-ellipsis">
       Rate Limiting sem Cache
@@ -1132,19 +1114,6 @@ EMAIL_HOST_PASSWORD=senha123
 </ul>
 <hr />
 <h2 id="vulnerabilidades-conhecidas-e-mitigacoes">Vulnerabilidades Conhecidas e Mitigações</h2>
-<h3 id="forca-bruta-em-login">Força Bruta em Login</h3>
-<p><strong>Status</strong>: Não implementado</p>
-<p><strong>Solução</strong>: Instalar <code>django-axes</code></p>
-<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>django-axes
-</code></pre></div>
-<p>Configure em <code>settings.py</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="n">INSTALLED_APPS</span> <span class="o">+=</span> <span class="p">[</span><span class="s1">&#39;axes&#39;</span><span class="p">]</span>
-<span class="n">MIDDLEWARE</span> <span class="o">+=</span> <span class="p">[</span><span class="s1">&#39;axes.middleware.AxesMiddleware&#39;</span><span class="p">]</span>
-
-<span class="n">AXES_FAILURE_LIMIT</span> <span class="o">=</span> <span class="mi">5</span>
-<span class="n">AXES_COOLOFF_TIME</span> <span class="o">=</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">minutes</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
-</code></pre></div>
-<hr />
 <h3 id="rate-limiting-sem-cache">Rate Limiting sem Cache</h3>
 <p><strong>Status</strong>: Implementado</p>
 <p>Limita por usuário autenticado. Sem cache em desenvolvimento.</p>

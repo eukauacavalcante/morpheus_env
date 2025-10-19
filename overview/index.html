@@ -1499,6 +1499,7 @@ notifications/utils/
 <li><strong>Proteção CSRF</strong>: Todos os formulários incluem token CSRF</li>
 <li><strong>Autenticação por Login</strong>: Decoradores <code>LoginRequiredMixin</code> em views</li>
 <li><strong>Rate Limiting</strong>: Limitação de requisições por usuário (20/minuto para métricas)</li>
+<li><strong>Django Axes</strong>: Limitação de tentativas de login (5 tentativas disponíveis)</li>
 <li><strong>Validação de Email</strong>: Bloqueio de domínios temporários</li>
 <li><strong>Hash de Senha</strong>: Django utiliza PBKDF2 por padrão</li>
 <li><strong>Variáveis de Ambiente</strong>: Senhas e API keys em <code>.env</code> (não versionadas)</li>
@@ -1542,7 +1543,6 @@ notifications/utils/
 <li>⚠️ SQLite é inadequado para produção (use PostgreSQL/MySQL)</li>
 <li>⚠️ Análise de IA requer configuração de API key da Groq</li>
 <li>⚠️ Emails requerem configuração OAuth2 do Google</li>
-<li>⚠️ Rate limiting é por usuário, não por IP</li>
 <li>⚠️ Não há cache implementado</li>
 </ul>
 <hr />

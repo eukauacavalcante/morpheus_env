@@ -967,17 +967,28 @@ csrfmiddlewaretoken=abc123
 <p>Permite histórico de termos sem redeploy.</p>
 <hr />
 <h2 id="rate-limiting-em-login">Rate Limiting em Login</h2>
-<p><strong>Status</strong>: Não implementado</p>
-<p><strong>Recomendação</strong>: Instalar <code>django-axes</code> para prevenir força bruta</p>
-<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>django-axes
-</code></pre></div>
-<p>Configurar em <code>settings.py</code>:
-<div class="highlight"><pre><span></span><code><span class="n">INSTALLED_APPS</span> <span class="o">+=</span> <span class="p">[</span><span class="s1">&#39;axes&#39;</span><span class="p">]</span>
-<span class="n">MIDDLEWARE</span> <span class="o">+=</span> <span class="p">[</span><span class="s1">&#39;axes.middleware.AxesMiddleware&#39;</span><span class="p">]</span>
+<p>Configuração em <code>settings.py</code>:
+<div class="highlight"><pre><span></span><code><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="c1">#...</span>
+    <span class="s1">&#39;axes&#39;</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="n">MIDDLEWARE</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="c1">#...</span>
+    <span class="s1">&#39;axes.middleware.AxesMiddleware&#39;</span><span class="p">,</span>
+    <span class="p">]</span>
 
+<span class="n">AXES_ENABLED</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">AXES_ENABLE_ADMIN</span> <span class="o">=</span> <span class="kc">True</span>
 <span class="n">AXES_FAILURE_LIMIT</span> <span class="o">=</span> <span class="mi">5</span>
-<span class="n">AXES_COOLOFF_TIME</span> <span class="o">=</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">minutes</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
-</code></pre></div></p>
+<span class="n">AXES_COOLOFF_TIME</span> <span class="o">=</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">minutes</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">AXES_LOCKOUT_PARAMETERS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">,</span> <span class="s1">&#39;ip_address&#39;</span><span class="p">]</span>
+<span class="n">AXES_LOCKOUT_CALLABLE</span> <span class="o">=</span> <span class="s1">&#39;users.views.custom_lockout&#39;</span>
+</code></pre></div>
+<strong>AXES_ENABLED:</strong> Define se o Axes estará ou não em funcionamento. Se o sistema estiver em teste, é recomendado desativar para evitar bloqueios.</p>
+<p><strong>AXES_ENABLE_ADMIN:</strong> Define se o Axes estará monitorando também a página de administração.</p>
+<p><strong>AXES_FAILURE_LIMIT:</strong> A quantidade de tentativas válidas.</p>
+<p><strong>AXES_COOLOFF_TIME:</strong> O tempo de bloqueio.</p>
+<p><strong>AXES_LOCKOUT_PARAMETERS:</strong> Quais os parâmetros que serão utilizados para o bloqueio. No Morpheus Env, é por usuário e IP.</p>
 <hr />
 <h2 id="boas-praticas">Boas Práticas</h2>
 <ul>
