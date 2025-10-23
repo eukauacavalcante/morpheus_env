@@ -65,6 +65,9 @@ Implementa operações fundamentais:
 - Bloqueio de emails temporários/descartáveis
 - Senhas com hash seguro usando padrões Django
 - Sistema de logout seguro
+- Autenticação JWT stateless com access/refresh tokens
+- Access tokens válidos por 10 minutos
+- Refresh tokens válidos por 1 dia
 - Validação de CSRF em todos os formulários
 
 ### 6. Notificações por Email
@@ -76,15 +79,17 @@ Implementa operações fundamentais:
 
 ---
 
-## Stack Tecnológico
+## Stack Tecnológica
 
 ### Backend
 - **Python 3.12**: Linguagem de programação
-- **Django 5.2**: Framework web robusto
+- **Django 5.2.6**: Framework web robusto
+- **Django REST Framework 3.16.1**: Construção de APIs REST
 - **SQLite**: Banco de dados (desenvolvimento)
 - **Groq AI**: API de análise inteligente
 - **psutil**: Coleta de métricas do sistema
 - **google-auth**: OAuth2 para Google
+- **djangorestframework-simplejwt**: Autenticação JWT para APIs REST
 
 ### Frontend
 - **Django Templates**: Renderização de páginas
@@ -126,7 +131,7 @@ flowchart LR
 ### Monitoramento do Sistema
 
 1. Usuário acessa `/sistema/monitoramento/`
-2. Frontend requisita dados via `/sistema/monitoramento/v1/metrics-api`
+2. Frontend requisita dados via `/sistema/monitoramento/api/v1/metrics`
 3. Django executa `get_system_status()` do `psutil`
 4. Retorna JSON com métricas (CPU, RAM, Disco)
 5. Frontend atualiza a cada 5 segundos
@@ -134,7 +139,7 @@ flowchart LR
 ### Análise de IA
 
 1. Usuário clica no botão "Gerar análise"
-2. Frontend requisita `/sistema/monitoramento/v1/ai-api`
+2. Frontend requisita `/sistema/monitoramento/api/v1/ai`
 3. Django executa `get_ai_analysis()` da Groq
 4. Groq recebe dados sanitizados e retorna análise em texto
 5. Frontend exibe análise no painel
@@ -142,7 +147,7 @@ flowchart LR
 ### Conversão Numérica
 
 1. Usuário preenche valor e seleciona conversão
-2. Frontend requisita `/sistema/conversor/v1/api/?type=bin2dec&value=1010`
+2. Frontend requisita `/sistema/conversor/api/v1/converter?type=bin2dec&value=1010`
 3. Django mapeia operação para função correspondente
 4. Retorna resultado em JSON
 5. Frontend exibe resultado
@@ -245,7 +250,7 @@ notifications/utils/
 ### Usuário Autenticado
 
 1. Faz login em `/accounts/login/`
-2. Acessa dashboard em `/`
+2. Acessa a home em `/`
 3. Pode utilizar ferramentas disponíveis
 4. Faz logout em qualquer página
 

@@ -43,7 +43,7 @@ Bem-vindo à documentação do **Morpheus Env**, um simulador web educacional pa
 - Autenticação segura com validação de email
 - Notificações por email com OAuth2 Google
 
-**Stack:** Python 3.12 • Django 5.2 • SQLite • Tailwind CSS • Groq AI
+**Stack:** Python 3.12 • Django 5.2.6 • DRF 3.16.1 • SQLite • Tailwind CSS • Groq AI • OAuth2 Google
 
 ---
 
@@ -90,7 +90,6 @@ Acesse: `http://localhost:8000`
 
 ## 📞 Suporte e Contato
 
-- Email: [morpheusenv@gmail.com](mailto:morpheusenv@gmail.com)
 - GitHub: [eukauacavalcante/morpheus_env](https://github.com/eukauacavalcante/morpheus_env)
 - LinkedIn Desenvolvedor: [Kauã Cavalcante](https://www.linkedin.com/in/eukauacavalcante)
 
@@ -98,7 +97,7 @@ Acesse: `http://localhost:8000`
 
 ## 📄 Licença
 
-Este projeto está licenciado sob a **GNU GENERAL PUBLIC LICENSE** - veja o arquivo [LICENSE](https://github.com/eukauacavalcante/morpheus_env/blob/main/LICENSE) para detalhes.
+Este projeto está licenciado sob a **GNU GENERAL PUBLIC LICENSE**: veja o arquivo [LICENSE](https://github.com/eukauacavalcante/morpheus_env/blob/main/LICENSE) para detalhes.
 
 ---
 

@@ -257,9 +257,9 @@ Configurado em `tools/views.py`:
 
 | Endpoint | Limite | Janela |
 |----------|--------|--------|
-| `/sistema/monitoramento/v1/metrics-api` | 20 | 1 minuto |
-| `/sistema/monitoramento/v1/ai-api` | 10 | 1 minuto |
-| `/sistema/conversor/v1/api` | Ilimitado | - |
+| `/sistema/monitoramento/api/v1/metrics` | 20 | 1 minuto |
+| `/sistema/monitoramento/api/v1/ai` | 10 | 1 minuto |
+| `/sistema/conversor/api/v1/converter` | Ilimitado | - |
 
 Para alterar, edite o decorator `@method_decorator(ratelimit(...))` nas views.
 

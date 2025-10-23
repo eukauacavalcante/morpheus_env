@@ -18,6 +18,7 @@ Histórico de versões do Morpheus Env.
 **Autenticação e Segurança**:
 
 - Sistema de registro com validações customizadas
+- Autenticação JWT para APIs REST
 - Bloqueio de emails temporários/descartáveis
 - Proteção CSRF em formulários
 - Hash de senha com PBKDF2 (260k iterações)
@@ -44,30 +45,6 @@ Histórico de versões do Morpheus Env.
 
 - 5 tentativas válidas para o login (proteção contra força bruta)
 
-**Documentação Completa**:
-
-- Visão geral do projeto
-- Guia de instalação
-- Referência de API
-- Guia de contribuição
-
-### Tech Stack
-
-**Backend**:
-
-- Python 3.12
-- Django 5.2
-- SQLite (dev) / PostgreSQL (prod)
-- Groq AI
-- psutil
-
-**Frontend**:
-
-- Django Templates
-- Tailwind CSS 4
-- Bootstrap Icons
-- JavaScript Vanilla
-
 ---
 
 ## Suporte de Versões
@@ -82,7 +59,6 @@ Histórico de versões do Morpheus Env.
 
 ### Curto Prazo
 
-- API REST com autenticação por token
 - Cache de 5 segundos para métricas
 - Testes unitários
 
@@ -132,7 +108,6 @@ Abra uma [Discussion](https://github.com/eukauacavalcante/morpheus_env/discussio
 
 ## Contato
 
-- Email: morpheusenv@gmail.com
 - GitHub: [eukauacavalcante/morpheus_env](https://github.com/eukauacavalcante/morpheus_env)
 - LinkedIn: [Kauã Cavalcante](https://www.linkedin.com/in/eukauacavalcante)
 

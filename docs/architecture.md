@@ -7,7 +7,6 @@ Design técnico, padrões de arquitetura e decisões de design do Morpheus Env.
 ## Arquitetura em camadas
 
 ```mermaid
-
 graph TD
     A["<b>Apresentação</b><br/>Templates + Tailwind CSS"]
     B["<b>URLs</b><br/>urls.py<br/>Roteamento"]
@@ -24,10 +23,8 @@ graph TD
     D -->|Usa| E
     D -->|Consulta| G
     E -->|SQL via ORM| F
-    
-    classDef default stroke:#333,stroke-width:2px
-
 ```
+
 ---
 
 ## Padrão da Camada de Serviços (Service Layer)

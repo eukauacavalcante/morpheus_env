@@ -93,6 +93,7 @@ morpheus_env/
 ├── README.md
 ├── requirements.txt
 ├── requirements_dev.txt
+├── requirements_docs.txt
 ├── tailwind.config.js
 ├── db.sqlite3                     # Banco (dev only)
 └── venv/                          # Ambiente virtual (ignorado)
@@ -165,9 +166,9 @@ Quando usuário é criado, dispara `send_new_user_email()`.
 
 **API Views**:
 
-- `SystemAnalysisAPIView`: GET `/sistema/monitoramento/v1/metrics-api`
-- `AiAPIView`: GET `/sistema/monitoramento/v1/ai-api`
-- `NumberConverterAPIView`: GET `/sistema/conversor/v1/api`
+- `SystemAnalysisAPIView`: GET `/sistema/monitoramento/api/v1/metrics`
+- `AiAPIView`: GET `/sistema/monitoramento/api/v1/ai`
+- `NumberConverterAPIView`: GET `/sistema/conversor/api/v1/converter`
 
 ---
 

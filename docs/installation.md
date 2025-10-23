@@ -74,6 +74,8 @@ Acesse: `http://localhost:8000`
 
 ### Ativar Email (Gmail + OAuth2)
 
+⚠️ Atenção: a ação abaixo está sendo descontinuada pelo Google. Em caso de erro, considere utilizar o [OAuth2](#configurar-oauth2-google)
+
 1. **Criar App Password**:
 
    - Acesse [myaccount.google.com/security](https://myaccount.google.com/security)
@@ -145,20 +147,20 @@ print(analysis)
 
 ---
 
-### Configurar OAuth2 Google (Avançado)
+### Configurar OAuth2 Google
 
 Para envio de emails mais seguro via OAuth2 (não recomendado para produção sem HTTPS).
 
 1. **Criar projeto Google Cloud**:
 
-   - Acesse [console.cloud.google.com](https://console.cloud.google.com)
-   - Crie novo projeto
-   - Ative "Gmail API"
+      - Acesse [console.cloud.google.com](https://console.cloud.google.com)
+      - Crie novo projeto
+      - Ative "Gmail API"
 
 2. **Criar credenciais OAuth2**:
 
-   - Tipo: "Desktop application"
-   - Download JSON das credenciais
+      - Tipo: "Desktop application"
+      - Download JSON das credenciais
 
 3. **Gerar Refresh Token**:
 
@@ -170,8 +172,9 @@ flow = InstalledAppFlow.from_client_secrets_file(
     'sua-credenciais.json',
     SCOPES
 )
-creds = flow.run_local_server(port=0)
-print('Refresh Token:', creds.refresh_token)
+creds = flow.run_local_server(port=8000)
+print(f'Access Token: {creds.token}')
+print(f'Refresh Token: {creds.refresh_token}')
 ```
 
 4. **Configurar .env**:

@@ -83,6 +83,8 @@ Você deve estar confortável com:
 
 - **Python básico**: sintaxe, loops, condicionais, funções
 - **Django**: Models, Views, Templates, ORM
+- **Django REST Framework**: Serializers, ViewSets, autenticação
+- **JWT**: Conceitos básicos de tokens e autenticação stateless
 - **HTML/CSS**: estrutura básica, seletores
 - **JavaScript**: variáveis, funções, async/await
 - **Git**: clone, commit, push, branches
@@ -91,6 +93,8 @@ Se não tiver experiência, consulte:
 
 - [Real Python](https://realpython.com)
 - [Django Documentation](https://docs.djangoproject.com)
+- [Django REST Framework Documentation](https://www.django-rest-framework.org)
+- [Git Documentation](https://git-scm.com/docs)
 
 ---
 

@@ -6,15 +6,49 @@ Endpoints REST do Morpheus Env.
 
 ## Autenticação
 
-Todos os endpoints requerem autenticação via sessão Django.
+Todos os endpoints suportam dois métodos de autenticação:
 
-Se não autenticado: `HTTP 302 Found` com redirect para `/accounts/login/?next=/original-url/`
+1. **Sessão Django** (tradicional)
+2. **JWT (JSON Web Token)** - Recomendado para aplicações modernas
+
+Se não autenticado: `HTTP 401 Unauthorized`
+
+### Obtendo um Token JWT
+```bash
+curl -X POST http://localhost:8000/accounts/api/v1/token/ \
+  -H "Content-Type: application/json" \
+  -d '{"username": "usuario", "password": "senha123"}'
+```
+
+**Response (200)**:
+```json
+{
+  "access": "eyJ0eXAiOiJKV1QiLCJhbGc...",
+  "refresh": "eyJ0eXAiOiJKV1QiLCJhbGc..."
+}
+```
+
+**Usando o Token** - Adicione o header `Authorization`:
+```bash
+curl -H "Authorization: Bearer {access_token}" \
+  http://localhost:8000/sistema/monitoramento/api/v1/metrics
+```
+
+**Refresh Token** (válido por 1 dia):
+```bash
+curl -X POST http://localhost:8000/accounts/api/v1/token/refresh/ \
+  -H "Content-Type: application/json" \
+  -d '{"refresh": "{refresh_token}"}'
+```
+
+- **Access Token**: Válido por 10 minutos
+- **Refresh Token**: Válido por 1 dia
 
 ---
 
 ## Endpoints
 
-### GET /sistema/monitoramento/v1/metrics-api
+### GET /sistema/monitoramento/api/v1/metrics
 
 Retorna métricas atuais do sistema.
 
@@ -48,18 +82,18 @@ Retorna métricas atuais do sistema.
 
 ```bash
 curl -b "sessionid=abc123" \
-  http://localhost:8000/sistema/monitoramento/v1/metrics-api
+  http://localhost:8000/sistema/monitoramento/api/v1/metrics
 ```
 
 ```javascript
-const response = await fetch('/sistema/monitoramento/v1/metrics-api');
+const response = await fetch('/sistema/monitoramento/api/v1/metrics');
 const data = await response.json();
 console.log(`CPU: ${data.data.cpu_percent}%`);
 ```
 
 ---
 
-### GET /sistema/monitoramento/v1/ai-api
+### GET /sistema/monitoramento/api/v1/ai
 
 Análise inteligente das métricas.
 
@@ -88,7 +122,7 @@ Análise inteligente das métricas.
 
 ---
 
-### GET /sistema/conversor/v1/api
+### GET /sistema/conversor/api/v1/converter
 
 Converte números entre bases.
 
@@ -126,17 +160,17 @@ Converte números entre bases.
 
 ```bash
 # Binário para Decimal
-curl "http://localhost:8000/sistema/conversor/v1/api?type=bin2dec&value=1010"
+curl "http://localhost:8000/sistema/conversor/api/v1/converter?type=bin2dec&value=1010"
 # Retorna: 10
 
 # Decimal para Hexadecimal
-curl "http://localhost:8000/sistema/conversor/v1/api?type=dec2hex&value=255"
+curl "http://localhost:8000/sistema/conversor/api/v1/converter?type=dec2hex&value=255"
 # Retorna: FF
 ```
 
 ---
 
-### GET /sistema/conversor/v1/api (Operações Lógicas)
+### GET /sistema/conversor/api/v1/converter (Operações Lógicas)
 
 Operações AND, OR, XOR.
 
@@ -166,10 +200,10 @@ Operações AND, OR, XOR.
 **Exemplos**:
 
 ```bash
-curl "http://localhost:8000/sistema/conversor/v1/api?type=and&value1=1&value2=1"
+curl "http://localhost:8000/sistema/conversor/api/v1/converter?type=and&value1=1&value2=1"
 # Retorna: 1
 
-curl "http://localhost:8000/sistema/conversor/v1/api?type=xor&value1=1&value2=0"
+curl "http://localhost:8000/sistema/conversor/api/v1/converter?type=xor&value1=1&value2=0"
 # Retorna: 1
 ```
 
@@ -180,8 +214,9 @@ curl "http://localhost:8000/sistema/conversor/v1/api?type=xor&value1=1&value2=0"
 | Código | Significado |
 |--------|------------|
 | 200 | OK |
-| 302 | Redirect (não autenticado) |
+| 302 | Redirect (sessão Django - deprecado) |
 | 400 | Entrada inválida |
+| 401 | Não autenticado / Token JWT inválido |
 | 429 | Rate limit excedido |
 | 500 | Erro no servidor |
 
@@ -199,9 +234,9 @@ HTTP 429 Too Many Requests
 
 | Endpoint | Limite |
 |----------|--------|
-| `/sistema/monitoramento/v1/metrics-api` | 20/minuto |
-| `/sistema/monitoramento/v1/ai-api` | 10/minuto |
-| `/sistema/conversor/v1/api` | Ilimitado |
+| `/sistema/monitoramento/api/v1/metrics` | 20/minuto |
+| `/sistema/monitoramento/api/v1/ai` | 10/minuto |
+| `/sistema/conversor/api/v1/converter` | Ilimitado |
 
 ---
 
@@ -212,33 +247,29 @@ HTTP 429 Too Many Requests
 ```python
 import requests
 
-session = requests.Session()
+# Obter tokens
+auth_response = requests.post(
+    'http://localhost:8000/accounts/api/v1/token/',
+    json={'username': 'usuario', 'password': 'senha123'}
+)
+access_token = auth_response.json()['access']
 
-# Autenticar
-session.post('http://localhost:8000/accounts/login/', data={
-    'username': 'usuario',
-    'password': 'senha123'
-})
+# Headers com JWT
+headers = {'Authorization': f'Bearer {access_token}'}
 
 # Métricas
-r = session.get('http://localhost:8000/sistema/monitoramento/v1/metrics-api')
+r = requests.get(
+    'http://localhost:8000/sistema/monitoramento/api/v1/metrics',
+    headers=headers
+)
 print(f"CPU: {r.json()['data']['cpu_percent']}%")
-
-# Análise IA
-r = session.get('http://localhost:8000/sistema/monitoramento/v1/ai-api')
-print(f"IA: {r.json()['ai']}")
-
-# Conversão
-r = session.get('http://localhost:8000/sistema/conversor/v1/api',
-                 params={'type': 'dec2bin', 'value': '255'})
-print(f"255 em binário: {r.json()['result']}")
 ```
 
 ### JavaScript + Fetch
 
 ```javascript
 async function getMetrics() {
-    const response = await fetch('/sistema/monitoramento/v1/metrics-api');
+    const response = await fetch('/sistema/monitoramento/api/v1/metrics');
     const data = await response.json();
     console.log(`CPU: ${data.data.cpu_percent}%`);
 }
