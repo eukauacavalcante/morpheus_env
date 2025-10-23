@@ -11,6 +11,9 @@
 
 Um projeto acadêmico e experimental para monitoramento de sistema com análise por IA e ferramentas computacionais.
 
+[Documentação](https://eukauacavalcante.github.io/morpheus_env/) | [Discussion](https://github.com/eukauacavalcante/morpheus_env/discussions)
+
+
 </div>
 
 ## 🎯 Visão Geral
@@ -31,40 +34,13 @@ Um projeto acadêmico e experimental para monitoramento de sistema com análise 
 
 ---
 
-## ⭐ Features
-
-### Autenticação e Usuários
-- Registro de usuários com validação forte
-- Bloqueio de emails temporários/descartáveis
-- Senhas com hash seguro (Django)
-- Logout seguro
-
-### Monitoramento do Sistema
-- Coleta de métricas em tempo real (CPU, RAM, Disco)
-- Análise de desempenho via IA
-- Interface de dashboard responsiva
-
-### Conversão Numérica e Lógica Booleana
-- Conversão entre bases numéricas (2, 8, 10, 16)
-- Operações lógicas booleanas
-- Validação de entrada robusta
-- Respostas via API
-
-### Notificações
-- Emails de boas-vindas para novos usuários
-- Notificações de atualização de termos
-- Autenticação OAuth2 com Google
-- Mensagens coloridas no terminal
-
----
-
 ## 🛠 Stack Tecnológica
 
 ### Backend
 - **Python 3.12** - Linguagem de programação
-- **Django 5.2** - Framework web
+- **Django 5.2.6** - Framework web
+- **Django REST Framework 3.16.1**: Construção de APIs REST
 - **SQLite** - Banco de dados (desenvolvimento)
-- **Groq AI** - Análise inteligente de métricas
 
 ### Frontend
 - **Django Templates** - Renderização de página
@@ -74,42 +50,12 @@ Um projeto acadêmico e experimental para monitoramento de sistema com análise 
 
 ### Ferramentas Externas
 - **Google OAuth2** - Autenticação e envio de emails
+- **Groq AI** - Análise inteligente de métricas
 - **psutil** - Coleta de métricas do sistema
-- **colorama** - Mensagens coloridas no terminal
-- **python-decouple** - Gerenciamento de variáveis de ambiente
 
 ---
 
-## 🏗 Arquitetura
-
-### Padrão MVT
-
-O projeto segue o padrão MVT (Model-View-Template) do Django:
-
-- **Models** (`models.py`) - Estrutura de dados
-- **Views** (`views.py`) - Lógica de negócio e requisições
-- **Templates** (`templates/`) - Apresentação de dados
-
----
-
-## 📱 Apps Django
-
-### 1. **users** - Autenticação e Perfil
-Responsável por gerenciar usuários, autenticação e termos de uso.
-
-### 2. **tools** - Ferramentas do Sistema
-Oferece monitoramento de sistema e ferramentas computacionais.
-
-### 3. **notifications** - Notificações e Emails
-Gerencia notificação via email com autenticação segura.
-
----
-
-## 📚 Documentação
-
-**Acesse**: [Documentação Morpheus Env](https://eukauacavalcante.github.io/morpheus_env/)
-
-### Links Úteis
+## Links Úteis
 
 - [Documentação Django](https://docs.djangoproject.com/)
 - [Tailwind CSS Docs](https://tailwindcss.com/docs)
@@ -124,16 +70,6 @@ Este projeto está licenciado sob a Licença GNU GENERAL PUBLIC LICENSE - veja o
 
 ---
 
-## ⚠️ Avisos Importantes
-
-Este é um **projeto acadêmico e experimental**. 
-
-- Não use em produção
-- Não interprete os resultados como análises profissionais
-- Para fins educacionais apenas
-
----
-
 ## 🤝 Contribuições
 
 Contribuições são bem-vindas! Para contribuir:
@@ -144,20 +80,18 @@ Contribuições são bem-vindas! Para contribuir:
 4. Push para a branch (`git push origin feature/MinhaFeature`)
 5. Abra um Pull Request
 
----
+## Como Sugerir Melhorias
 
-## 📧 Suporte
+Abra uma [Discussion](https://github.com/eukauacavalcante/morpheus_env/discussions) com:
 
-Para reportar bugs ou sugerir melhorias, entre em contato:
-
-📧 **Email**: morpheusenv@gmail.com
+- Descrição da melhoria
+- Caso de uso
+- Benefícios esperados
 
 ---
 
 <div align="center">
 
-**Desenvolvido para educação e experimentação**
-
-*Morpheus Env © 2025 - Projeto Acadêmico e Experimental*
+Morpheus Env © 2025 - Projeto Acadêmico e Experimental
 
 </div>
