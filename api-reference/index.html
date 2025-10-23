@@ -532,6 +532,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Autenticação">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#obtendo-um-token-jwt" class="md-nav__link">
+    <span class="md-ellipsis">
+      Obtendo um Token JWT
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -545,36 +560,36 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#get-sistemamonitoramentov1metrics-api" class="md-nav__link">
+  <a href="#get-sistemamonitoramentoapiv1metrics" class="md-nav__link">
     <span class="md-ellipsis">
-      GET /sistema/monitoramento/v1/metrics-api
+      GET /sistema/monitoramento/api/v1/metrics
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#get-sistemamonitoramentov1ai-api" class="md-nav__link">
+  <a href="#get-sistemamonitoramentoapiv1ai" class="md-nav__link">
     <span class="md-ellipsis">
-      GET /sistema/monitoramento/v1/ai-api
+      GET /sistema/monitoramento/api/v1/ai
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#get-sistemaconversorv1api" class="md-nav__link">
+  <a href="#get-sistemaconversorapiv1converter" class="md-nav__link">
     <span class="md-ellipsis">
-      GET /sistema/conversor/v1/api
+      GET /sistema/conversor/api/v1/converter
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#get-sistemaconversorv1api-operacoes-logicas" class="md-nav__link">
+  <a href="#get-sistemaconversorapiv1converter-operacoes-logicas" class="md-nav__link">
     <span class="md-ellipsis">
-      GET /sistema/conversor/v1/api (Operações Lógicas)
+      GET /sistema/conversor/api/v1/converter (Operações Lógicas)
     </span>
   </a>
   
@@ -752,6 +767,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Autenticação">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#obtendo-um-token-jwt" class="md-nav__link">
+    <span class="md-ellipsis">
+      Obtendo um Token JWT
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -765,36 +795,36 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#get-sistemamonitoramentov1metrics-api" class="md-nav__link">
+  <a href="#get-sistemamonitoramentoapiv1metrics" class="md-nav__link">
     <span class="md-ellipsis">
-      GET /sistema/monitoramento/v1/metrics-api
+      GET /sistema/monitoramento/api/v1/metrics
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#get-sistemamonitoramentov1ai-api" class="md-nav__link">
+  <a href="#get-sistemamonitoramentoapiv1ai" class="md-nav__link">
     <span class="md-ellipsis">
-      GET /sistema/monitoramento/v1/ai-api
+      GET /sistema/monitoramento/api/v1/ai
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#get-sistemaconversorv1api" class="md-nav__link">
+  <a href="#get-sistemaconversorapiv1converter" class="md-nav__link">
     <span class="md-ellipsis">
-      GET /sistema/conversor/v1/api
+      GET /sistema/conversor/api/v1/converter
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#get-sistemaconversorv1api-operacoes-logicas" class="md-nav__link">
+  <a href="#get-sistemaconversorapiv1converter-operacoes-logicas" class="md-nav__link">
     <span class="md-ellipsis">
-      GET /sistema/conversor/v1/api (Operações Lógicas)
+      GET /sistema/conversor/api/v1/converter (Operações Lógicas)
     </span>
   </a>
   
@@ -885,11 +915,39 @@
 <p>Endpoints REST do Morpheus Env.</p>
 <hr />
 <h2 id="autenticacao">Autenticação</h2>
-<p>Todos os endpoints requerem autenticação via sessão Django.</p>
-<p>Se não autenticado: <code>HTTP 302 Found</code> com redirect para <code>/accounts/login/?next=/original-url/</code></p>
+<p>Todos os endpoints suportam dois métodos de autenticação:</p>
+<ol>
+<li><strong>Sessão Django</strong> (tradicional)</li>
+<li><strong>JWT (JSON Web Token)</strong> - Recomendado para aplicações modernas</li>
+</ol>
+<p>Se não autenticado: <code>HTTP 401 Unauthorized</code></p>
+<h3 id="obtendo-um-token-jwt">Obtendo um Token JWT</h3>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>http://localhost:8000/accounts/api/v1/token/<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;username&quot;: &quot;usuario&quot;, &quot;password&quot;: &quot;senha123&quot;}&#39;</span>
+</code></pre></div>
+<p><strong>Response (200)</strong>:
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;access&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eyJ0eXAiOiJKV1QiLCJhbGc...&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;refresh&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eyJ0eXAiOiJKV1QiLCJhbGc...&quot;</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p><strong>Usando o Token</strong> - Adicione o header <code>Authorization</code>:
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Authorization: Bearer {access_token}&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>http://localhost:8000/sistema/monitoramento/api/v1/metrics
+</code></pre></div></p>
+<p><strong>Refresh Token</strong> (válido por 1 dia):
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>http://localhost:8000/accounts/api/v1/token/refresh/<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;refresh&quot;: &quot;{refresh_token}&quot;}&#39;</span>
+</code></pre></div></p>
+<ul>
+<li><strong>Access Token</strong>: Válido por 10 minutos</li>
+<li><strong>Refresh Token</strong>: Válido por 1 dia</li>
+</ul>
 <hr />
 <h2 id="endpoints">Endpoints</h2>
-<h3 id="get-sistemamonitoramentov1metrics-api">GET /sistema/monitoramento/v1/metrics-api</h3>
+<h3 id="get-sistemamonitoramentoapiv1metrics">GET /sistema/monitoramento/api/v1/metrics</h3>
 <p>Retorna métricas atuais do sistema.</p>
 <p><strong>Rate Limit</strong>: 20 requisições/minuto</p>
 <p><strong>Response (200)</strong>:</p>
@@ -915,14 +973,14 @@
 </ul>
 <p><strong>Exemplo</strong>:</p>
 <div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-b<span class="w"> </span><span class="s2">&quot;sessionid=abc123&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>http://localhost:8000/sistema/monitoramento/v1/metrics-api
+<span class="w">  </span>http://localhost:8000/sistema/monitoramento/api/v1/metrics
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="s1">&#39;/sistema/monitoramento/v1/metrics-api&#39;</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="s1">&#39;/sistema/monitoramento/api/v1/metrics&#39;</span><span class="p">);</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`CPU: </span><span class="si">${</span><span class="nx">data</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">cpu_percent</span><span class="si">}</span><span class="sb">%`</span><span class="p">);</span>
 </code></pre></div>
 <hr />
-<h3 id="get-sistemamonitoramentov1ai-api">GET /sistema/monitoramento/v1/ai-api</h3>
+<h3 id="get-sistemamonitoramentoapiv1ai">GET /sistema/monitoramento/api/v1/ai</h3>
 <p>Análise inteligente das métricas.</p>
 <p><strong>Rate Limit</strong>: 10 requisições/minuto</p>
 <p><strong>Response (200) - Com IA ativada</strong>:</p>
@@ -941,7 +999,7 @@
 <li>Pode levar 2-5 segundos</li>
 </ul>
 <hr />
-<h3 id="get-sistemaconversorv1api">GET /sistema/conversor/v1/api</h3>
+<h3 id="get-sistemaconversorapiv1converter">GET /sistema/conversor/api/v1/converter</h3>
 <p>Converte números entre bases.</p>
 <p><strong>Parâmetros</strong>:</p>
 <ul>
@@ -969,15 +1027,15 @@
 </code></pre></div>
 <p><strong>Exemplos</strong>:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Binário para Decimal</span>
-curl<span class="w"> </span><span class="s2">&quot;http://localhost:8000/sistema/conversor/v1/api?type=bin2dec&amp;value=1010&quot;</span>
+curl<span class="w"> </span><span class="s2">&quot;http://localhost:8000/sistema/conversor/api/v1/converter?type=bin2dec&amp;value=1010&quot;</span>
 <span class="c1"># Retorna: 10</span>
 
 <span class="c1"># Decimal para Hexadecimal</span>
-curl<span class="w"> </span><span class="s2">&quot;http://localhost:8000/sistema/conversor/v1/api?type=dec2hex&amp;value=255&quot;</span>
+curl<span class="w"> </span><span class="s2">&quot;http://localhost:8000/sistema/conversor/api/v1/converter?type=dec2hex&amp;value=255&quot;</span>
 <span class="c1"># Retorna: FF</span>
 </code></pre></div>
 <hr />
-<h3 id="get-sistemaconversorv1api-operacoes-logicas">GET /sistema/conversor/v1/api (Operações Lógicas)</h3>
+<h3 id="get-sistemaconversorapiv1converter-operacoes-logicas">GET /sistema/conversor/api/v1/converter (Operações Lógicas)</h3>
 <p>Operações AND, OR, XOR.</p>
 <p><strong>Parâmetros</strong>:</p>
 <ul>
@@ -1033,10 +1091,10 @@ curl<span class="w"> </span><span class="s2">&quot;http://localhost:8000/sistema
 </tbody>
 </table>
 <p><strong>Exemplos</strong>:</p>
-<div class="highlight"><pre><span></span><code>curl<span class="w"> </span><span class="s2">&quot;http://localhost:8000/sistema/conversor/v1/api?type=and&amp;value1=1&amp;value2=1&quot;</span>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span><span class="s2">&quot;http://localhost:8000/sistema/conversor/api/v1/converter?type=and&amp;value1=1&amp;value2=1&quot;</span>
 <span class="c1"># Retorna: 1</span>
 
-curl<span class="w"> </span><span class="s2">&quot;http://localhost:8000/sistema/conversor/v1/api?type=xor&amp;value1=1&amp;value2=0&quot;</span>
+curl<span class="w"> </span><span class="s2">&quot;http://localhost:8000/sistema/conversor/api/v1/converter?type=xor&amp;value1=1&amp;value2=0&quot;</span>
 <span class="c1"># Retorna: 1</span>
 </code></pre></div>
 <hr />
@@ -1055,11 +1113,15 @@ curl<span class="w"> </span><span class="s2">&quot;http://localhost:8000/sistema
 </tr>
 <tr>
 <td>302</td>
-<td>Redirect (não autenticado)</td>
+<td>Redirect (sessão Django - deprecado)</td>
 </tr>
 <tr>
 <td>400</td>
 <td>Entrada inválida</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Não autenticado / Token JWT inválido</td>
 </tr>
 <tr>
 <td>429</td>
@@ -1086,15 +1148,15 @@ curl<span class="w"> </span><span class="s2">&quot;http://localhost:8000/sistema
 </thead>
 <tbody>
 <tr>
-<td><code>/sistema/monitoramento/v1/metrics-api</code></td>
+<td><code>/sistema/monitoramento/api/v1/metrics</code></td>
 <td>20/minuto</td>
 </tr>
 <tr>
-<td><code>/sistema/monitoramento/v1/ai-api</code></td>
+<td><code>/sistema/monitoramento/api/v1/ai</code></td>
 <td>10/minuto</td>
 </tr>
 <tr>
-<td><code>/sistema/conversor/v1/api</code></td>
+<td><code>/sistema/conversor/api/v1/converter</code></td>
 <td>Ilimitado</td>
 </tr>
 </tbody>
@@ -1104,30 +1166,26 @@ curl<span class="w"> </span><span class="s2">&quot;http://localhost:8000/sistema
 <h3 id="python-requests">Python + Requests</h3>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
 
-<span class="n">session</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span>
+<span class="c1"># Obter tokens</span>
+<span class="n">auth_response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+    <span class="s1">&#39;http://localhost:8000/accounts/api/v1/token/&#39;</span><span class="p">,</span>
+    <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;username&#39;</span><span class="p">:</span> <span class="s1">&#39;usuario&#39;</span><span class="p">,</span> <span class="s1">&#39;password&#39;</span><span class="p">:</span> <span class="s1">&#39;senha123&#39;</span><span class="p">}</span>
+<span class="p">)</span>
+<span class="n">access_token</span> <span class="o">=</span> <span class="n">auth_response</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s1">&#39;access&#39;</span><span class="p">]</span>
 
-<span class="c1"># Autenticar</span>
-<span class="n">session</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;http://localhost:8000/accounts/login/&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="p">{</span>
-    <span class="s1">&#39;username&#39;</span><span class="p">:</span> <span class="s1">&#39;usuario&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;password&#39;</span><span class="p">:</span> <span class="s1">&#39;senha123&#39;</span>
-<span class="p">})</span>
+<span class="c1"># Headers com JWT</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Authorization&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;Bearer </span><span class="si">{</span><span class="n">access_token</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">}</span>
 
 <span class="c1"># Métricas</span>
-<span class="n">r</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;http://localhost:8000/sistema/monitoramento/v1/metrics-api&#39;</span><span class="p">)</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+    <span class="s1">&#39;http://localhost:8000/sistema/monitoramento/api/v1/metrics&#39;</span><span class="p">,</span>
+    <span class="n">headers</span><span class="o">=</span><span class="n">headers</span>
+<span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;CPU: </span><span class="si">{</span><span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="s1">&#39;cpu_percent&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
-
-<span class="c1"># Análise IA</span>
-<span class="n">r</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;http://localhost:8000/sistema/monitoramento/v1/ai-api&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;IA: </span><span class="si">{</span><span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s1">&#39;ai&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-<span class="c1"># Conversão</span>
-<span class="n">r</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;http://localhost:8000/sistema/conversor/v1/api&#39;</span><span class="p">,</span>
-                 <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;dec2bin&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="s1">&#39;255&#39;</span><span class="p">})</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;255 em binário: </span><span class="si">{</span><span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s1">&#39;result&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="javascript-fetch">JavaScript + Fetch</h3>
 <div class="highlight"><pre><span></span><code><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">getMetrics</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="s1">&#39;/sistema/monitoramento/v1/metrics-api&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="s1">&#39;/sistema/monitoramento/api/v1/metrics&#39;</span><span class="p">);</span>
 <span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
 <span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`CPU: </span><span class="si">${</span><span class="nx">data</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">cpu_percent</span><span class="si">}</span><span class="sb">%`</span><span class="p">);</span>
 <span class="p">}</span>

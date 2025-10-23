@@ -447,9 +447,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#configurar-oauth2-google-avancado" class="md-nav__link">
+  <a href="#configurar-oauth2-google" class="md-nav__link">
     <span class="md-ellipsis">
-      Configurar OAuth2 Google (Avançado)
+      Configurar OAuth2 Google
     </span>
   </a>
   
@@ -894,9 +894,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#configurar-oauth2-google-avancado" class="md-nav__link">
+  <a href="#configurar-oauth2-google" class="md-nav__link">
     <span class="md-ellipsis">
-      Configurar OAuth2 Google (Avançado)
+      Configurar OAuth2 Google
     </span>
   </a>
   
@@ -1027,6 +1027,7 @@ python<span class="w"> </span>manage.py<span class="w"> </span>createsuperuser
 <hr />
 <h2 id="configuracao-opcional">Configuração Opcional</h2>
 <h3 id="ativar-email-gmail-oauth2">Ativar Email (Gmail + OAuth2)</h3>
+<p>⚠️ Atenção: a ação abaixo está sendo descontinuada pelo Google. Em caso de erro, considere utilizar o <a href="#configurar-oauth2-google">OAuth2</a></p>
 <ol>
 <li>
 <p><strong>Criar App Password</strong>:</p>
@@ -1097,27 +1098,23 @@ AI_MODEL=mixtral-8x7b-32768
 <span class="nb">print</span><span class="p">(</span><span class="n">analysis</span><span class="p">)</span>
 </code></pre></div>
 <hr />
-<h3 id="configurar-oauth2-google-avancado">Configurar OAuth2 Google (Avançado)</h3>
+<h3 id="configurar-oauth2-google">Configurar OAuth2 Google</h3>
 <p>Para envio de emails mais seguro via OAuth2 (não recomendado para produção sem HTTPS).</p>
 <ol>
 <li>
 <p><strong>Criar projeto Google Cloud</strong>:</p>
-</li>
-<li>
-<p>Acesse <a href="https://console.cloud.google.com">console.cloud.google.com</a></p>
-</li>
+<ul>
+<li>Acesse <a href="https://console.cloud.google.com">console.cloud.google.com</a></li>
 <li>Crie novo projeto</li>
-<li>
-<p>Ative "Gmail API"</p>
+<li>Ative "Gmail API"</li>
+</ul>
 </li>
 <li>
 <p><strong>Criar credenciais OAuth2</strong>:</p>
-</li>
-<li>
-<p>Tipo: "Desktop application"</p>
-</li>
-<li>
-<p>Download JSON das credenciais</p>
+<ul>
+<li>Tipo: "Desktop application"</li>
+<li>Download JSON das credenciais</li>
+</ul>
 </li>
 <li>
 <p><strong>Gerar Refresh Token</strong>:</p>
@@ -1130,8 +1127,9 @@ AI_MODEL=mixtral-8x7b-32768
     <span class="s1">&#39;sua-credenciais.json&#39;</span><span class="p">,</span>
     <span class="n">SCOPES</span>
 <span class="p">)</span>
-<span class="n">creds</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">run_local_server</span><span class="p">(</span><span class="n">port</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Refresh Token:&#39;</span><span class="p">,</span> <span class="n">creds</span><span class="o">.</span><span class="n">refresh_token</span><span class="p">)</span>
+<span class="n">creds</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">run_local_server</span><span class="p">(</span><span class="n">port</span><span class="o">=</span><span class="mi">8000</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Access Token: </span><span class="si">{</span><span class="n">creds</span><span class="o">.</span><span class="n">token</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Refresh Token: </span><span class="si">{</span><span class="n">creds</span><span class="o">.</span><span class="n">refresh_token</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </code></pre></div>
 <ol>
 <li><strong>Configurar .env</strong>:</li>

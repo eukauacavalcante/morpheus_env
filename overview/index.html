@@ -393,13 +393,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#stack-tecnologico" class="md-nav__link">
+  <a href="#stack-tecnologica" class="md-nav__link">
     <span class="md-ellipsis">
-      Stack Tecnológico
+      Stack Tecnológica
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Stack Tecnológico">
+    <nav class="md-nav" aria-label="Stack Tecnológica">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1052,13 +1052,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#stack-tecnologico" class="md-nav__link">
+  <a href="#stack-tecnologica" class="md-nav__link">
     <span class="md-ellipsis">
-      Stack Tecnológico
+      Stack Tecnológica
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Stack Tecnológico">
+    <nav class="md-nav" aria-label="Stack Tecnológica">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1372,6 +1372,9 @@
 <li>Bloqueio de emails temporários/descartáveis</li>
 <li>Senhas com hash seguro usando padrões Django</li>
 <li>Sistema de logout seguro</li>
+<li>Autenticação JWT stateless com access/refresh tokens</li>
+<li>Access tokens válidos por 10 minutos</li>
+<li>Refresh tokens válidos por 1 dia</li>
 <li>Validação de CSRF em todos os formulários</li>
 </ul>
 <h3 id="6-notificacoes-por-email">6. Notificações por Email</h3>
@@ -1382,15 +1385,17 @@
 <li>Mensagens formatadas em HTML e texto plano</li>
 </ul>
 <hr />
-<h2 id="stack-tecnologico">Stack Tecnológico</h2>
+<h2 id="stack-tecnologica">Stack Tecnológica</h2>
 <h3 id="backend">Backend</h3>
 <ul>
 <li><strong>Python 3.12</strong>: Linguagem de programação</li>
-<li><strong>Django 5.2</strong>: Framework web robusto</li>
+<li><strong>Django 5.2.6</strong>: Framework web robusto</li>
+<li><strong>Django REST Framework 3.16.1</strong>: Construção de APIs REST</li>
 <li><strong>SQLite</strong>: Banco de dados (desenvolvimento)</li>
 <li><strong>Groq AI</strong>: API de análise inteligente</li>
 <li><strong>psutil</strong>: Coleta de métricas do sistema</li>
 <li><strong>google-auth</strong>: OAuth2 para Google</li>
+<li><strong>djangorestframework-simplejwt</strong>: Autenticação JWT para APIs REST</li>
 </ul>
 <h3 id="frontend">Frontend</h3>
 <ul>
@@ -1427,7 +1432,7 @@ flowchart LR
 <h3 id="monitoramento-do-sistema">Monitoramento do Sistema</h3>
 <ol>
 <li>Usuário acessa <code>/sistema/monitoramento/</code></li>
-<li>Frontend requisita dados via <code>/sistema/monitoramento/v1/metrics-api</code></li>
+<li>Frontend requisita dados via <code>/sistema/monitoramento/api/v1/metrics</code></li>
 <li>Django executa <code>get_system_status()</code> do <code>psutil</code></li>
 <li>Retorna JSON com métricas (CPU, RAM, Disco)</li>
 <li>Frontend atualiza a cada 5 segundos</li>
@@ -1435,7 +1440,7 @@ flowchart LR
 <h3 id="analise-de-ia">Análise de IA</h3>
 <ol>
 <li>Usuário clica no botão "Gerar análise"</li>
-<li>Frontend requisita <code>/sistema/monitoramento/v1/ai-api</code></li>
+<li>Frontend requisita <code>/sistema/monitoramento/api/v1/ai</code></li>
 <li>Django executa <code>get_ai_analysis()</code> da Groq</li>
 <li>Groq recebe dados sanitizados e retorna análise em texto</li>
 <li>Frontend exibe análise no painel</li>
@@ -1443,7 +1448,7 @@ flowchart LR
 <h3 id="conversao-numerica">Conversão Numérica</h3>
 <ol>
 <li>Usuário preenche valor e seleciona conversão</li>
-<li>Frontend requisita <code>/sistema/conversor/v1/api/?type=bin2dec&amp;value=1010</code></li>
+<li>Frontend requisita <code>/sistema/conversor/api/v1/converter?type=bin2dec&amp;value=1010</code></li>
 <li>Django mapeia operação para função correspondente</li>
 <li>Retorna resultado em JSON</li>
 <li>Frontend exibe resultado</li>
@@ -1533,7 +1538,7 @@ notifications/utils/
 <h3 id="usuario-autenticado">Usuário Autenticado</h3>
 <ol>
 <li>Faz login em <code>/accounts/login/</code></li>
-<li>Acessa dashboard em <code>/</code></li>
+<li>Acessa a home em <code>/</code></li>
 <li>Pode utilizar ferramentas disponíveis</li>
 <li>Faz logout em qualquer página</li>
 </ol>
