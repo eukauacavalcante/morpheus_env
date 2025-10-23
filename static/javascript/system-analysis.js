@@ -1,5 +1,5 @@
 async function getSystemMetrics() {
-    let request = await fetch('v1/metrics-api')
+    let request = await fetch('api/v1/metrics')
     let response = await request.json()
 
     document.getElementById('cpu').innerHTML = `<p class="text-green-400 font-semibold">${response.data.cpu_percent} %</p>`
@@ -18,7 +18,7 @@ async function aiAnalysis() {
     result_ai.innerHTML = '<p class="text-xl text-yellow-500">A IA está analisando...</p>'
 
     try {
-        const request_ai = await fetch('v1/ai-api')
+        const request_ai = await fetch('api/v1/ai')
         if (!request_ai.ok) {
             throw new Error(`Erro na API: ${request_ai.statusText}`);
         }
