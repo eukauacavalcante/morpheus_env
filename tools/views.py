@@ -1,9 +1,11 @@
 from django.conf import settings
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import JsonResponse
 from django.utils.decorators import method_decorator
 from django.views import generic
 from django_ratelimit.decorators import ratelimit
+from rest_framework import status
+from rest_framework.response import Response
+from rest_framework.views import APIView
 
 from .services import num_converter
 from .services.ai_analysis import get_ai_analysis
@@ -15,28 +17,40 @@ class SystemAnalysisView(LoginRequiredMixin, generic.TemplateView):
 
 
 @method_decorator(ratelimit(key='user', rate='20/m', method='GET'), name='dispatch')
-class SystemAnalysisAPIView(LoginRequiredMixin, generic.View):
+class SystemAnalysisAPIView(APIView):
+
     def get(self, request, *args, **kwargs):
+        if getattr(request, 'limited', False):
+            return Response(
+                {'details': 'Limite de requisições excedidos! Tente novamente mais tarde.'},
+                status=status.HTTP_429_TOO_MANY_REQUESTS
+            )
         data = get_system_status()
-        return JsonResponse({'data': data})
+        return Response({'data': data}, status=status.HTTP_200_OK)
 
 
 @method_decorator(ratelimit(key='user', rate='10/m', method='GET'), name='dispatch')
-class AiAPIView(LoginRequiredMixin, generic.View):
+class AiAPIView(APIView):
+
     ERROR_MSG = (
         '<p class="text-xl text-red-500">A análise por IA está indisponível no momento :(<br>Possível manutenção ocorrendo no sistema. Tente mais tarde!</p>'
     )
 
     def get(self, request, *args, **kwargs):
+        if getattr(request, 'limited', False):
+            Response(
+                {'details': 'Limite de requisições excedidos! Tente novamente mais tarde.'},
+                status=status.HTTP_429_TOO_MANY_REQUESTS
+            )
         ai_response = get_ai_analysis() if settings.AI_MODE else self.ERROR_MSG
-        return JsonResponse({'ai': ai_response})
+        return Response({'ai': ai_response}, status=status.HTTP_200_OK)
 
 
 class NumberConverterView(LoginRequiredMixin, generic.TemplateView):
     template_name = 'num_converter.html'
 
 
-class NumberConverterAPIView(LoginRequiredMixin, generic.View):
+class NumberConverterAPIView(APIView):
     def get(self, request, *args, **kwargs):
         operation = request.GET.get('type')
         value = request.GET.get('value')
@@ -54,6 +68,6 @@ class NumberConverterAPIView(LoginRequiredMixin, generic.View):
         try:
             func = CONVERTERS.get(operation)
             result = func(value)
-            return JsonResponse({'result': result})
+            return Response({'result': result}, status=status.HTTP_200_OK)
         except (ValueError, TypeError):
-            return JsonResponse({'result': 'Error ao calcular'}, status=400)
+            return Response({'result': 'Error ao calcular'}, status=status.HTTP_400_BAD_REQUEST)
