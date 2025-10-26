@@ -16,7 +16,7 @@ Um projeto acadêmico e experimental para monitoramento de sistema com análise 
 
 </div>
 
-## 🎯 Visão Geral
+## Visão Geral
 
 **Morpheus Env** é um simulador web que oferece ferramentas educacionais para análise de sistemas computacionais. O projeto foi desenvolvido com fins **experimentais e acadêmicos**, voltado à pesquisa, aprendizado e demonstração de conceitos.
 
@@ -34,7 +34,7 @@ Um projeto acadêmico e experimental para monitoramento de sistema com análise 
 
 ---
 
-## 🛠 Stack Tecnológica
+## Stack Tecnológica
 
 ### Backend
 - **Python 3.12** - Linguagem de programação
@@ -64,13 +64,13 @@ Um projeto acadêmico e experimental para monitoramento de sistema com análise 
 
 ---
 
-## 📝 Licença
+## Licença
 
 Este projeto está licenciado sob a Licença GNU GENERAL PUBLIC LICENSE - veja o arquivo [LICENSE](LICENSE) para detalhes.
 
 ---
 
-## 🤝 Contribuições
+## Contribuições
 
 Contribuições são bem-vindas! Para contribuir:
 
