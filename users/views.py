@@ -5,7 +5,7 @@ from django.urls import reverse_lazy
 from django.utils.safestring import mark_safe
 from django.views import generic
 
-from .forms import CustomUserCreationForm
+from .forms import CustomUserCreationForm, UserModelForm
 from .models import TermsOfUseAndPrivacyPolicy
 
 
@@ -13,7 +13,27 @@ class UserRegisterView(generic.CreateView):
     model = User
     form_class = CustomUserCreationForm
     template_name = 'registration/register.html'
-    success_url = reverse_lazy('home')
+
+
+class UserDetailView(generic.DetailView):
+    model = User
+    template_name = 'user_detail.html'
+    context_object_name = 'user'
+
+
+class UserUpdateView(generic.UpdateView):
+    model = User
+    form_class = UserModelForm
+    template_name = 'user_update.html'
+
+    def get_success_url(self):
+        return reverse_lazy('user_detail', kwargs={'pk': self.object.pk})
+
+
+class UserDeleteView(generic.DeleteView):
+    model = User
+    template_name = 'user_delete.html'
+    success_url = '/accounts/login/'
 
 
 class TermsOfUseView(generic.TemplateView):
@@ -24,9 +44,11 @@ class TermsOfUseView(generic.TemplateView):
         terms = TermsOfUseAndPrivacyPolicy.objects.filter(is_active=True).last()
         if terms:
             template = Template(terms.content)
-            rendered_content = template.render(Context({
-                'user': self.request.user,
-            }))
+            rendered_content = template.render(
+                Context({
+                    'user': self.request.user,
+                })
+            )
             context['terms_and_policy'] = mark_safe(rendered_content)
         else:
             context['terms_and_policy'] = 'Termos não disponíveis'

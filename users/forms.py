@@ -12,32 +12,34 @@ class CustomUserCreationForm(UserCreationForm):
     first_name = forms.CharField(
         max_length=100,
         required=True,
-        widget=forms.TextInput(attrs={'class': CSS_INPUT_CLASS})
+        widget=forms.TextInput(attrs={'class': CSS_INPUT_CLASS}),
     )
     password1 = forms.CharField(
         widget=forms.PasswordInput(
             attrs={
                 'class': CSS_INPUT_CLASS,
-                'placeholder': 'Pelo menos 8 caracteres.'
+                'placeholder': 'Pelo menos 8 caracteres.',
             }
         )
     )
-    password2 = forms.CharField(
-        widget=forms.PasswordInput(attrs={'class': CSS_INPUT_CLASS})
-    )
+    password2 = forms.CharField(widget=forms.PasswordInput(attrs={'class': CSS_INPUT_CLASS}))
 
     class Meta:
         model = User
         fields = ['first_name', 'username', 'email', 'password1', 'password2']
         widgets = {
-            'username': forms.TextInput(attrs={
-                'class': CSS_INPUT_CLASS,
-                'placeholder': 'Letras, números e @/./+/-/_ apenas.',
-            }),
-            'email': forms.EmailInput(attrs={
-                'class': CSS_INPUT_CLASS,
-                'placeholder': 'Ex: usuario@email.com',
-            })
+            'username': forms.TextInput(
+                attrs={
+                    'class': CSS_INPUT_CLASS,
+                    'placeholder': 'Letras, números e @/./+/-/_ apenas.',
+                }
+            ),
+            'email': forms.EmailInput(
+                attrs={
+                    'class': CSS_INPUT_CLASS,
+                    'placeholder': 'Ex: usuario@email.com',
+                }
+            ),
         }
 
     def clean_first_name(self):
@@ -54,9 +56,49 @@ class CustomUserCreationForm(UserCreationForm):
 
     def clean_email(self):
         email = self.cleaned_data.get('email')
-        domain = email.split('@')[1].lower()
-        with importlib.resources.open_text('users.validators', 'disposable_email_blocklist.conf') as f:
-            blocklist_content = {line.strip().lower() for line in f if line.strip()}
-        if domain in blocklist_content:
-            raise ValidationError('E-mails temporários não são permitidos.')
+        if email:
+            domain = email.split('@')[1].lower()
+            with importlib.resources.open_text('users.validators', 'disposable_email_blocklist.conf') as f:
+                blocklist_content = {line.strip().lower() for line in f if line.strip()}
+            if domain in blocklist_content:
+                raise ValidationError('E-mails temporários não são permitidos.')
+        return email
+
+
+class UserModelForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ('username', 'first_name', 'email')
+        widgets = {
+            'first_name': forms.TextInput(
+                attrs={
+                    'class': CSS_INPUT_CLASS,
+                }
+            ),
+            'username': forms.TextInput(
+                attrs={
+                    'class': CSS_INPUT_CLASS,
+                    'placeholder': 'Letras, números e @/./+/-/_ apenas.',
+                }
+            ),
+            'email': forms.EmailInput(
+                attrs={
+                    'class': CSS_INPUT_CLASS,
+                    'placeholder': 'Ex: usuario@email.com',
+                }
+            ),
+        }
+
+    def clean_first_name(self):
+        first_name = self.cleaned_data.get('first_name')
+        return first_name.title()
+
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+        if email:
+            domain = email.split('@')[1].lower()
+            with importlib.resources.open_text('users.validators', 'disposable_email_blocklist.conf') as f:
+                blocklist_content = {line.strip().lower() for line in f if line.strip()}
+            if domain in blocklist_content:
+                raise ValidationError('E-mails temporários não são permitidos.')
         return email

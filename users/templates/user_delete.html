@@ -1,0 +1,31 @@
+{% extends 'registration/auth_base.html' %}
+{% load static %}
+
+{% block title %} Deletar conta {% endblock %}
+
+{% block auth_content %}
+    <div class="mb-8 text-center">
+        <h1 class="text-4xl font-bold">Deletar conta</h1>
+    </div>
+
+    <div class="text-center">
+        <p class="text-xl">Você tem certeza que deseja deletar a conta?</p>
+    </div>
+
+    <div class="flex flex-wrap gap-3 justify-center m-10">
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-error hover:bg-red-700 text-white gap-2 flex-1 md:flex-none rounded-full py-3 px-8 text-lg">Deletar</button>
+        </form>
+
+        <a href="{% url 'user_detail' pk=object.pk %}" class="btn bg-purple-700 hover:bg-purple-800 text-white border-none gap-2 flex-1 md:flex-none rounded-full py-3 px-8 text-lg">Cancelar</a>
+    </div>
+
+    <div class="alert alert-warning shadow-lg mt-6">
+        <i class="bi bi-exclamation-triangle-fill"></i>
+        <div>
+            <h3 class="font-bold text-xl">Atenção!</h3>
+            <div class="text-lg text-black">A exclusão da conta é permanente e não pode ser desfeita. Todos os seus dados serão removidos.</div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'registration/auth_base.html' %}
+
+{% block title %} Editar Perfil {% endblock %}
+
+{% block auth_content %}
+    <div class="mb-8 text-center">
+        <h1 class="text-4xl font-bold">Editar perfil</h1>
+    </div>
+        <form method="post" class="flex flex-col space-y-6">
+            {% csrf_token %}
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="flex flex-col">
+                    <label for="username" class="text-xl mb-3 font-light">Nome de usuário</label>
+                    {{ form.username }}
+                    <div class="text-red-500">{{ form.username.errors }}</div>
+                </div>
+                <div class="flex flex-col">
+                    <label for="first_name" class="text-xl mb-3 font-light">Seu nome</label>
+                    {{ form.first_name }}
+                </div>
+            </div>
+            <div class="flex flex-col">
+                <label for="email" class="text-xl mb-3 font-light">Email</label>
+                {{ form.email }}
+                <div class="text-red-500">{{ form.username.errors }}</div>
+            </div>
+
+            <div class="flex flex-wrap gap-3 justify-center m-10">
+                <button type="submit" class="btn btn-success hover:bg-green-700 text-green-950 gap-2 flex-1 md:flex-none rounded-full py-3 px-8 text-lg">
+                    <i class="bi bi-check-circle-fill"></i>
+                    Salvar
+                </button>
+
+                <a href="{% url 'user_detail' pk=object.pk %}" class="btn bg-purple-700 hover:bg-purple-800 text-white border-none gap-2 flex-1 md:flex-none rounded-full py-3 px-8 text-lg">Cancelar</a>
+            </div>
+        </form>
+    </div>
+{% endblock %}
