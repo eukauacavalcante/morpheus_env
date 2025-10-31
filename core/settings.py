@@ -24,7 +24,8 @@ INSTALLED_APPS = [
     'axes',
     'rest_framework',
     'rest_framework_simplejwt',
-
+    'tailwind',
+    'theme',
     'users',
     'tools',
     'notifications',
@@ -101,8 +102,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static')
+    BASE_DIR / 'static',
 ]
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
