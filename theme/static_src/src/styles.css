@@ -1,11 +1,186 @@
 @import "tailwindcss";
 @plugin "daisyui";
-
-/**
-  * A catch-all path to Django template files, JavaScript, and Python files
-  * that contain Tailwind CSS classes and will be scanned by Tailwind to generate the final CSS file.
-  *
-  * If your final CSS file is not being updated after code changes, you may want to broaden or narrow
-  * the scope of this path.
-  */
 @source "../../../**/*.{html,py,js}";
+
+@layer components {
+  /* ===== BACKGROUND DO SISTEMA ===== */
+  .bg-system {
+    @apply bg-gradient-to-bl from-indigo-950 to-purple-950;
+  }
+  
+  /* ===== BUTTON STYLES ===== */
+  .return-btn {
+    @apply btn bg-purple-700 hover:bg-purple-800 text-white border-none gap-2 flex-1 md:flex-none rounded-full py-3 px-8 text-sm md:text-lg;
+  }
+  .action-btn-primary {
+    @apply btn btn-primary gap-2 flex-1 md:flex-none rounded-full py-3 px-8 text-sm md:text-lg;
+  }
+  .action-btn-success {
+    @apply btn btn-success hover:bg-green-700 text-green-950 gap-2 flex-1 md:flex-none rounded-full py-3 px-8 text-sm md:text-lg;
+  }
+  .action-btn-error {
+    @apply btn btn-error hover:bg-red-700 text-white gap-2 flex-1 md:flex-none rounded-full py-3 px-8 text-sm md:text-lg;
+  }
+  .action-btn-calculate {
+    @apply text-sm md:text-lg py-2 px-6 bg-green-600 hover:bg-green-800 rounded-lg transition font-semibold;
+  }
+  .action-btn-purple {
+    @apply bg-purple-700 py-3 px-8 rounded-full text-sm md:text-lg hover:bg-purple-800 shadow-lg transition font-semibold;
+  }
+  .auth-submit-btn {
+    @apply bg-purple-700/80 p-3 rounded-full text-sm md:text-xl w-60 hover:bg-purple-700 hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-300 ease-in-out;
+  }
+  .menu-home-btn {
+    @apply bg-white/20 hover:bg-white/10 hover:scale-105 font-semibold hover:text-fuchsia-300 text-sm sm:text-xl md:text-2xl p-5 sm:p-6 md:p-7 rounded-2xl transition backdrop-blur-lg border border-white/20 shadow-2xl
+  }
+  .header-admin-btn {
+    @apply text-xs sm:text-sm md:text-base px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 bg-blue-500/20 hover:bg-blue-500/30 rounded-lg transition duration-300 border border-blue-500/20 hover:border-blue-500/40;
+  }
+  .header-logout-btn {
+    @apply text-xs sm:text-sm md:text-base px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 bg-red-500/20 hover:bg-red-500/30 rounded-lg transition duration-300 border border-red-500/20 hover:border-red-500/40;
+  }
+
+  /* ===== MOBILE MENU ITEMS ===== */
+  .mobile-menu-item-purple {
+    @apply flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/10 transition-all duration-300 hover:bg-purple-500/20 hover:border-purple-500/30;
+  }
+  .mobile-menu-item-blue {
+    @apply flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/10 transition-all duration-300 hover:bg-blue-500/20 hover:border-blue-500/30;
+  }
+  .mobile-menu-item-red {
+    @apply flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/10 transition-all duration-300 hover:bg-red-500/20 hover:border-red-500/30;
+  }
+
+  /* ===== INPUT STYLES ===== */
+  .input-global {
+    @apply w-full bg-white/10 border border-white/20 p-2 md:p-3 rounded-2xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition;
+  }
+  .input-converter {
+    @apply w-full bg-white/10 border border-white/20 p-2 md:p-3 rounded-2xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition;
+  }
+  .select-input {
+    @apply w-full bg-white/10 border border-white/20 p-2 md:p-3 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition;
+  }
+  .select-option {
+    @apply bg-purple-900 text-white;
+  }
+
+  /* ===== CARD STYLES ===== */
+  .glass-card {
+    @apply bg-white/20 backdrop-blur-lg border border-white/20 rounded-2xl shadow-2xl;
+  }
+  .glass-card-hover {
+    @apply bg-white/20 hover:bg-white/10 hover:scale-105 backdrop-blur-lg border border-white/20 rounded-2xl shadow-2xl transition;
+  }
+  .purple-glass-card {
+    @apply bg-purple-950/90 shadow-xl;
+  }
+  .purple-card-light {
+    @apply bg-purple-500/20 backdrop-blur-lg shadow-lg rounded-2xl hover:scale-105 transition;
+  }
+  .purple-card-section {
+    @apply bg-purple-600/70 rounded-2xl;
+  }
+  .result-card {
+    @apply p-4 bg-black/20 rounded-lg text-sm md:text-lg flex items-center justify-center font-mono;
+  }
+
+  /* ===== TEXT STYLES ===== */
+  .page-title {
+    @apply text-2xl sm:text-3xl md:text-4xl font-bold;
+  }
+  .auth-title {
+    @apply text-2xl sm:text-3xl md:text-4xl font-light;
+  }
+  .section-title {
+    @apply text-xl md:text-2xl font-semibold;
+  }
+  .label-text {
+    @apply text-sm md:text-xl mb-3 font-light;
+  }
+  .label-text-medium {
+    @apply block text-sm font-medium text-gray-300 mb-2;
+  }
+  .gradient-text {
+    @apply bg-gradient-to-r from-purple-300 to-pink-300 bg-clip-text text-transparent;
+  }
+  .text-students {
+    @apply text-sm sm:text-lg md:text-xl;
+  }
+
+  /* ===== PATH & LAYOUT STYLES ===== */
+  .breadcrumb-link {
+    @apply text-purple-400 hover:text-purple-300 text-sm transition inline-flex items-center gap-2;
+  }
+  .breadcrumb-separator {
+    @apply text-gray-500 mx-2;
+  }
+  .breadcrumb-current {
+    @apply text-gray-300;
+  }
+  .divider-line {
+    @apply border-white/20 mb-5 mt-5 md:mb-10 md:mt-10;
+  }
+  .section-divider {
+    @apply mt-12 pt-6 text-center border-t border-white/20;
+  }
+  .border-section {
+    @apply border-b border-white/20 pb-3;
+  }
+
+  /* ===== PROFILE STYLES ===== */
+  .profile-avatar {
+    @apply w-20 md:w-25 rounded-full;
+  }
+  .profile-avatar-large {
+    @apply ring-4 ring-fuchsia-500/50 shadow-lg rounded-full w-25 h-25 md:w-40 md:h-40 object-cover;
+  }
+  .profile-info-section {
+    @apply flex items-center gap-4 mb-6 pb-6 border-b border-white/20;
+  }
+
+  /* ===== ALERT STYLES ===== */
+  .warning-alert {
+    @apply alert alert-warning shadow-lg mt-6;
+  }
+
+  /* ===== LINK STYLES ===== */
+  .link-blue {
+    @apply text-blue-500 hover:text-blue-700 transition;
+  }
+  .link-blue-large {
+    @apply text-blue-500 hover:text-blue-700 text-sm md:text-xl transition;
+  }
+
+  /* ===== FORM CONTAINER STYLES ===== */
+  .form-container {
+    @apply flex flex-col space-y-6;
+  }
+  .form-grid-two {
+    @apply grid grid-cols-1 md:grid-cols-2 gap-4;
+  }
+  .form-field {
+    @apply flex flex-col;
+  }
+
+  /* ===== ERRO TEXT STYLES ===== */
+  .error-text {
+    @apply text-red-500;
+  }
+
+  /* ===== LOADING SPINNER STYLES ===== */
+  .loading-center {
+    @apply loading loading-spinner loading-md;
+  }
+
+  /* ===== ICONS STYLES ===== */
+  .icon-small {
+    @apply text-xl sm:text-2xl;
+  }
+  .icon-medium {
+    @apply text-2xl sm:text-3xl md:text-4xl;
+  }
+  .icon-large {
+    @apply text-3xl;
+  }
+}
