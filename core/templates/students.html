@@ -1,73 +1,74 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %} Estudantes {% endblock %}
+{% block title %} Informações do Software {% endblock %}
 
 {% block content %}
-<div class="text-white">
-    <div class="mb-5">
-        <a href="{% url 'home' %}" class="text-purple-400 hover:text-purple-300 transition inline-flex items-center gap-2">
-            <i class="bi bi-house"></i> Home
-        </a>
-        <span class="text-gray-500 mx-2">/</span>
-        <span class="text-gray-300">Informações do Software</span>
-    </div>
-    
-    <div class="text-center mb-10">
-        <h1 class="text-4xl font-bold">Estudantes que participaram do desenvolvimento</h1>
-    </div>
+    <div class="text-white">
+        
+        <div class="mb-5">
+            <a href="{% url 'home' %}" class="breadcrumb-link">
+                <i class="bi bi-house"></i> Home
+            </a>
+            <span class="breadcrumb-separator">/</span>
+            <span class="breadcrumb-current">Informações do Software</span>
+        </div>
+        
+        <div class="text-center mb-10">
+            <h1 class="page-title">Estudantes que participaram do desenvolvimento</h1>
+        </div>
 
-    <div class="flex flex-wrap gap-5">
-        
-        <div class="w-full lg:w-[calc(50%-20px)] flex items-center bg-white/20 backdrop-blur-lg border border-white/20 p-4 rounded-2xl shadow-2xl">
-            <div class="flex-shrink-0">
-                <img src="{% static 'img/students_img/kaua.jpeg' %}" alt="Kauã Cavalcante" class="ring-4 ring-fuchsia-500/50 shadow-lg rounded-full w-40 h-40 object-cover"/>
+        <div class="flex flex-wrap gap-5">
+            
+            <div class="w-full lg:w-[calc(50%-20px)] p-4 flex flex-col md:flex-row items-center glass-card">
+                <div class="flex-shrink-0">
+                    <img src="{% static 'img/students_img/kaua.jpeg' %}" alt="Kauã Cavalcante" class="profile-avatar-large mb-5 md:mb-0"/>
+                </div>
+                <div class="md:ml-10">
+                    <h2 class="section-title mb-5">Kauã Cavalcante</h2>
+                    <p class="text-students">Acadêmico de Análise e Desenvolvimento de Sistemas, iniciou seus conhecimentos em tecnologia ainda no Ensino Médio, programando arduínos em C++ e participando de competições de robótica. Atualmente, é desenvolvedor de software back-end e com bases também no front-end.</p>
+                    <p class="text-sm md:text-xl text-purple-500 font-bold mt-5">Django Developer | Back-end | Front-end</p>
+                    <div class="flex gap-x-5">
+                        <a href="https://www.linkedin.com/in/eukauacavalcante" target="_blank" class="link-blue-large font-bold"><i class="bi bi-linkedin"></i> LinkedIn</a>
+                        <a href="https://github.com/eukauacavalcante" target="_blank" class="link-blue-large font-bold"><i class="bi bi-github"></i> Github</a>
+                        <a href="https://eukauacavalcante.github.io/portfolio" target="_blank" class="link-blue-large font-bold"><i class="bi bi-briefcase-fill"></i> Portfólio</a>
+                    </div>
+                </div>
             </div>
-            <div class="ml-10">
-                <h2 class="text-2xl mb-5 font-bold">Kauã Cavalcante</h2>
-                <p class="text-xl">Acadêmico de Análise e Desenvolvimento de Sistemas, iniciou seus conhecimentos em tecnologia ainda no Ensino Médio, programando arduínos em C++ e participando de competições de robótica. Atualmente, é desenvolvedor de software back-end e com bases também no front-end.</p>
-                <p class="text-xl text-purple-500 font-bold mt-5">Django Developer | Back-end | Front-end</p>
-                <div class="flex gap-x-5">
-                    <a href="https://www.linkedin.com/in/eukauacavalcante" target="_blank" class="text-xl text-blue-500 hover:text-blue-600 font-bold transition"><i class="bi bi-linkedin"></i> LinkedIn</a>
-                    <a href="https://github.com/eukauacavalcante" target="_blank" class="text-xl text-blue-500 hover:text-blue-600 font-bold transition"><i class="bi bi-github"></i> Github</a>
-                    <a href="https://eukauacavalcante.github.io/portfolio" target="_blank" class="text-xl text-blue-500 hover:text-blue-600 font-bold transition"><i class="bi bi-briefcase-fill"></i> Portfólio</a>
+            
+            <div class="w-full lg:w-[calc(50%-20px)] p-4 flex flex-col md:flex-row items-center glass-card">
+                <div class="flex-shrink-0">
+                    <img src="{% static 'img/students_img/nicholas.jpg' %}" alt="Nicholas Andrews" class="profile-avatar-large mb-5 md:mb-0">
+                </div>
+                <div class="md:ml-10">
+                    <h2 class="section-title mb-5">Nicholas Andrews</h2>
+                    <p class="text-students">Atualmente cursando Ciência da Computação, Nicholas deu início a sua vida acadêmica em 2025. Com conhecimento em programação avançado em Java — devido à influência de seu pai, que já é profissional na área — Andrews também vem desenvolvendo aplicações em Python.</p>
+                    <p class="text-sm md:text-xl text-purple-500 font-bold mt-5">Conversor Numérico (funções)</p>
+                    <div class="flex gap-x-5">
+                        <a class="link-blue-large font-bold"><i class="bi bi-github"></i> Github</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="w-full lg:w-[calc(50%-20px)] p-4 flex flex-col md:flex-row items-center glass-card">
+                <div class="flex-shrink-0">
+                    <img src="{% static 'img/students_img/sophia.jpg' %}" alt="Sophia Silva" class="profile-avatar-large mb-5 md:mb-0"/>
+                </div>
+                <div class="md:ml-10">
+                    <h2 class="section-title mb-5">Sophia Silva</h2>
+                    <p class="text-students">Acadêmica de Análise e Desenvolvimento de Sistemas, iniciou a sua carreira na área de tecnologia ainda no Ensino Médio, no Instituto Federal da Paraíba. Sophia está desenvolvendo suas habilidades no front-end com o objetivo de aprimorar as interfaces de seus sistemas.</p>
+                    <p class="text-sm md:text-xl text-purple-500 font-bold mt-5">Front-end</p>
+                    <div class="flex gap-x-5">
+                        <a class="link-blue-large font-bold"> <i class="bi bi-linkedin"></i> LinkedIn</a>
+                        <a class="link-blue-large font-bold"><i class="bi bi-github"></i> Github</a>
+                    </div>
                 </div>
             </div>
         </div>
-        
-        <div class="w-full lg:w-[calc(50%-20px)] flex items-center bg-white/20 backdrop-blur-lg border border-white/20 p-4 rounded-2xl shadow-2xl">
-            <div class="flex-shrink-0">
-                <img src="{% static 'img/students_img/nicholas.jpg' %}" alt="Nicholas Andrews" class="ring-4 ring-fuchsia-500/50 shadow-lg rounded-full w-40 h-40 object-cover"/>
-            </div>
-            <div class="ml-10">
-                <h2 class="text-2xl mb-5 font-bold">Nicholas Andrews</h2>
-                <p class="text-xl">Atualmente cursando Ciência da Computação, Nicholas deu início a sua vida acadêmica em 2025. Com conhecimento em programação avançado em Java — devido à influência de seu pai, que já é profissional na área — Andrews também vem desenvolvendo aplicações em Python.</p>
-                <p class="text-xl text-purple-500 font-bold mt-5">Conversor Numérico (funções)</p>
-                <div class="flex gap-x-5">
-                    <a href="https://www.linkedin.com/in/nicholas-andrews-1523ab330/" target="_blank" class="text-xl text-blue-500 hover:text-blue-600 font-bold transition"><i class="bi bi-linkedin"></i> LinkedIn</a>
-                    <a class="text-xl text-blue-500 hover:text-blue-600 font-bold transition"><i class="bi bi-github"></i> Github</a>
-                </div>
-            </div>
-        </div>
-        
-        <div class="w-full lg:w-[calc(50%-20px)] flex items-center bg-white/20 backdrop-blur-lg border border-white/20 p-4 rounded-2xl shadow-2xl">
-            <div class="flex-shrink-0">
-                <img src="{% static 'img/students_img/sophia.jpg' %}" alt="Sophia Silva" class="ring-4 ring-fuchsia-500/50 shadow-lg rounded-full w-40 h-40 object-cover"/>
-            </div>
-            <div class="ml-10">
-                <h2 class="text-2xl mb-5 font-bold">Sophia Silva</h2>
-                <p class="text-xl">Acadêmica de Análise e Desenvolvimento de Sistemas, iniciou a sua carreira na área de tecnologia ainda no Ensino Médio, no Instituto Federal da Paraíba. Sophia está desenvolvendo suas habilidades no front-end com o objetivo de aprimorar as interfaces de seus sistemas.</p>
-                <p class="text-xl text-purple-500 font-bold mt-5">Front-end</p>
-                <div class="flex gap-x-5">
-                    <a class="text-xl text-blue-500 hover:text-blue-600 font-bold transition"> <i class="bi bi-linkedin"></i> LinkedIn</a>
-                    <a class="text-xl text-blue-500 hover:text-blue-600 font-bold transition"><i class="bi bi-github"></i> Github</a>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <div class="mt-12 pt-6 text-center border-t border-white/20">
-        <a href="{% url 'home' %}" class="bg-purple-700 py-3 px-8 rounded-full text-lg hover:bg-purple-800 transition font-semibold">Voltar</a>
+        <div class="section-divider">
+            <a href="{% url 'home' %}" class="action-btn-purple">Voltar</a>
+        </div>
+        
     </div>
-</div>
 {% endblock %}

@@ -5,67 +5,80 @@
 
 {% block content %}
     <div class="text-white">
+
         <div class="mb-5">
-            <a href="{% url 'home' %}" class="text-purple-400 hover:text-purple-300 transition inline-flex items-center gap-2">
+            <a href="{% url 'home' %}" class="breadcrumb-link">
                 <i class="bi bi-house"></i> Home
             </a>
-            <span class="text-gray-500 mx-2">/</span>
-            <span class="text-gray-300">Monitoramento do Sistema</span>
+            <span class="breadcrumb-separator">/</span>
+            <span class="breadcrumb-current">Monitoramento do Sistema</span>
         </div>
         <div class="text-center mb-10">
-            <h1 class="text-4xl font-bold drop-shadow-lg">Monitoramento do Sistema</h1>
+            <h1 class="page-title">Monitoramento do Sistema</h1>
         </div>
 
-        <div class="flex flex-row gap-10 p-6">
-            <div class="w-full w-1/2 p-4 flex flex-col gap-5">
-                
+        <div class="flex flex-col md:flex-row gap-10 md:p-6">
+            <div class="md:w-3/5 md:p-4 flex flex-col gap-5">
+
                 <div class="flex flex-row gap-5">
                     <div class="w-1/2 text-center bg-purple-500/20 backdrop-blur-lg shadow-lg p-4 rounded-2xl hover:scale-105 transition">
-                        <p class="text-xl font-semibold">Uso do Processador / CPU</p> 
-                        <p id="cpu" class="text-2xl text-yellow-400">Carregando...</p>
+                        <p class="text-sm md:text-xl font-semibold">Uso do Processador / CPU</p> 
+                        <p id="cpu" class="text-sm md:text-xl">
+                            <span class="loading-center"></span>
+                        </p>
                     </div>
-
                     <div class="w-1/2 bg-purple-500/20 backdrop-blur-lg shadow-lg p-4 rounded-2xl flex hover:scale-105 transition">
-                        <div class="w-1/2">
-                            <p class="text-xl font-semibold">Memória interna usada</p> 
-                            <p id="memory" class="text-2xl text-yellow-400">Carregando...</p>
+                        <div class="w-1/2 md:mr-2">
+                            <p class="text-sm md:text-xl font-semibold">Memória interna usada</p> 
+                            <p id="memory" class="text-sm md:text-xl">
+                                <span class="loading-center"></span>
+                            </p>
                         </div>
                         <div class="w-1/2 flex flex-col justify-center items-center bg-purple-600/70 rounded-2xl p-2">
-                            <p class="text-xl font-semibold">Total</p>
-                            <p id="total-memory" class="text-2xl text-yellow-400">Carregando...</p>
+                            <p class="text-sm md:text-xl font-semibold">Total</p>
+                            <p id="total-memory" class="text-sm md:text-xl">
+                                <span class="loading-center"></span>
+                            </p>
                         </div>
                     </div>
                 </div>
                 
                 <div class="bg-purple-500/20 backdrop-blur-lg shadow-lg p-4 rounded-2xl flex hover:scale-105 transition">
                     <div class="w-1/2 text-center">
-                        <p class="text-xl font-semibold">Memória RAM em uso</p> <p id="ram" class="text-2xl text-yellow-400">Carregando...</p>
+                        <p class="text-sm md:text-xl font-semibold">Memória RAM em uso</p> <p id="ram" class="text-sm md:text-xl">
+                            <span class="loading-center"></span>
+                        </p>
                     </div>
                     <div class="w-1/2 flex flex-col justify-center items-center bg-purple-600/70 rounded-2xl p-2">
-                        <p class="text-xl font-semibold">Total</p>
-                        <p id="ram-total" class="text-2xl text-yellow-400">Carregando...</p>
+                        <p class="text-sm md:text-xl font-semibold">Total</p>
+                        <p id="ram-total" class="text-sm md:text-xl">
+                            <span class="loading-center"></span>
+                        </p>
                     </div>
                 </div>
 
                 <div class="text-center mt-4">
-                    <button onclick="aiAnalysis()" id="btn" class="bg-purple-700 py-3 px-8 rounded-full text-lg hover:bg-purple-800 shadow-lg transition font-semibold">
+                    <button onclick="aiAnalysis()" id="btn" class="action-btn-purple">
                         Gerar análise de IA
                     </button>
                 </div>
+
             </div>
 
-            <div class="w-1/2">
+            <div class="md:w-2/5">
                 <div class="bg-purple-500/20 shadow-lg p-6 rounded-2xl h-full overflow-y-auto">
                     <div class="text-center">
-                        <h2 class="text-2xl font-semibold mb-3">Análise da IA</h2>
+                        <h2 class="text-sm md:text-2xl font-semibold mb-3">Análise da IA</h2>
                     </div>
-                    <p id="ai_analysis" class="text-xl text-gray-200">Nenhuma análise gerada ainda...</p>
+                    <p id="ai_analysis" class="text-sm md:text-xl text-gray-200">Nenhuma análise gerada ainda...</p>
                 </div>
             </div>
+            
         </div>
     </div>
+
     <div class="text-white mt-12 pt-6 text-center border-t border-white/20">
-        <a href="{% url 'home' %}" class="bg-purple-700 py-3 px-8 rounded-full text-lg hover:bg-purple-800 transition font-semibold">Voltar</a>
+        <a href="{% url 'home' %}" class="return-btn">Voltar</a>
     </div>
     
     <script src="{% static 'javascript/system-analysis.js' %}"></script>

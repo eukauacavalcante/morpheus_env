@@ -4,70 +4,49 @@
 
 {% block auth_content %}
     <div class="mb-8 text-center">
-        <h1 class="text-4xl font-bold">Meu Perfil</h1>
+        <h1 class="page-title">Meu Perfil</h1>
         <p>Gerencie suas informações pessoais</p>
     </div>
+    <hr class="divider-line">
 
-    <div class="card bg-purple-950/90 shadow-xl mb-6">
+    <div class="card bg-system mb-6">
         <div class="card-body">
-            <div class="flex items-center gap-4 mb-6 pb-6 border-b border-white/20">
+            <div class="profile-info-section">
+                <div class="avatar">
+                    <div class="profile-avatar">
+                        <img src="https://img.daisyui.com/images/profile/demo/yellingcat@192.webp" />
+                    </div>
+                </div>
                 <div>
-                    <h2 class="text-2xl font-bold">{{ user.first_name }}</h2>
-                    <p class="text-xl">@{{ user.username }}</p>
+                    <h2 class="section-title">{{ user.first_name }}</h2>
+                    <p class="text-sm md:text-xl">@{{ user.username }}</p>
                 </div>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-
-                <div class="form-control">
-                    <label class="label">
-                        <span class="label-text font-semibold flex items-center gap-2">
-                            <i class="bi bi-person-fill"></i>
-                            Nome de usuário
-                        </span>
-                    </label>
-                    <div class="bg-white/10 border border-white/20 p-3 rounded-2xl text-white">
-                        <p class="text-lg">{{ user.username }}</p>
-                    </div>
-                </div>
-                <div class="form-control">
-                    <label class="label">
-                        <span class="label-text font-semibold flex items-center gap-2">
-                            <i class="bi bi-person-vcard-fill"></i>
-                            Seu nome
-                        </span>
-                    </label>
-                    <div class="bg-white/10 border border-white/20 p-3 rounded-2xl text-white">
-                        <p class="text-lg">{{ user.first_name }}</p>
-                    </div>
-                </div>
-                <div class="form-control md:col-span-2">
-                    <label class="label">
-                        <span class="label-text font-semibold flex items-center gap-2">
-                            <i class="bi bi-envelope-fill"></i>
-                            Email
-                        </span>
-                    </label>
-                    <div class="bg-white/10 border border-white/20 p-3 rounded-2xl text-white">
-                        <p class="text-lg">{{ user.email|default:"Não cadastrado" }}</p>
-                    </div>
-                </div>
+            <div class="form-control">
+                <label class="label">
+                    <span class="label-text m-0 font-semibold flex items-center gap-2">
+                        <i class="bi bi-envelope-fill text-xl"></i>
+                        <p class="text-sm md:text-xl">Email</p>
+                    </span>
+                </label>
+                <p class="text-sm md:text-lg">{{ user.email|default:"Não cadastrado" }}</p>
             </div>
         </div>
     </div>
 
     <div class="flex flex-wrap gap-3 justify-center">
         <a href="{% url 'user_update' pk=object.pk %}" 
-           class="btn btn-primary gap-2 flex-1 md:flex-none rounded-full py-3 px-8 text-lg">
+           class="action-btn-primary">
             <i class="bi bi-pencil-fill"></i>
             Editar Perfil
         </a>
         <a href="{% url 'user_delete' pk=object.pk %}" 
-           class="btn btn-error hover:bg-red-700 text-white gap-2 flex-1 md:flex-none rounded-full py-3 px-8 text-lg">
+           class="action-btn-error">
             <i class="bi bi-trash-fill"></i>
             Deletar Conta
         </a>
         <a href="{% url 'home' %}" 
-           class="btn bg-purple-700 hover:bg-purple-800 text-white border-none gap-2 flex-1 md:flex-none rounded-full py-3 px-8 text-lg">
+           class="return-btn">
             Voltar
         </a>
     </div>

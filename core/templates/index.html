@@ -4,31 +4,41 @@
 <h3>{% block title %}Home{% endblock %}</h3>
 
 {% block content %}
-<div class="text-white">
-    <div class="text-center mb-10">
-        <h1 class="text-4xl font-bold">Simulador de Sistema Computacional Seguro</h1>
-        <p class="text-purple-300 mt-2">Seguro, estável, e estiloso para você</p>
-    </div>
+    <div class="text-white">
 
-    <div class="flex gap-x-10">
-        <div class="w-1/2 flex flex-col">
-            <a href="{% url 'system_data' %}" class="mb-10">
-                <div class="bg-white/20 hover:bg-white/10 hover:scale-105 font-semibold hover:text-fuchsia-300 text-2xl p-7 rounded-2xl transition backdrop-blur-lg border border-white/20 shadow-2xl"><i class="bi bi-graph-up text-purple-300 text-2xl"></i> Monitoramento do Sistema</div>
-            </a>
-            <a href="{% url 'num_converter' %}" class="mb-10">
-                <div class="bg-white/20 hover:bg-white/10 hover:scale-105 font-semibold hover:text-fuchsia-300 text-2xl p-7 rounded-2xl transition backdrop-blur-lg border border-white/20 shadow-2xl"><i class="bi bi-calculator text-pink-300 text-2xl"></i> Conversor Numérico e Lógico</div>
-            </a>
-            <a href="{% url 'students' %}" class="mb-10">
-                <div class="bg-white/20 hover:bg-white/10 hover:scale-105 font-semibold hover:text-fuchsia-300 text-2xl p-7 rounded-2xl transition backdrop-blur-lg border border-white/20 shadow-2xl"><i class="bi bi-people-fill text-blue-300 text-2xl"></i> Informações do Software</div>
-            </a>
-            <a href="{% url 'terms_use' %}" class="mb-10">
-                <div class="bg-white/20 hover:bg-white/10 hover:scale-105 font-semibold hover:text-fuchsia-300 text-2xl p-7 rounded-2xl transition backdrop-blur-lg border border-white/20 shadow-2xl"><i class="bi bi-file-text text-green-300 text-2xl"></i> Termos de Uso e Política de Privacidade</div>
-            </a>
+        <div class="text-center mb-10">
+            <h1 class="page-title">Simulador de Sistema Computacional Seguro</h1>
+            <p class="text-purple-300 mt-2 text-sm sm:text-base">Seguro, estável, e estiloso para você</p>
         </div>
 
-        <div class="w-1/2 flex justify-center items-center">
-            <img src="{% static 'img/pc_index.svg' %}" alt="" style="width: 500px; height: 500px;">
+        <div class="flex flex-col lg:flex-row gap-6 lg:gap-x-10 px-4 lg:px-0">
+            <div class="w-full lg:w-1/2 flex flex-col">
+                <a href="{% url 'system_data' %}" class="mb-6 lg:mb-10">
+                    <div class="menu-home-btn">
+                        <i class="bi bi-graph-up text-purple-300 icon-small"></i> Monitoramento do Sistema
+                    </div>
+                </a>
+                <a href="{% url 'num_converter' %}" class="mb-6 lg:mb-10">
+                    <div class="menu-home-btn">
+                        <i class="bi bi-calculator text-pink-300 icon-small"></i> Conversor Numérico e Lógico
+                    </div>
+                </a>
+                <a href="{% url 'students' %}" class="mb-6 lg:mb-10">
+                    <div class="menu-home-btn">
+                        <i class="bi bi-people-fill text-blue-300 icon-small"></i> Informações do Software
+                    </div>
+                </a>
+                <a href="{% url 'terms_use' %}" class="mb-6 lg:mb-10">
+                    <div class="menu-home-btn">
+                        <i class="bi bi-file-text text-green-300 icon-small"></i> Termos e Política
+                    </div>
+                </a>
+            </div>
+
+            <div class="w-full lg:w-1/2 flex justify-center items-center">
+                <img src="{% static 'img/pc_index.svg' %}" alt="" class="w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 lg:w-[500px] lg:h-[500px]">
+            </div>
         </div>
+        
     </div>
-</div>
 {% endblock %}
