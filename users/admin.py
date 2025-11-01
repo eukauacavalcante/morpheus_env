@@ -19,6 +19,7 @@ class TermsAndPrivacyAdmin(admin.ModelAdmin):
         users = User.objects.all()
         for user in users:
             send_update_terms_email(user) if settings.EMAIL_MODE else msg_terms_updated(email_sent=False)
-        self.message_user(request, "E-mails enviados com sucesso!")
+        self.message_user(request, 'E-mails enviados com sucesso!')
         msg_terms_updated()
-    send_terms_update_email.short_description = "Enviar e-mail de atualização para todos os usuários"
+
+    send_terms_update_email.short_description = 'Enviar e-mail de atualização para todos os usuários'

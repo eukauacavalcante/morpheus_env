@@ -1,0 +1,26 @@
+[project]
+name = "Morpheus Env"
+version = "1.0.0"
+description = "Sistema web que oferece ferramentas educacionais para análise de sistemas."
+authors = [
+    {name = "Kauã-Cavalcante"}
+]
+
+[tool.ruff]
+line-length = 120
+extend-exclude = ['migrations', 'emails.py', 'ai_analysis.py', 'manage.py', 'apps.py']
+
+[tool.ruff.lint]
+preview = true
+select = ['I', 'F', 'E', 'W', 'PL', 'PT']
+
+[tool.ruff.format]
+preview = true
+quote-style = 'single'
+
+[tool.taskipy.tasks]
+lint = 'ruff check'
+lint_fix = 'ruff check --fix'
+format = 'ruff format'
+run = 'python3 manage.py runserver'
+tailwind = 'python3 manage.py tailwind start'

@@ -5,7 +5,30 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 
-CSS_INPUT_CLASS = 'bg-white/10 border border-white/20 p-3 rounded-2xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition'
+CSS_INPUT_CLASS = 'input-global'
+
+
+def validate_first_name(first_name):
+    return first_name.title()
+
+
+def validate_username(username, instance=None):
+    instance_id = instance.pk if instance else None
+    if User.objects.filter(username=username).exclude(pk=instance_id).exists():
+        raise ValidationError('Esse usuário já existe')
+    if username.isdecimal():
+        raise ValidationError('Não é permitido apenas números')
+    return username
+
+
+def validate_email(email):
+    if email:
+        domain = email.split('@')[1].lower()
+        with importlib.resources.open_text('users.validators', 'disposable_email_blocklist.conf') as f:
+            blocklist_content = {line.strip().lower() for line in f if line.strip()}
+        if domain in blocklist_content:
+            raise ValidationError('E-mails temporários não são permitidos.')
+    return email
 
 
 class CustomUserCreationForm(UserCreationForm):
@@ -44,25 +67,15 @@ class CustomUserCreationForm(UserCreationForm):
 
     def clean_first_name(self):
         first_name = self.cleaned_data.get('first_name')
-        return first_name.title()
+        return validate_first_name(first_name=first_name)
 
     def clean_username(self):
         username = self.cleaned_data.get('username')
-        if User.objects.filter(username=username).exists():
-            raise ValidationError('Esse usuário já existe')
-        if username.isdecimal():
-            raise ValidationError('Não é permitido apenas números')
-        return username
+        return validate_username(username=username, instance=self.instance)
 
     def clean_email(self):
         email = self.cleaned_data.get('email')
-        if email:
-            domain = email.split('@')[1].lower()
-            with importlib.resources.open_text('users.validators', 'disposable_email_blocklist.conf') as f:
-                blocklist_content = {line.strip().lower() for line in f if line.strip()}
-            if domain in blocklist_content:
-                raise ValidationError('E-mails temporários não são permitidos.')
-        return email
+        return validate_email(email=email)
 
 
 class UserModelForm(forms.ModelForm):
@@ -91,14 +104,12 @@ class UserModelForm(forms.ModelForm):
 
     def clean_first_name(self):
         first_name = self.cleaned_data.get('first_name')
-        return first_name.title()
+        return validate_first_name(first_name=first_name)
+
+    def clean_username(self):
+        username = self.cleaned_data.get('username')
+        return validate_username(username=username, instance=self.instance)
 
     def clean_email(self):
         email = self.cleaned_data.get('email')
-        if email:
-            domain = email.split('@')[1].lower()
-            with importlib.resources.open_text('users.validators', 'disposable_email_blocklist.conf') as f:
-                blocklist_content = {line.strip().lower() for line in f if line.strip()}
-            if domain in blocklist_content:
-                raise ValidationError('E-mails temporários não são permitidos.')
-        return email
+        return validate_email(email=email)

@@ -2,13 +2,8 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import path
 from rest_framework_simplejwt import views as jwt_view
 
-from .views import (
-    TermsOfUseView,
-    UserDeleteView,
-    UserDetailView,
-    UserRegisterView,
-    UserUpdateView,
-)
+from .views import (TermsOfUseView, UserDeleteView, UserDetailView,
+                    UserRegisterView, UserUpdateView)
 
 urlpatterns = [
     path('login/', LoginView.as_view(), name='login'),

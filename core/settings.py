@@ -1,4 +1,3 @@
-import os
 from datetime import timedelta
 from pathlib import Path
 
@@ -10,8 +9,7 @@ SECRET_KEY = config('SECRET_KEY')
 
 DEBUG = config('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'jazzmin',
@@ -74,7 +72,8 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator', },
+        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+    },
     {
         'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
     },
@@ -113,10 +112,8 @@ AI_MODE = False
 API_KEY = config('API_KEY')
 AI_MODEL = config('AI_MODEL')
 
-# E-mail functions
-EMAIL_MODE = False # To do: se falso, imprime apenas no console
-
 # E-mail Config
+EMAIL_MODE = False
 EMAIL_HOST = config('EMAIL_HOST')
 EMAIL_PORT = config('EMAIL_PORT')
 EMAIL_USE_TLS = config('EMAIL_USE_TLS')
@@ -129,30 +126,36 @@ GOOGLE_OAUTH2_CLIENT_ID = config('GOOGLE_OAUTH2_CLIENT_ID')
 GOOGLE_OAUTH2_CLIENT_SECRET = config('GOOGLE_OAUTH2_CLIENT_SECRET')
 GOOGLE_OAUTH2_REFRESH_TOKEN = config('GOOGLE_OAUTH2_REFRESH_TOKEN')
 
+TAILWIND_APP_NAME = 'theme'
+NPM_BIN_PATH = '/usr/local/node/bin/npm'
+NODE_BIN_PATH = '/usr/local/node/bin/node'
+
 JAZZMIN_SETTINGS = {
-    "site_title": "Morpheus Env",
-    "site_header": "Morpheus Env",
-    "site_brand": "Morpheus Env",
-    "site_logo_classes": "img-circle",
-    "welcome_sign": "Bem-vindo ao Morpheus Env Admin!",
-    "copyright": "Kauã Cavalcante",
-    "show_sidebar": True,
-    "navigation_expanded": True,
-    "order_with_respect_to": ["auth",],
-    "icons": {
-        "auth": "fas fa-users-cog",
-        "auth.user": "fas fa-user",
-        "auth.Group": "fas fa-users",
-        "axes.accessattempt": "fa-solid fa-folder-open",
-        "axes.accesslog": "fa-solid fa-circle-check",
-        "axes.accessfailurelog": "fa-solid fa-triangle-exclamation",
-        "users.TermsOfUseAndPrivacyPolicy": "fa-solid fa-file-lines",
+    'site_title': 'Morpheus Env',
+    'site_header': 'Morpheus Env',
+    'site_brand': 'Morpheus Env',
+    'site_logo_classes': 'img-circle',
+    'welcome_sign': 'Bem-vindo ao Morpheus Env Admin!',
+    'copyright': 'Kauã Cavalcante',
+    'show_sidebar': True,
+    'navigation_expanded': True,
+    'order_with_respect_to': [
+        'auth',
+    ],
+    'icons': {
+        'auth': 'fas fa-users-cog',
+        'auth.user': 'fas fa-user',
+        'auth.Group': 'fas fa-users',
+        'axes.accessattempt': 'fa-solid fa-folder-open',
+        'axes.accesslog': 'fa-solid fa-circle-check',
+        'axes.accessfailurelog': 'fa-solid fa-triangle-exclamation',
+        'users.TermsOfUseAndPrivacyPolicy': 'fa-solid fa-file-lines',
     },
-    "default_icon_parents": "fas fa-chevron-circle-right",
-    "default_icon_children": "fas fa-circle",
-    "related_modal_active": False,
-    "use_google_fonts_cdn": True,
-    "show_ui_builder": True,
+    'default_icon_parents': 'fas fa-chevron-circle-right',
+    'default_icon_children': 'fas fa-circle',
+    'related_modal_active': False,
+    'use_google_fonts_cdn': True,
+    'show_ui_builder': True,
 }
 
 REST_FRAMEWORK = {
@@ -160,9 +163,7 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
-    'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticated',
-    ),
+    'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAuthenticated',),
 }
 
 SIMPLE_JWT = {

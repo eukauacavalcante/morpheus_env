@@ -18,12 +18,11 @@ class SystemAnalysisView(LoginRequiredMixin, generic.TemplateView):
 
 @method_decorator(ratelimit(key='user', rate='20/m', method='GET'), name='dispatch')
 class SystemAnalysisAPIView(APIView):
-
     def get(self, request, *args, **kwargs):
         if getattr(request, 'limited', False):
             return Response(
                 {'details': 'Limite de requisições excedidos! Tente novamente mais tarde.'},
-                status=status.HTTP_429_TOO_MANY_REQUESTS
+                status=status.HTTP_429_TOO_MANY_REQUESTS,
             )
         data = get_system_status()
         return Response({'data': data}, status=status.HTTP_200_OK)
@@ -31,16 +30,13 @@ class SystemAnalysisAPIView(APIView):
 
 @method_decorator(ratelimit(key='user', rate='10/m', method='GET'), name='dispatch')
 class AiAPIView(APIView):
-
-    ERROR_MSG = (
-        '<p class="text-xl text-red-500">A análise por IA está indisponível no momento :(<br>Possível manutenção ocorrendo no sistema. Tente mais tarde!</p>'
-    )
+    ERROR_MSG = '<p class="text-sm md:text-xl text-red-500">A análise por IA está indisponível no momento :(<br>Possível manutenção ocorrendo no sistema. Tente mais tarde!</p>'
 
     def get(self, request, *args, **kwargs):
         if getattr(request, 'limited', False):
             Response(
                 {'details': 'Limite de requisições excedidos! Tente novamente mais tarde.'},
-                status=status.HTTP_429_TOO_MANY_REQUESTS
+                status=status.HTTP_429_TOO_MANY_REQUESTS,
             )
         ai_response = get_ai_analysis() if settings.AI_MODE else self.ERROR_MSG
         return Response({'ai': ai_response}, status=status.HTTP_200_OK)
@@ -70,4 +66,7 @@ class NumberConverterAPIView(APIView):
             result = func(value)
             return Response({'result': result}, status=status.HTTP_200_OK)
         except (ValueError, TypeError):
-            return Response({'result': 'Error ao calcular'}, status=status.HTTP_400_BAD_REQUEST)
+            return Response(
+                {'result': 'Error ao calcular'},
+                status=status.HTTP_400_BAD_REQUEST,
+            )

@@ -7,7 +7,7 @@ def msg_user_creation(user, email_sent=True, error=None):
     print('NOVO USUÁRIO\n')
     if error:
         print_error('[ERRO] Falha ao tentar enviar e-mail')
-        print(f"Detalhes do erro: {error}")
+        print(f'Detalhes do erro: {error}')
     if not email_sent:
         print_warning('[ATENÇÃO] Email automático desativado\n')
     else:
@@ -22,7 +22,7 @@ def msg_terms_updated(email_sent=True, error=None):
     print('ATUALIZAÇÃO DOS TERMOS DE USO E POLÍTICA DE PRIVACIDADE\n')
     if error:
         print_error('[ERRO] Falha ao tentar enviar e-mail aos usuários')
-        print(f"Detalhes do erro: {error}")
+        print(f'Detalhes do erro: {error}')
     if not email_sent:
         print_warning('[ATENÇÃO] Email automático desativado\n')
     else:
