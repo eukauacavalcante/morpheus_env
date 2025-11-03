@@ -7,8 +7,8 @@ from django.conf import settings
 
 from .email_oauth2 import get_oauth2_string
 from .emails import (EMAIL_NEW_USER_HTML, EMAIL_NEW_USER_TEXT,
-                     EMAIL_TERMS_UPDATED)
-from .terminal_msg import msg_user_creation
+                     EMAIL_TERMS_UPDATED_HTML, EMAIL_TERMS_UPDATED_TEXT)
+from .terminal_msg import msg_terms_updated, msg_user_creation
 
 
 def get_date_format():
@@ -49,8 +49,16 @@ def send_email_via_oauth(msg):
 def send_update_terms_email(user):
     try:
         date = get_date_format()
-        body_text = 'Teste'
-        body_html = EMAIL_TERMS_UPDATED.format(user_first_name=user.first_name, date=date)
+        body_text = EMAIL_TERMS_UPDATED_TEXT.format(
+            user_first_name=user.first_name,
+            date=date,
+            user_email=user.email
+        )
+        body_html = EMAIL_TERMS_UPDATED_HTML.format(
+            user_first_name=user.first_name,
+            date=date,
+            user_email=user.email
+        )
         msg = create_email_message(
             subject='Atualização dos Termos de Uso e Política de Privacidade',
             user_email=user.email,
@@ -58,16 +66,25 @@ def send_update_terms_email(user):
             body_html=body_html,
         )
         send_email_via_oauth(msg)
+        msg_terms_updated(user)
 
     except smtplib.SMTPException as e:
-        print(f'\nErro: {e}\n')
+        msg_terms_updated(user, error=str(e))
 
 
 def send_new_user_email(user):
     try:
         date = get_date_format()
-        body_text = EMAIL_NEW_USER_TEXT.format(user_first_name=user.first_name, date=date)
-        body_html = EMAIL_NEW_USER_HTML.format(user_first_name=user.first_name, date=date)
+        body_text = EMAIL_NEW_USER_TEXT.format(
+            user_first_name=user.first_name,
+            user_email=user.email,
+            date=date,
+        )
+        body_html = EMAIL_NEW_USER_HTML.format(
+            user_first_name=user.first_name,
+            user_email=user.email,
+            date=date,
+        )
         msg = create_email_message(
             subject='Bem-vindo(a) ao Morpheus Env',
             user_email=user.email,
