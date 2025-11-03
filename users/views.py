@@ -13,6 +13,7 @@ class UserRegisterView(generic.CreateView):
     model = User
     form_class = CustomUserCreationForm
     template_name = 'registration/register.html'
+    success_url = '/accounts/login/'
 
 
 class UserDetailView(generic.DetailView):
