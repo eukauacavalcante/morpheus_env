@@ -133,7 +133,7 @@
     @apply w-20 md:w-25 rounded-full;
   }
   .profile-avatar-large {
-    @apply ring-4 ring-fuchsia-500/50 shadow-lg rounded-full w-25 h-25 md:w-40 md:h-40 object-cover;
+    @apply ring-4 ring-fuchsia-500/50 shadow-lg rounded-full w-30 h-30 md:w-40 md:h-40 object-cover;
   }
   .profile-info-section {
     @apply flex items-center gap-4 mb-6 pb-6 border-b border-white/20;
