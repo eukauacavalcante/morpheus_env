@@ -2,7 +2,7 @@
 
 <header class="sticky top-0 z-50 backdrop-blur-xl border-b border-white/10 text-white bg-black/30 shadow-lg">
 
-    <div class="mx-auto px-4 sm:px-6 md:px-8 py-2 md:py-4 sm:py-5">
+    <div class="mx-auto px-3 sm:px-6 md:px-8 py-2 md:py-4 sm:py-5">
         {% if user.is_authenticated %}
             <div class="flex items-center justify-between gap-2 sm:gap-4">
 
@@ -39,7 +39,7 @@
 
                 <div class="md:hidden drawer drawer-end justify-end">
                     <input id="mobile-menu" type="checkbox" class="drawer-toggle"/>
-                    <div class="drawer-content">
+                    <div class="drawer-content flex items-center justify-end">
                         <label for="mobile-menu" class="btn btn-ghost btn-circle">
                             <i class="bi bi-list icon-large text-white"></i>
                         </label>
