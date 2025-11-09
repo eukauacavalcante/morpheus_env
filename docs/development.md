@@ -29,7 +29,10 @@ cp .env.example .env
 python manage.py migrate
 python manage.py createsuperuser
 
-# 6. Servidor
+# 6. Tailwind CSS (em outro terminal)
+python manage.py tailwind start
+
+# 7. Servidor
 python manage.py runserver
 ```
 
@@ -186,19 +189,10 @@ for q in connection.queries:
 
 ## Compilar CSS
 
-Se modificar Tailwind em `static/css/input.css`:
+Se modificar Tailwind em `theme/static_src/src/styles.css`:
 
 ```bash
-bash build-tailwind.sh
-```
-
-Ou manualmente:
-
-```bash
-source venv/bin/activate
-venv/bin/tailwind -i ./static/css/input.css \
-                  -o ./static/css/styles.css \
-                  --minify
+python manage.py tailwind start
 ```
 
 ---

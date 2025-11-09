@@ -60,7 +60,13 @@ python manage.py migrate
 python manage.py createsuperuser
 ```
 
-### 6. Servidor
+### 6. Tailwind CSS (em outro terminal)
+
+```bash
+python manage.py tailwind start
+```
+
+### 7. Servidor
 
 ```bash
 python manage.py runserver
@@ -184,16 +190,6 @@ GOOGLE_OAUTH2_CLIENT_ID=seu-client-id
 GOOGLE_OAUTH2_CLIENT_SECRET=seu-client-secret
 GOOGLE_OAUTH2_REFRESH_TOKEN=seu-refresh-token
 EMAIL_MODE=True
-```
-
----
-
-## Compilar Tailwind CSS
-
-Se modificar `static/css/input.css`:
-
-```bash
-bash build-tailwind.sh
 ```
 
 ---

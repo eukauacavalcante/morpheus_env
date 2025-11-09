@@ -60,14 +60,17 @@ morpheus_env/
 │   └── admin.py
 │
 ├── static/                        # Arquivos estáticos
-│   ├── css/
-│   │   ├── input.css              # Input Tailwind
-│   │   └── styles.css             # Output compilado
 │   ├── img/                       # Imagens
-│   └── javascript/
+│   └── javascript/                
 │       ├── system-analysis.js
 │       ├── num-converter.js
 │       └── register.js
+│
+├── theme/                         # App do django-tailwind
+│   ├── static/                    # Arquivos estáticos automáticos
+│   │── static_src/                # Arquivos de origem do Tailwind
+│   │   └── src/                   # Classes utilitárias e componentes customizados
+│   └── tailwind.config.js         # Configuração do Tailwind CSS
 │
 ├── docs/                          # Documentação
 │   ├── index.md
@@ -88,13 +91,13 @@ morpheus_env/
 │
 ├── .gitignore
 ├── .env.example
-├── build-tailwind.sh
 ├── manage.py
+├── mkdocs.yml
+├── pyproject.toml
 ├── README.md
 ├── requirements.txt
 ├── requirements_dev.txt
 ├── requirements_docs.txt
-├── tailwind.config.js
 ├── db.sqlite3                     # Banco (dev only)
 └── venv/                          # Ambiente virtual (ignorado)
 ```
@@ -262,18 +265,6 @@ async function converter()
 async function boolean()
     // Operações lógicas
 ```
-
----
-
-### build-tailwind.sh
-
-Script para compilar Tailwind CSS:
-
-```bash
-bash build-tailwind.sh
-```
-
-Execute quando modificar `static/css/input.css`.
 
 ---
 

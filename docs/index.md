@@ -54,9 +54,9 @@ Bem-vindo à documentação do **Morpheus Env**, um simulador web educacional pa
 git clone https://github.com/eukauacavalcante/morpheus_env.git
 cd morpheus_env
 
-# Criar ambiente virtual
+# Criar ambiente virtual (requer Python 3.10+)
 python -m venv venv
-source venv/bin/activate  # ou `venv\Scripts\activate` no Windows
+source venv/bin/activate  # ou `.\venv\Scripts\activate` no Windows
 
 # Instalar dependências
 pip install -r requirements.txt
@@ -70,6 +70,9 @@ python manage.py migrate
 
 # Criar superusuário
 python manage.py createsuperuser
+
+# Em outro terminal, rode o Tailwind (modo watch)
+python manage.py tailwind start
 
 # Iniciar servidor
 python manage.py runserver

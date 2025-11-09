@@ -94,6 +94,7 @@ Implementa operações fundamentais:
 ### Frontend
 - **Django Templates**: Renderização de páginas
 - **Tailwind CSS**: Estilização utility-first
+- **DaisyUI Components**: Conjunto de componentes
 - **Bootstrap Icons**: Conjunto de ícones
 - **JavaScript Vanilla**: Interatividade sem dependências pesadas
 

@@ -46,6 +46,7 @@ Um projeto acadêmico e experimental para monitoramento de sistema com análise 
 - **Django Templates** - Renderização de página
 - **Tailwind CSS** - Estilização com utility-first
 - **JavaScript Vanilla** - Interatividade
+- **DaisyUI Components**: Componentes
 - **Bootstrap Icons** - Ícones
 
 ### Ferramentas Externas

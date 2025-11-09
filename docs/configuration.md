@@ -274,20 +274,22 @@ Escaneia templates e JS para classes Tailwind:
 ```javascript
 module.exports = {
   content: [
-    './core/templates/**/*.html',
-    './tools/templates/**/*.html',
-    './users/templates/**/*.html',
+    '../templates/**/*.html',
+    '../../templates/**/*.html',
+    '../../**/templates/**/*.html',
+    '../../static/**/*.js',
   ],
   theme: {
     extend: {},
   },
+  plugins: [require("daisyui")],
 }
 ```
 
 Recompile após mudanças CSS:
 
 ```bash
-bash build-tailwind.sh
+python manage.py tailwind start
 ```
 
 ---

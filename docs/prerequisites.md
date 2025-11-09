@@ -86,6 +86,7 @@ Você deve estar confortável com:
 - **Django REST Framework**: Serializers, ViewSets, autenticação
 - **JWT**: Conceitos básicos de tokens e autenticação stateless
 - **HTML/CSS**: estrutura básica, seletores
+- **Tailwind CSS**: classes de estilização
 - **JavaScript**: variáveis, funções, async/await
 - **Git**: clone, commit, push, branches
 
@@ -94,20 +95,49 @@ Se não tiver experiência, consulte:
 - [Real Python](https://realpython.com)
 - [Django Documentation](https://docs.djangoproject.com)
 - [Django REST Framework Documentation](https://www.django-rest-framework.org)
+- [Tailwind CSS Documentation](https://tailwindcss.com/docs/installation/using-vite)
 - [Git Documentation](https://git-scm.com/docs)
 
 ---
 
-## APIs Externas (Opcionais para Dev)
+## Dependências Externas
 
-### Groq AI
+### Node.js
+
+No sistema, é utilizado django-tailwind para a integração do Tailwind CSS com o Django. Portanto, é necessário realizar a instalação do Node.js localmente.
+
+- Baixe e instale o Node.js: [nodejs.org](https://nodejs.org/en/download)
+- Após a instalação, verifique se o Node.js está acessível:
+
+```bash
+node -v
+npm -v
+```
+
+- No arquivo settings.py, informe o caminho do Node.js, caso ele não esteja no PATH do sistema:
+
+```bash
+# O caminho pode ser diferente
+
+# Windows
+NODE_BIN_PATH = 'C:/Program Files/nodejs/node.exe'
+NPM_BIN_PATH = 'C:/Program Files/nodejs/npm.cmd'
+
+# Linux/Mac
+NODE_BIN_PATH = '/usr/local/bin/node'
+NPM_BIN_PATH = '/usr/local/bin/npm'
+```
+
+### APIs (Opcionais para Dev)
+
+#### Groq AI
 
 Para usar análise inteligente:
 
 - Conta em [console.groq.com](https://console.groq.com)
 - API key gratuita
 
-### Google OAuth2
+#### Google OAuth2
 
 Para envio de emails:
 

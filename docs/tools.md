@@ -181,6 +181,20 @@ pip install django-ratelimit==4.1.0
 
 ---
 
+### django-tailwind 4.3.1
+
+Integração Django + Tailwind CSS
+
+**Uso**: `theme/`
+
+**Na prática**: Responsável por toda a estilização do sistema.
+
+```bash
+pip install django-tailwind==4.3.1
+```
+
+---
+
 ## Frontend
 
 ### Tailwind CSS 4
@@ -198,7 +212,7 @@ Framework CSS utility-first para estilização.
 **Compilação**:
 
 ```bash
-bash build-tailwind.sh
+python manage.py tailwind start
 ```
 
 **Configuração**: `tailwind.config.js`
@@ -206,10 +220,15 @@ bash build-tailwind.sh
 ```javascript
 module.exports = {
   content: [
-    './core/templates/**/*.html',
-    './tools/templates/**/*.html',
-    './users/templates/**/*.html',
+    '../templates/**/*.html',
+    '../../templates/**/*.html',
+    '../../**/templates/**/*.html',
+    '../../static/**/*.js',
   ],
+  theme: {
+    extend: {},
+  },
+  plugins: [require("daisyui")],
 }
 ```
 
@@ -231,6 +250,24 @@ Conjunto de ícones SVG.
 ```
 
 **Ícones disponíveis**: [icons.getbootstrap.com](https://icons.getbootstrap.com)
+
+---
+
+### DaisyUI 5.3.10
+
+Conjunto de componentes.
+
+**Uso**: `users/templates/user_detail.html`
+
+```html
+ <div class="avatar"> # conponente DaisyUI
+    <div class="profile-avatar">
+        <img src="https://img.daisyui.com/images/profile/demo/yellingcat@192.webp" />
+    </div>
+</div>
+```
+
+**Componentes disponíveis**: [daisyui.com/components/](https://daisyui.com/components/)
 
 ---
 
