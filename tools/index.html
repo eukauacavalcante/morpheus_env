@@ -620,6 +620,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#django-tailwind-431" class="md-nav__link">
+    <span class="md-ellipsis">
+      django-tailwind 4.3.1
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -648,6 +657,15 @@
   <a href="#bootstrap-icons-1131" class="md-nav__link">
     <span class="md-ellipsis">
       Bootstrap Icons 1.13.1
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#daisyui-5310" class="md-nav__link">
+    <span class="md-ellipsis">
+      DaisyUI 5.3.10
     </span>
   </a>
   
@@ -911,6 +929,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#django-tailwind-431" class="md-nav__link">
+    <span class="md-ellipsis">
+      django-tailwind 4.3.1
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -939,6 +966,15 @@
   <a href="#bootstrap-icons-1131" class="md-nav__link">
     <span class="md-ellipsis">
       Bootstrap Icons 1.13.1
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#daisyui-5310" class="md-nav__link">
+    <span class="md-ellipsis">
+      DaisyUI 5.3.10
     </span>
   </a>
   
@@ -1185,6 +1221,13 @@
 <div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>django-ratelimit<span class="o">==</span><span class="m">4</span>.1.0
 </code></pre></div>
 <hr />
+<h3 id="django-tailwind-431">django-tailwind 4.3.1</h3>
+<p>Integração Django + Tailwind CSS</p>
+<p><strong>Uso</strong>: <code>theme/</code></p>
+<p><strong>Na prática</strong>: Responsável por toda a estilização do sistema.</p>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>django-tailwind<span class="o">==</span><span class="m">4</span>.3.1
+</code></pre></div>
+<hr />
 <h2 id="frontend">Frontend</h2>
 <h3 id="tailwind-css-4">Tailwind CSS 4</h3>
 <p>Framework CSS utility-first para estilização.</p>
@@ -1194,15 +1237,20 @@
 <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </code></pre></div>
 <p><strong>Compilação</strong>:</p>
-<div class="highlight"><pre><span></span><code>bash<span class="w"> </span>build-tailwind.sh
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>manage.py<span class="w"> </span>tailwind<span class="w"> </span>start
 </code></pre></div>
 <p><strong>Configuração</strong>: <code>tailwind.config.js</code></p>
 <div class="highlight"><pre><span></span><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">content</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="s1">&#39;./core/templates/**/*.html&#39;</span><span class="p">,</span>
-<span class="w">    </span><span class="s1">&#39;./tools/templates/**/*.html&#39;</span><span class="p">,</span>
-<span class="w">    </span><span class="s1">&#39;./users/templates/**/*.html&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="s1">&#39;../templates/**/*.html&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="s1">&#39;../../templates/**/*.html&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="s1">&#39;../../**/templates/**/*.html&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="s1">&#39;../../static/**/*.js&#39;</span><span class="p">,</span>
 <span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nx">theme</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">extend</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nx">plugins</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;daisyui&quot;</span><span class="p">)],</span>
 <span class="p">}</span>
 </code></pre></div>
 <hr />
@@ -1217,6 +1265,17 @@
 <span class="p">&lt;</span><span class="nt">i</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;bi bi-briefcase-fill&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">i</span><span class="p">&gt;</span>
 </code></pre></div>
 <p><strong>Ícones disponíveis</strong>: <a href="https://icons.getbootstrap.com">icons.getbootstrap.com</a></p>
+<hr />
+<h3 id="daisyui-5310">DaisyUI 5.3.10</h3>
+<p>Conjunto de componentes.</p>
+<p><strong>Uso</strong>: <code>users/templates/user_detail.html</code></p>
+<div class="highlight"><pre><span></span><code> <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;avatar&quot;</span><span class="p">&gt;</span> # conponente DaisyUI
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;profile-avatar&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://img.daisyui.com/images/profile/demo/yellingcat@192.webp&quot;</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</code></pre></div>
+<p><strong>Componentes disponíveis</strong>: <a href="https://daisyui.com/components/">daisyui.com/components/</a></p>
 <hr />
 <h2 id="desenvolvimento">Desenvolvimento</h2>
 <h3 id="flake8-730">flake8 7.3.0</h3>

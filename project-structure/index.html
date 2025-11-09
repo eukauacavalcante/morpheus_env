@@ -552,15 +552,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#build-tailwindsh" class="md-nav__link">
-    <span class="md-ellipsis">
-      build-tailwind.sh
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#requirementstxt" class="md-nav__link">
     <span class="md-ellipsis">
       requirements.txt
@@ -1041,15 +1032,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#build-tailwindsh" class="md-nav__link">
-    <span class="md-ellipsis">
-      build-tailwind.sh
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#requirementstxt" class="md-nav__link">
     <span class="md-ellipsis">
       requirements.txt
@@ -1256,14 +1238,17 @@
 │   └── admin.py
 │
 ├── static/                        # Arquivos estáticos
-│   ├── css/
-│   │   ├── input.css              # Input Tailwind
-│   │   └── styles.css             # Output compilado
 │   ├── img/                       # Imagens
-│   └── javascript/
+│   └── javascript/                
 │       ├── system-analysis.js
 │       ├── num-converter.js
 │       └── register.js
+│
+├── theme/                         # App do django-tailwind
+│   ├── static/                    # Arquivos estáticos automáticos
+│   │── static_src/                # Arquivos de origem do Tailwind
+│   │   └── src/                   # Classes utilitárias e componentes customizados
+│   └── tailwind.config.js         # Configuração do Tailwind CSS
 │
 ├── docs/                          # Documentação
 │   ├── index.md
@@ -1284,13 +1269,13 @@
 │
 ├── .gitignore
 ├── .env.example
-├── build-tailwind.sh
 ├── manage.py
+├── mkdocs.yml
+├── pyproject.toml
 ├── README.md
 ├── requirements.txt
 ├── requirements_dev.txt
 ├── requirements_docs.txt
-├── tailwind.config.js
 ├── db.sqlite3                     # Banco (dev only)
 └── venv/                          # Ambiente virtual (ignorado)
 </code></pre></div>
@@ -1405,12 +1390,6 @@
 <span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="kr">boolean</span><span class="p">()</span>
 <span class="w">    </span><span class="c1">// Operações lógicas</span>
 </code></pre></div>
-<hr />
-<h3 id="build-tailwindsh">build-tailwind.sh</h3>
-<p>Script para compilar Tailwind CSS:</p>
-<div class="highlight"><pre><span></span><code>bash<span class="w"> </span>build-tailwind.sh
-</code></pre></div>
-<p>Execute quando modificar <code>static/css/input.css</code>.</p>
 <hr />
 <h3 id="requirementstxt">requirements.txt</h3>
 <p>Dependências do projeto. Instale com:</p>

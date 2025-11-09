@@ -1458,17 +1458,19 @@ CSRF_COOKIE_SECURE=True
 <p>Escaneia templates e JS para classes Tailwind:</p>
 <div class="highlight"><pre><span></span><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">content</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="s1">&#39;./core/templates/**/*.html&#39;</span><span class="p">,</span>
-<span class="w">    </span><span class="s1">&#39;./tools/templates/**/*.html&#39;</span><span class="p">,</span>
-<span class="w">    </span><span class="s1">&#39;./users/templates/**/*.html&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="s1">&#39;../templates/**/*.html&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="s1">&#39;../../templates/**/*.html&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="s1">&#39;../../**/templates/**/*.html&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="s1">&#39;../../static/**/*.js&#39;</span><span class="p">,</span>
 <span class="w">  </span><span class="p">],</span>
 <span class="w">  </span><span class="nx">theme</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">extend</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span>
 <span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nx">plugins</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;daisyui&quot;</span><span class="p">)],</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>Recompile após mudanças CSS:</p>
-<div class="highlight"><pre><span></span><code>bash<span class="w"> </span>build-tailwind.sh
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>manage.py<span class="w"> </span>tailwind<span class="w"> </span>start
 </code></pre></div>
 <hr />
 <h2 id="proximas-etapas">Próximas Etapas</h2>

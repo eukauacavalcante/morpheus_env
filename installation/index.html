@@ -405,9 +405,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#6-servidor" class="md-nav__link">
+  <a href="#6-tailwind-css-em-outro-terminal" class="md-nav__link">
     <span class="md-ellipsis">
-      6. Servidor
+      6. Tailwind CSS (em outro terminal)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-servidor" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Servidor
     </span>
   </a>
   
@@ -457,15 +466,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#compilar-tailwind-css" class="md-nav__link">
-    <span class="md-ellipsis">
-      Compilar Tailwind CSS
-    </span>
-  </a>
   
 </li>
       
@@ -852,9 +852,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#6-servidor" class="md-nav__link">
+  <a href="#6-tailwind-css-em-outro-terminal" class="md-nav__link">
     <span class="md-ellipsis">
-      6. Servidor
+      6. Tailwind CSS (em outro terminal)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-servidor" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Servidor
     </span>
   </a>
   
@@ -904,15 +913,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#compilar-tailwind-css" class="md-nav__link">
-    <span class="md-ellipsis">
-      Compilar Tailwind CSS
-    </span>
-  </a>
   
 </li>
       
@@ -1020,7 +1020,10 @@ SECRET_KEY=seu-django-secret-key-aqui
 <div class="highlight"><pre><span></span><code>python<span class="w"> </span>manage.py<span class="w"> </span>migrate
 python<span class="w"> </span>manage.py<span class="w"> </span>createsuperuser
 </code></pre></div>
-<h3 id="6-servidor">6. Servidor</h3>
+<h3 id="6-tailwind-css-em-outro-terminal">6. Tailwind CSS (em outro terminal)</h3>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>manage.py<span class="w"> </span>tailwind<span class="w"> </span>start
+</code></pre></div>
+<h3 id="7-servidor">7. Servidor</h3>
 <div class="highlight"><pre><span></span><code>python<span class="w"> </span>manage.py<span class="w"> </span>runserver
 </code></pre></div>
 <p>Acesse: <code>http://localhost:8000</code></p>
@@ -1138,11 +1141,6 @@ AI_MODEL=mixtral-8x7b-32768
 GOOGLE_OAUTH2_CLIENT_SECRET=seu-client-secret
 GOOGLE_OAUTH2_REFRESH_TOKEN=seu-refresh-token
 EMAIL_MODE=True
-</code></pre></div>
-<hr />
-<h2 id="compilar-tailwind-css">Compilar Tailwind CSS</h2>
-<p>Se modificar <code>static/css/input.css</code>:</p>
-<div class="highlight"><pre><span></span><code>bash<span class="w"> </span>build-tailwind.sh
 </code></pre></div>
 <hr />
 <h2 id="possiveis-erros">Possíveis Erros</h2>

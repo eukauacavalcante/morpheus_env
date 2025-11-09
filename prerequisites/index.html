@@ -430,13 +430,32 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#apis-externas-opcionais-para-dev" class="md-nav__link">
+  <a href="#dependencias-externas" class="md-nav__link">
     <span class="md-ellipsis">
-      APIs Externas (Opcionais para Dev)
+      Dependências Externas
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="APIs Externas (Opcionais para Dev)">
+    <nav class="md-nav" aria-label="Dependências Externas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nodejs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Node.js
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#apis-opcionais-para-dev" class="md-nav__link">
+    <span class="md-ellipsis">
+      APIs (Opcionais para Dev)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="APIs (Opcionais para Dev)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -454,6 +473,11 @@
       Google OAuth2
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -872,13 +896,32 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#apis-externas-opcionais-para-dev" class="md-nav__link">
+  <a href="#dependencias-externas" class="md-nav__link">
     <span class="md-ellipsis">
-      APIs Externas (Opcionais para Dev)
+      Dependências Externas
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="APIs Externas (Opcionais para Dev)">
+    <nav class="md-nav" aria-label="Dependências Externas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nodejs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Node.js
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#apis-opcionais-para-dev" class="md-nav__link">
+    <span class="md-ellipsis">
+      APIs (Opcionais para Dev)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="APIs (Opcionais para Dev)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -896,6 +939,11 @@
       Google OAuth2
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -1007,6 +1055,7 @@ wmic<span class="w"> </span>os<span class="w"> </span>get<span class="w"> </span
 <li><strong>Django REST Framework</strong>: Serializers, ViewSets, autenticação</li>
 <li><strong>JWT</strong>: Conceitos básicos de tokens e autenticação stateless</li>
 <li><strong>HTML/CSS</strong>: estrutura básica, seletores</li>
+<li><strong>Tailwind CSS</strong>: classes de estilização</li>
 <li><strong>JavaScript</strong>: variáveis, funções, async/await</li>
 <li><strong>Git</strong>: clone, commit, push, branches</li>
 </ul>
@@ -1015,17 +1064,41 @@ wmic<span class="w"> </span>os<span class="w"> </span>get<span class="w"> </span
 <li><a href="https://realpython.com">Real Python</a></li>
 <li><a href="https://docs.djangoproject.com">Django Documentation</a></li>
 <li><a href="https://www.django-rest-framework.org">Django REST Framework Documentation</a></li>
+<li><a href="https://tailwindcss.com/docs/installation/using-vite">Tailwind CSS Documentation</a></li>
 <li><a href="https://git-scm.com/docs">Git Documentation</a></li>
 </ul>
 <hr />
-<h2 id="apis-externas-opcionais-para-dev">APIs Externas (Opcionais para Dev)</h2>
-<h3 id="groq-ai">Groq AI</h3>
+<h2 id="dependencias-externas">Dependências Externas</h2>
+<h3 id="nodejs">Node.js</h3>
+<p>No sistema, é utilizado django-tailwind para a integração do Tailwind CSS com o Django. Portanto, é necessário realizar a instalação do Node.js localmente.</p>
+<ul>
+<li>Baixe e instale o Node.js: <a href="https://nodejs.org/en/download">nodejs.org</a></li>
+<li>Após a instalação, verifique se o Node.js está acessível:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>node<span class="w"> </span>-v
+npm<span class="w"> </span>-v
+</code></pre></div>
+<ul>
+<li>No arquivo settings.py, informe o caminho do Node.js, caso ele não esteja no PATH do sistema:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1"># O caminho pode ser diferente</span>
+
+<span class="c1"># Windows</span>
+<span class="nv">NODE_BIN_PATH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;C:/Program Files/nodejs/node.exe&#39;</span>
+<span class="nv">NPM_BIN_PATH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;C:/Program Files/nodejs/npm.cmd&#39;</span>
+
+<span class="c1"># Linux/Mac</span>
+<span class="nv">NODE_BIN_PATH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;/usr/local/bin/node&#39;</span>
+<span class="nv">NPM_BIN_PATH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;/usr/local/bin/npm&#39;</span>
+</code></pre></div>
+<h3 id="apis-opcionais-para-dev">APIs (Opcionais para Dev)</h3>
+<h4 id="groq-ai">Groq AI</h4>
 <p>Para usar análise inteligente:</p>
 <ul>
 <li>Conta em <a href="https://console.groq.com">console.groq.com</a></li>
 <li>API key gratuita</li>
 </ul>
-<h3 id="google-oauth2">Google OAuth2</h3>
+<h4 id="google-oauth2">Google OAuth2</h4>
 <p>Para envio de emails:</p>
 <ul>
 <li>Projeto em <a href="https://console.cloud.google.com">Google Cloud Console</a></li>
