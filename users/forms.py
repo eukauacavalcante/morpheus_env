@@ -5,15 +5,21 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 
-CSS_INPUT_CLASS = 'input-global'
-
 
 def validate_first_name(first_name):
-    return first_name.title()
+    if not first_name.strip():
+        raise ValidationError('Informar o nome é obrigatório')
+    return first_name.strip().title()
 
 
 def validate_username(username, instance=None):
     instance_id = instance.pk if instance else None
+    
+    if not username.strip():
+        raise ValidationError('Informar o nome de usuário é obrigatório')
+    
+    username = username.strip()
+    
     if User.objects.filter(username=username).exclude(pk=instance_id).exists():
         raise ValidationError('Esse usuário já existe')
     if username.isdecimal():
@@ -22,12 +28,23 @@ def validate_username(username, instance=None):
 
 
 def validate_email(email):
-    if email:
+    if not email.strip():
+        return ''
+
+    email = email.strip()
+
+    if '@' not in email:
+        raise ValidationError('E-mail inválido')
+    try:
         domain = email.split('@')[1].lower()
-        with importlib.resources.open_text('users.validators', 'disposable_email_blocklist.conf') as f:
-            blocklist_content = {line.strip().lower() for line in f if line.strip()}
-        if domain in blocklist_content:
-            raise ValidationError('E-mails temporários não são permitidos.')
+    except IndexError:
+        raise ValidationError('E-mail inválido')
+    if not domain:
+        raise ValidationError('E-mail inválido')
+    with importlib.resources.open_text('users.validators', 'disposable_email_blocklist.conf') as f:
+        blocklist_content = {line.strip().lower() for line in f if line.strip()}
+    if domain in blocklist_content:
+        raise ValidationError('E-mails temporários não são permitidos.')
     return email
 
 
@@ -35,17 +52,23 @@ class CustomUserCreationForm(UserCreationForm):
     first_name = forms.CharField(
         max_length=100,
         required=True,
-        widget=forms.TextInput(attrs={'class': CSS_INPUT_CLASS}),
+        widget=forms.TextInput(attrs={'class': 'input-global'}),
     )
     password1 = forms.CharField(
         widget=forms.PasswordInput(
             attrs={
-                'class': CSS_INPUT_CLASS,
+                'class': 'input-global',
                 'placeholder': 'Pelo menos 8 caracteres.',
             }
         )
     )
-    password2 = forms.CharField(widget=forms.PasswordInput(attrs={'class': CSS_INPUT_CLASS}))
+    password2 = forms.CharField(
+        widget=forms.PasswordInput(
+            attrs={
+                'class': 'input-global'
+            }
+        )
+    )
 
     class Meta:
         model = User
@@ -53,13 +76,13 @@ class CustomUserCreationForm(UserCreationForm):
         widgets = {
             'username': forms.TextInput(
                 attrs={
-                    'class': CSS_INPUT_CLASS,
+                    'class': 'input-global',
                     'placeholder': 'Letras, números e @/./+/-/_ apenas.',
                 }
             ),
             'email': forms.EmailInput(
                 attrs={
-                    'class': CSS_INPUT_CLASS,
+                    'class': 'input-global',
                     'placeholder': 'Ex: usuario@email.com',
                 }
             ),
@@ -85,18 +108,18 @@ class UserModelForm(forms.ModelForm):
         widgets = {
             'first_name': forms.TextInput(
                 attrs={
-                    'class': CSS_INPUT_CLASS,
+                    'class': 'input-global',
                 }
             ),
             'username': forms.TextInput(
                 attrs={
-                    'class': CSS_INPUT_CLASS,
+                    'class': 'input-global',
                     'placeholder': 'Letras, números e @/./+/-/_ apenas.',
                 }
             ),
             'email': forms.EmailInput(
                 attrs={
-                    'class': CSS_INPUT_CLASS,
+                    'class': 'input-global',
                     'placeholder': 'Ex: usuario@email.com',
                 }
             ),
