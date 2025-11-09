@@ -64,10 +64,10 @@ def get_system_status():
     }
 
 # tools/views.py
-class SystemAnalysisView(LoginRequiredMixin, generic.View):
-    def get(self, request):
+class SystemAnalysisAPIView(APIView):
+    def get(self, request, *args, **kwargs):
         data = get_system_status()  # Simples e clara
-        return JsonResponse({'data': data})
+        return Response({'data': data}, status=status.HTTP_200_OK)
 
 # tools/tests.py
 def test_get_system_status():
